@@ -31,6 +31,8 @@ CREATE TABLE `carport` (
   `material_full_price` float NOT NULL,
   `fee_price` float NOT NULL,
   `part_id` int NOT NULL,
+  `offer_status` tinyint NOT NULL DEFAULT '0',
+  `payment_status` tinyint NOT NULL DEFAULT '0',
   PRIMARY KEY (`carport_id`),
   KEY `fk_carport_orderline1_idx` (`part_id`),
   CONSTRAINT `fk_carport_orderline1` FOREIGN KEY (`part_id`) REFERENCES `part_list` (`part_id`)
@@ -162,4 +164,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-12-02 12:31:53
+-- Dump completed on 2022-12-02 13:52:14

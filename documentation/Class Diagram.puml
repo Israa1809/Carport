@@ -1,0 +1,51 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class User
+class Customer
+class Carport
+class Material
+
+Customer "1" o-- "many" User : has
+Customer "1" *-- "many" Carport : has
+Carport "1" *-- "many" Part : has
+Part "1" *-- "many" Material : has
+
+class User{
+String username;
+String password;
+String role;
+}
+
+class Customer{
+String customerName;
+String address;
+int postalCode;
+String city;
+int phoneNumber;
+}
+
+class Carport {
+int length;
+int width;
+float materialFullPrice;
+float feePrice;
+List<Part> partList;
+}
+
+class Part{
+Material material;
+int partQuantity;
+float partPrice;
+}
+
+class Material{
+int materialQuantity;
+String materialName;
+String unitType;
+float materialPrice;
+}
+
+
+
+@enduml
