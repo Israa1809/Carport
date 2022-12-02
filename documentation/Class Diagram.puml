@@ -23,20 +23,30 @@ String address;
 int postalCode;
 String city;
 int phoneNumber;
+User user;
+Customer(customerName, address, postalCode, city, phoneNumber)
+'getters - for alle
+'User user// constructor uden user
 }
 
 class Carport {
 int length;
 int width;
+int height;
 float materialFullPrice;
 float feePrice;
 List<Part> partList;
+'getters - for alle
 }
 
 class Part{
 Material material;
 int partQuantity;
 float partPrice;
+setPartPrice(int partQuantity, float materialPrice)
+'{quantity x mateterialPrice}
+setPartQuantity()
+'getters - for alle
 }
 
 class Material{
@@ -44,8 +54,13 @@ int materialQuantity;
 String materialName;
 String unitType;
 float materialPrice;
+'getters - for alle
 }
 
-
+class Calculator{
+List<Material> MaterialList;
+Part part;
+Part woodCalculator(int length, int width, int height, List<Material> MaterialList)
+}
 
 @enduml
