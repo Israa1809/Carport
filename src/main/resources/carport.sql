@@ -30,12 +30,12 @@ CREATE TABLE `carport` (
   `width` int NOT NULL,
   `material_full_price` float NOT NULL,
   `fee_price` float NOT NULL,
-  `part_id` int NOT NULL,
+  `customer_id` int NOT NULL,
   `offer_status` tinyint NOT NULL DEFAULT '0',
   `payment_status` tinyint NOT NULL DEFAULT '0',
   PRIMARY KEY (`carport_id`),
-  KEY `fk_carport_orderline1_idx` (`part_id`),
-  CONSTRAINT `fk_carport_orderline1` FOREIGN KEY (`part_id`) REFERENCES `part_list` (`part_id`)
+  KEY `fk_carport_customer1_idx` (`customer_id`),
+  CONSTRAINT `fk_carport_customer1` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customer_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -56,15 +56,13 @@ DROP TABLE IF EXISTS `customer`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `customer` (
-  `customer_name` varchar(45) NOT NULL,
+  `customer_id` int NOT NULL AUTO_INCREMENT,
   `address` varchar(45) NOT NULL,
   `postal_code` int NOT NULL,
   `city` varchar(45) NOT NULL,
   `phone_number` int NOT NULL,
-  `carport_id` int NOT NULL,
-  PRIMARY KEY (`customer_name`),
-  KEY `fk_customer_carport1_idx` (`carport_id`),
-  CONSTRAINT `fk_customer_carport1` FOREIGN KEY (`carport_id`) REFERENCES `carport` (`carport_id`)
+  `customer_name` varchar(45) NOT NULL,
+  PRIMARY KEY (`customer_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -90,6 +88,7 @@ CREATE TABLE `material` (
   `material_name` varchar(45) NOT NULL,
   `unit_type` varchar(45) NOT NULL,
   `material_price` float NOT NULL,
+  `product_variant` varchar(45) NOT NULL,
   PRIMARY KEY (`material_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -104,30 +103,33 @@ LOCK TABLES `material` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `part_list`
+-- Table structure for table `part`
 --
 
-DROP TABLE IF EXISTS `part_list`;
+DROP TABLE IF EXISTS `part`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `part_list` (
+CREATE TABLE `part` (
   `part_id` int NOT NULL AUTO_INCREMENT,
   `part_quantity` int NOT NULL,
-  `material_id` int NOT NULL,
+  `carport_id` int NOT NULL,
   `part_price` float NOT NULL,
+  `material_id` int NOT NULL,
   PRIMARY KEY (`part_id`),
-  KEY `fk_orderline_material1_idx` (`material_id`),
-  CONSTRAINT `fk_orderline_material1` FOREIGN KEY (`material_id`) REFERENCES `material` (`material_id`)
+  KEY `fk_part_list_material_idx` (`material_id`),
+  KEY `fk_part_list_carport1_idx` (`carport_id`),
+  CONSTRAINT `fk_part_list_carport1` FOREIGN KEY (`carport_id`) REFERENCES `carport` (`carport_id`),
+  CONSTRAINT `fk_part_list_material` FOREIGN KEY (`material_id`) REFERENCES `material` (`material_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `part_list`
+-- Dumping data for table `part`
 --
 
-LOCK TABLES `part_list` WRITE;
-/*!40000 ALTER TABLE `part_list` DISABLE KEYS */;
-/*!40000 ALTER TABLE `part_list` ENABLE KEYS */;
+LOCK TABLES `part` WRITE;
+/*!40000 ALTER TABLE `part` DISABLE KEYS */;
+/*!40000 ALTER TABLE `part` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -164,4 +166,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-12-02 13:52:14
+-- Dump completed on 2022-12-06 10:11:10
