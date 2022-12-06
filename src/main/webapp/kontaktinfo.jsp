@@ -9,13 +9,40 @@
 
         <h1>Skriv dine kontakt oplysninger</h1>
 
+
         <form action="requestcarportoffer" method="post">
-        <div class="row">
-            <div class="text-end mt-3 mb-3">
-                <button type="submit" value="recalculate" class="btn btn-primary">Bestil tilbud
-                </button>
+            <div class="container">
+                <div class="form-group col-md-6">
+                    <label for="inputName">Fulde Navn</label>
+                    <input type="text" class="form-control" id="inputName">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputAddress">Adresse</label>
+                    <input type="text" class="form-control" id="inputAddress">
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputZip">Post Nr</label>
+                        <input type="text" class="form-control" id="inputZip">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputCity">By</label>
+                        <input type="text" class="form-control" id="inputCity">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="PhoneNumber">Telefon Nr</label>
+                        <input type="number" class="form-control" id="PhoneNumber">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="Email">Email</label>
+                        <input type="email" class="form-control" id="Email">
+                    </div>
+                </div>
+                <div class="text-end mt-3 mb-3 col-md-6">
+                    <button type="submit" value="recalculate" class="btn btn-primary">Bestil tilbud
+                    </button>
+                </div>
             </div>
-        </div>
         </form>
 
 
