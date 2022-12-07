@@ -28,7 +28,7 @@ public class MaterialMapper {
                     int materialQuantity = rs.getInt("material_quantity");
                     String materialName = rs.getString("material_name");
                     String unitType = rs.getString("unit_type");
-                    double materialPrice = rs.getDouble("material_price");
+                    float materialPrice = rs.getFloat("material_price");
                     String productVariant = rs.getString("product_variant");
 
                     Material material = new Material(materialQuantity, materialName, unitType, materialPrice, productVariant);
@@ -60,5 +60,23 @@ public class MaterialMapper {
                 e.printStackTrace();
             }
 
+    }
+
+    protected static void addMaterial(Material material, ConnectionPool connectionPool) {
+        String sql = "INSERT INTO carport.material (material_quantity, material_name, unit_type, material_price, product_variant) VALUES (?,?,?,?,?)";
+
+        try (Connection connection = connectionPool.getConnection();
+             PreparedStatement ps = connection.prepareStatement(sql)) {
+
+            ps.setInt(1, material.getMaterialQuantity());
+            ps.setString(2, material.getMaterialName());
+            ps.setString(3, material.getUnitType());
+            ps.setFloat(4, material.getMaterialPrice());
+            ps.setString(5, material.getProductVariant());
+            ps.executeUpdate();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

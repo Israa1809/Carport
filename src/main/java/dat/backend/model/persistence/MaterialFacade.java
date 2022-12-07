@@ -16,6 +16,9 @@ public class MaterialFacade {
         MaterialMapper.deleteMaterialById(materialId, connectionPool);
     }
 
+    public static void addMaterial(Material material, ConnectionPool connectionPool){
+        MaterialMapper.addMaterial(material, connectionPool);
+    }
 
 
 

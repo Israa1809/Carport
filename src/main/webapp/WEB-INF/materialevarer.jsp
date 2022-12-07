@@ -22,8 +22,10 @@
                             <th>til knap</th>
                         </tr>
                         <div class="text-end mt-3 mb-3">
-                            <button type="submit" value="addNewMaterial" class="btn btn-primary">Opret nyt materiale
-                            </button>
+                            <form action="toaddmaterial">
+                                <button type="submit" value="addNewMaterial" class="btn btn-primary">Opret nyt materiale
+                                </button>
+                            </form>
                         </div>
                         </thead>
                         <c:forEach var="material" items="${sessionScope.materialArrayList}">
@@ -43,9 +45,9 @@
 
                                     <td class="col">
                                         <form action="deletematerial" method="post">
-                                        <button type="submit" value="${material.materialId}" class="btn btn-primary"
-                                                name="material_id">Slet
-                                        </button>
+                                            <button type="submit" value="${material.materialId}" class="btn btn-primary"
+                                                    name="material_id">Slet
+                                            </button>
                                         </form>
                                     </td>
 
@@ -58,8 +60,10 @@
 
                     </table>
                     <div class="text-end mt-3 mb-3">
-                        <button type="submit" value="addNewMaterial" class="btn btn-primary">Opret nyt materiale
-                        </button>
+                        <form action="toaddmaterial">
+                            <button type="submit" value="addNewMaterial" class="btn btn-primary">Opret nyt materiale
+                            </button>
+                        </form>
                     </div>
 
                 </div>
