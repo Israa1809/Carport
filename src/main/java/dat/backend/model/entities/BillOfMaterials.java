@@ -9,8 +9,8 @@ public class BillOfMaterials {
     private List<Material> MaterialList;
 
     public static void main(String[] args) {
-        System.out.println(Calculator.calcBeams(620+160, 530+70));
-                                                // (1,etellerandet = 1 + 2 = 3 stolper) x (1 = 2) = 2 stolper // dvs i alt 4
+        System.out.println(Calculator.calcBeams(310+310+20+160, 530+20+70));
+                                                // (2,06 = 2 + 1 + 1 = 4 stolper) x (1,03 = 1 + 1 + 1 = 3 stolper // dvs i alt 12
     }
 
 }
