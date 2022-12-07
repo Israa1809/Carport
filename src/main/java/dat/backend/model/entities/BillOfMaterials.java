@@ -2,11 +2,8 @@ package dat.backend.model.entities;
 
 import java.util.List;
 
-public class Calculator {
+public class BillOfMaterials {
 
     private List<Material> MaterialList;
-    private List<Material> BOM;
-
-
 
 }

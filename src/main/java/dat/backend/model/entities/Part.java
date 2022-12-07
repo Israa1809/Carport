@@ -5,14 +5,19 @@ public class Part {
     private int partQuantity;
     private float partPrice;
 
-    public Part(Material material, int partQuantity, float partPrice) {
+    public Part(Material material, int partQuantity) {
         this.material = material;
         this.partQuantity = partQuantity;
-        this.partPrice = partPrice;
+        setPartPrice(partQuantity, material.getMaterialPrice());
     }
 
-    public void setPartPrice(int partQuantity, float materialPrice){
+    public float setPartPrice(int partQuantity, float materialPrice){
+        partPrice = partQuantity * materialPrice;
+        return partPrice;
+    }
 
+    public float getPartPrice() {
+        return partPrice;
     }
 
 }
