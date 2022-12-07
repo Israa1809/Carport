@@ -40,19 +40,24 @@ public class Login extends HttpServlet
         HttpSession session = request.getSession();
         ArrayList<Material> materialArrayList = MaterialFacade.getMaterials(connectionPool);
         session.setAttribute("materialArrayList", materialArrayList);
-
-
-
         session.setAttribute("user", null); // invalidating user object in session scope
         String username = request.getParameter("username");
         String password = request.getParameter("password");
 
+
+
+
         try
         {
             User user = UserFacade.login(username, password, connectionPool);
-            session = request.getSession();
+
+            if(user.getRole().equals("admin")){
+                session.setAttribute("user", user);
+                request.getRequestDispatcher("WEB-INF/kundeordrer.jsp").forward(request, response);
+            }
+
             session.setAttribute("user", user); // adding user object to session scope
-            request.getRequestDispatcher("WEB-INF/welcome.jsp").forward(request, response);
+            request.getRequestDispatcher("WEB-INF/ordrevisning.jsp").forward(request, response);
         }
         catch (DatabaseException e)
         {
