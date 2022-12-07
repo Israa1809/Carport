@@ -1,13 +1,13 @@
 package dat.backend.model.entities;
 
 public class Customer {
-    String customerName;
-    String address;
-    int postalCode;
-    String city;
-    int phoneNumber;
+    private String customerName;
+    private String address;
+    private int postalCode;
+    private String city;
+    private int phoneNumber;
 
-    User user;
+    private User user;
 
     public Customer(String customerName, String address, int postalCode, String city, int phone){
         this.customerName = customerName;

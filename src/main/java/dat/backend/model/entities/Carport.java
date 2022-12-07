@@ -4,12 +4,12 @@ import java.util.List;
 
 public class Carport {
 
-    int length;
-    int width;
-    int height;
-    float materialFullPrice;
-    float feePrice;
-    List<Part> partList;
+    private int length;
+    private int width;
+    private int height;
+    private float materialFullPrice;
+    private float feePrice;
+    private List<Part> partList;
 
     public Carport(int length, int width, int height, float materialFullPrice, float feePrice, List<Part> partList) {
         this.length = length;

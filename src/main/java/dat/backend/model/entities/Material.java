@@ -2,12 +2,12 @@ package dat.backend.model.entities;
 
 public class Material {
 
-    int materialQuantity;
-    String materialName;
-    String unitType;
-    float materialPrice;
+    private int materialQuantity;
+    private String materialName;
+    private String unitType;
+    private float materialPrice;
 
-    String productVariant;
+    private String productVariant;
 
     public Material(int materialQuantity, String materialName, String unitType, float materialPrice, String productVariant ) {
         this.materialQuantity = materialQuantity;

@@ -4,8 +4,8 @@ import java.util.List;
 
 public class Calculator {
 
-    List<Material> MaterialList;
-    List<Material> BOM;
+    private List<Material> MaterialList;
+    private List<Material> BOM;
 
 
 

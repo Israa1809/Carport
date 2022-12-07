@@ -1,9 +1,9 @@
 package dat.backend.model.entities;
 
 public class Part {
-    Material material;
-    int partQuantity;
-    float partPrice;
+    private Material material;
+    private int partQuantity;
+    private float partPrice;
 
     public Part(Material material, int partQuantity, float partPrice) {
         this.material = material;
