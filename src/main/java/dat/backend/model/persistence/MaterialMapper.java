@@ -28,7 +28,7 @@ public class MaterialMapper {
                     int materialQuantity = rs.getInt("material_quantity");
                     String materialName = rs.getString("material_name");
                     String unitType = rs.getString("unit_type");
-                    float materialPrice = rs.getFloat("material_price");
+                    double materialPrice = rs.getDouble("material_price");
                     String productVariant = rs.getString("product_variant");
 
                     Material material = new Material(materialQuantity, materialName, unitType, materialPrice, productVariant);

@@ -5,12 +5,12 @@ public class Material {
     private int materialQuantity;
     private String materialName;
     private String unitType;
-    private float materialPrice;
+    private double materialPrice;
     private int materialId;
 
     private String productVariant;
 
-    public Material(int materialQuantity, String materialName, String unitType, float materialPrice, String productVariant ) {
+    public Material(int materialQuantity, String materialName, String unitType, double materialPrice, String productVariant ) {
         this.materialQuantity = materialQuantity;
         this.materialName = materialName;
         this.unitType = unitType;
@@ -31,7 +31,7 @@ public class Material {
         return unitType;
     }
 
-    public float getMaterialPrice() {
+    public double getMaterialPrice() {
         return materialPrice;
     }
 
