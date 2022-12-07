@@ -6,6 +6,7 @@ public class Material {
     private String materialName;
     private String unitType;
     private float materialPrice;
+    private int materialId;
 
     private String productVariant;
 
@@ -15,6 +16,7 @@ public class Material {
         this.unitType = unitType;
         this.materialPrice = materialPrice;
         this.productVariant = productVariant;
+        this.materialId = materialId;
     }
 
     public int getMaterialQuantity() {
@@ -31,5 +33,17 @@ public class Material {
 
     public float getMaterialPrice() {
         return materialPrice;
+    }
+
+    public String getProductVariant() {
+        return productVariant;
+    }
+
+    public void setMaterialId(int materialId) {
+        this.materialId = materialId;
+    }
+
+    public int getMaterialId() {
+        return materialId;
     }
 }
