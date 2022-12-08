@@ -2,13 +2,17 @@ package dat.backend.model.services;
 
 public class Calculator {
 
-    public static int calcBeams(int length, int width) {     //'beams' er 'stolper' på dansk
+    public static int calcBeams(int carportLength, int carportWidth) {     //'beams' er 'stolper' på dansk
 
+        float lengthInterval = 310f; //vi har besluttet at længde og bredde måles i cm, og vi antager at hvis længden overstiger 310 cm skal der indsættes en ekstra stolpe
+        float widthInterval = 530f; //vi har besluttet at længde og bredde måles i cm, og vi antager at hvis bredden overstiger 530 cm skal der indsættes en ekstra stolpe
+        int lengthStandOff = 160;
+        int widthStandOff = 70;
         int resLength;
         int resWidth;
 
-        float lengthDiv = (length-160)/310f; //vi har besluttet at længde og bredde måles i cm, og vi antager at hvis længden overstiger 310 cm skal der indsættes en ekstra stolpe
-        float widthDiv = (width-70)/530f; //vi har besluttet at længde og bredde måles i cm, og vi antager at hvis bredden overstiger 530 cm skal der indsættes en ekstra stolpe
+        float lengthDiv = (carportLength-lengthStandOff)/lengthInterval;
+        float widthDiv = (carportWidth-widthStandOff)/widthInterval;
 
         resLength = (int) lengthDiv + 1;
         if(lengthDiv%1 > 0){
@@ -24,4 +28,83 @@ public class Calculator {
 
         return resTotal;
     }
+
+    // Udregner spær - 15 total på given vejledning
+    public static int calcRafter(int carportLength, int carportWidth, int materialLength) {
+        float interval = 55f;
+        int numberOfRows;
+        int devider;
+        int numberOfMaterial;
+
+        //finder antallet af spær ud fra interval på 55cm
+        float lengthDiv = (carportLength / interval) + 1;
+        if (lengthDiv % 1 > 0) {
+            numberOfRows = (int) lengthDiv + 1;
+        } else {
+            numberOfRows = (int) lengthDiv;
+        }
+
+        // Beregner antallet af gange carportens bredte overstiger materialets længde
+        float widthDiv = carportWidth / materialLength;
+        if (widthDiv % 1 > 0) {
+            devider = (int) widthDiv + 1;
+        } else {
+            devider = (int) widthDiv;
+        }
+
+        // finder antallet af et givet materiale med "meterialLength" pr række af spær
+        numberOfMaterial = numberOfRows * devider;
+
+        return numberOfMaterial;
+    }
+
+    //Udregner 1x stern
+    public static int calcFascia(int carportLength, int carportWidth, int materialLength){
+        float faLength;
+        float faWidth;
+        int fasciaMatieral;
+
+        faLength = (float)carportLength / materialLength;
+        faWidth = (float)carportWidth / materialLength;
+
+
+        if(faLength % 1 > 0){
+            faLength = faLength + 1;
+        }
+        if(faWidth % 1 > 0){
+            faWidth = faWidth + 1;
+        }
+
+        fasciaMatieral = ((int)faWidth + (int)faLength) * 2;
+
+        return fasciaMatieral;
+    }
+
+    public static int calcWallPlate(int carportLength, int carportWidth, int materialLength) {
+
+        float widthInterval = 530f; //vi har besluttet at længde og bredde måles i cm, og vi antager at hvis bredden overstiger 530 cm skal der indsættes en ekstra stolpe
+        float wpLength;
+        int widthStandOff = 70;
+        int resWidth;
+        int resTotal;
+
+        float widthDiv = (carportWidth - widthStandOff) / widthInterval;
+
+        resWidth = (int) widthDiv + 1;
+        if (widthDiv % 1 > 0) {
+            resWidth = resWidth + 1;
+        }
+
+        wpLength = (float)carportLength / materialLength;
+
+        if(wpLength % 1 > 0){
+            wpLength = wpLength + 1;
+        }
+
+        resTotal = resWidth * (int)wpLength;
+
+        return resTotal;
+
+    }
+
 }
