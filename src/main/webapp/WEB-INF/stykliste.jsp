@@ -8,8 +8,6 @@
     <jsp:body>
         <div class="container ">
             <div class="display-6 text-center mb-5">Stykliste</div>
-
-
             <div class="row">
                 <div class="col-6">
                     <h4>
@@ -26,6 +24,7 @@
                                 </tr>
                                 </thead>
                                     <tr>
+
                                         <td class="col-3">
                                             materialer kommer her
                                         </td>
