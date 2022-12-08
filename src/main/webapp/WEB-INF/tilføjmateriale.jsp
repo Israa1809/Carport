@@ -55,10 +55,8 @@
 
                     </table>
                     <div class="text-end mt-3 mb-3">
-
                             <button type="submit" class="btn btn-primary">Opret
                             </button>
-
                     </div>
 
                 </div>
