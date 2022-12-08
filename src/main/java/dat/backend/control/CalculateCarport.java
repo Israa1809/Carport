@@ -1,6 +1,9 @@
 package dat.backend.control;
 
 import dat.backend.model.config.ApplicationStart;
+import dat.backend.model.entities.BillOfMaterials;
+import dat.backend.model.entities.Carport;
+import dat.backend.model.entities.Part;
 import dat.backend.model.entities.User;
 import dat.backend.model.exceptions.DatabaseException;
 import dat.backend.model.persistence.ConnectionPool;
@@ -26,6 +29,10 @@ public class CalculateCarport extends HttpServlet
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
     {
+        Carport carport = BillOfMaterials.buildCarport(new Carport(780, 600));
+
+
+
 
             request.getRequestDispatcher("skitseside.jsp").forward(request, response);
         }

@@ -1,24 +1,54 @@
 package dat.backend.model.entities;
 
+import dat.backend.model.config.ApplicationStart;
+import dat.backend.model.persistence.ConnectionPool;
+import dat.backend.model.persistence.MaterialFacade;
+
 import dat.backend.model.services.Calculator;
 
 import java.util.List;
 
 public class BillOfMaterials {
 
-    private List<Material> MaterialList;
+    private static ConnectionPool connectionPool = ApplicationStart.getConnectionPool();
+    private static List<Material> materialList = MaterialFacade.getMaterials(connectionPool);
 
-    public static void main(String[] args) {
-        System.out.println(Calculator.calcBeams(310+310+20+160, 530+20+70));
-                                                // (2,06 = 2 + 1 + 1 = 4 stolper) x (1,03 = 1 + 1 + 1 = 3 stolper // dvs i alt 12
+    public static Carport buildCarport(Carport carport) {
 
-        System.out.println(Calculator.calcRafter(825, 600, 600));
+        Part beamPart = addBeams(carport.getLength(), carport.getWidth(), carport.getHeight());
+        carport.setPartList(beamPart);
 
 
-        System.out.println(Calculator.calcFascia(1080, 1080, 540));
+        return carport;
+    }
 
-        System.out.println(Calculator.calcWallPlate(780, 700, 600));
+
+    public static Part addBeams(int length, int width, int height) {
+        int partQuantity = Calculator.calcBeams(length, width, height);
+        Material finalMaterial = null;
+
+        for (Material material : materialList) {
+
+            if(material.getProductVariant().contains("stolpe")){
+
+                if(finalMaterial == null){
+                    finalMaterial = material;
+                }
+
+                else if(material.getMaterialQuantity()%height < finalMaterial.getMaterialQuantity()%height){
+                    finalMaterial = material;
+                }
+            }
+
+        }
+
+
+
+        Part part = new Part(finalMaterial, partQuantity);
+        return part;
+
 
     }
+
 
 }
