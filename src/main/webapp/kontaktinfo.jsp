@@ -14,28 +14,28 @@
             <div class="container">
                 <div class="form-group col-md-6">
                     <label for="inputName">Fulde Navn</label>
-                    <input type="text" class="form-control" id="inputName">
+                    <input type="text" class="form-control" id="inputName" name="name">
                 </div>
                 <div class="form-group col-md-6">
                     <label for="inputAddress">Adresse</label>
-                    <input type="text" class="form-control" id="inputAddress">
+                    <input type="text" class="form-control" id="inputAddress" name="address">
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="inputZip">Post Nr</label>
-                        <input type="text" class="form-control" id="inputZip">
+                        <input type="text" class="form-control" id="inputZip" name="zipcode">
                     </div>
                     <div class="form-group col-md-6">
                         <label for="inputCity">By</label>
-                        <input type="text" class="form-control" id="inputCity">
+                        <input type="text" class="form-control" id="inputCity" name="city">
                     </div>
                     <div class="form-group col-md-6">
                         <label for="PhoneNumber">Telefon Nr</label>
-                        <input type="number" class="form-control" id="PhoneNumber">
+                        <input type="number" class="form-control" id="PhoneNumber" name="phonenumber">
                     </div>
                     <div class="form-group col-md-6">
                         <label for="Email">Email</label>
-                        <input type="email" class="form-control" id="Email">
+                        <input type="email" class="form-control" id="Email" name="email">
                     </div>
                 </div>
                 <div class="text-end mt-3 mb-3 col-md-6">
