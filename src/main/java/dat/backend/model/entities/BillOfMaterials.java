@@ -54,7 +54,7 @@ public class BillOfMaterials {
                 if (finalMaterial == null) {
                     finalMaterial = material;
 
-                } else if (material.getMaterialQuantity() % carportWidth < finalMaterial.getMaterialQuantity() % carportWidth) {
+                } else if (Calculator.calcRafter(carportLength, carportLength, material.getMaterialQuantity()) < Calculator.calcRafter(carportLength, carportLength, finalMaterial.getMaterialQuantity())) {
                     finalMaterial = material;
                 }
             }
