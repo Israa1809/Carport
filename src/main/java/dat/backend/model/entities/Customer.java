@@ -43,5 +43,7 @@ public class Customer {
         return email;
     }
 
-
+    public void setUser(User user) {
+        this.user = user;
+    }
 }

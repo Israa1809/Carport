@@ -15,11 +15,13 @@
                     <div class="col  form-group  mt-5 me-5 ms-5">
                         <select class="form-select" name="length">
                             <option selected>Længde</option>
+                            <option> 700 </option>
                         </select>
                     </div>
                     <div class="col form-group  mt-5  me-5 ">
                         <select class="form-select" name="width">
                             <option selected>Bredde</option>
+                            <option> 680 </option>
                         </select>
                     </div>
 

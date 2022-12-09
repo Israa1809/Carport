@@ -19,11 +19,11 @@
                 <div class="col-4">
                     <div class="card">
                         <div class="card-body">
-                            <p class="lead"> Længde cm </p>
-                            <p class="lead"> Bredde cm </p>
+                            <p class="lead"> Længde ${sessionScope.carport.length}cm </p>
+                            <p class="lead"> Bredde ${sessionScope.carport.width}cm </p>
 
                             Husk at lave et if statement om offerStatus
-                            <p class="lead"> Pris </p>
+                            <p class="lead"> Pris  ${sessionScope.totalCarportPrice}kr. </p>
                         </div>
                     </div>
 

@@ -6,18 +6,13 @@
 <t:pagetemplate>
 
     <jsp:body>
-
-        <h1>HER</h1>
-        ${requestScope.customerId}
-
         <div class="display-6 text-center mb-4">Tak for din bestilling</div>
         <div class="row">
             <div class="col-3"></div>
             <div class="col">
                 <div class="card">
                     <div class="card-body">
-<%--                        Ordrenummer skal erstattes fra db--%>
-                        <p class="lead"> Ordrenummer #4321 </p>
+                        <p class="lead"> Dit ordrenummer er: # ${requestScope.carportId} </p>
 
                         <p class="lead"> Tak for din bestilling. </p>
 
@@ -33,8 +28,6 @@
             </div>
             <div class="col-3"></div>
         </div>
-
-
     </jsp:body>
 
 </t:pagetemplate>
