@@ -45,7 +45,7 @@ public class Calculator {
         }
 
         // Beregner antallet af gange carportens bredte overstiger materialets længde
-        float widthDiv = carportWidth / materialLength;
+        float widthDiv = (float) carportWidth / materialLength;
         if (widthDiv % 1 > 0) {
             devider = (int) widthDiv + 1;
         } else {

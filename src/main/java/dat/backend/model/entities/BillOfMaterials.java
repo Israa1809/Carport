@@ -43,7 +43,7 @@ public class BillOfMaterials {
                 if (finalMaterial == null) {
                     finalMaterial = material;
 
-                } else if (material.getMaterialQuantity() % carportWidth < finalMaterial.getMaterialQuantity() % carportWidth) {
+                } else if (material.getMaterialQuantity() % carportWidth < finalMaterial.getMaterialQuantity() % carportWidth) {    //tjekker hvilket mål der ligger tættest på det ønskede mål, og hvis det "nye" materiale er mere optimalt, erstattes finalMaterial med det "nye" material
                     finalMaterial = material;
                 }
             }
@@ -54,7 +54,7 @@ public class BillOfMaterials {
                 if (finalMaterial == null) {
                     finalMaterial = material;
 
-                } else if (Calculator.calcRafter(carportLength, carportWidth, material.getMaterialQuantity()) < Calculator.calcRafter(carportLength, carportLength, finalMaterial.getMaterialQuantity())) {
+                } else if (Calculator.calcRafter(carportLength, carportWidth, material.getMaterialQuantity()) < Calculator.calcRafter(carportLength, carportWidth, finalMaterial.getMaterialQuantity())) {
                     finalMaterial = material;
                 }
             }
