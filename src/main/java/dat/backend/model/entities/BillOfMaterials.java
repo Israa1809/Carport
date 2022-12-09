@@ -54,14 +54,14 @@ public class BillOfMaterials {
                 if (finalMaterial == null) {
                     finalMaterial = material;
 
-                } else if (Calculator.calcRafter(carportLength, carportLength, material.getMaterialQuantity()) < Calculator.calcRafter(carportLength, carportLength, finalMaterial.getMaterialQuantity())) {
+                } else if (Calculator.calcRafter(carportLength, carportWidth, material.getMaterialQuantity()) < Calculator.calcRafter(carportLength, carportLength, finalMaterial.getMaterialQuantity())) {
                     finalMaterial = material;
                 }
             }
 
         }
 
-        int partQuantity = Calculator.calcRafter(carportLength, carportLength, finalMaterial.getMaterialQuantity());
+        int partQuantity = Calculator.calcRafter(carportLength, carportWidth, finalMaterial.getMaterialQuantity());
         Part rafterPart = new Part(finalMaterial, partQuantity);
         return rafterPart;
 
