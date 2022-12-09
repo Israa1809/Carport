@@ -7,6 +7,18 @@
 
     <jsp:body>
 
+
+
+        <c:forEach var="carport" items="${requestScope.carport.partList}">
+
+            Her er måske en stolpe:
+            ${carport}
+
+
+        </c:forEach>
+
+
+
         <h1>Her kommer din carport skitse!</h1>
         <form action="calculatecarport">
         <div class="row">

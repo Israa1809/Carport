@@ -20,4 +20,12 @@ public class Part {
         return partPrice;
     }
 
+    @Override
+    public String toString() {
+        return "Part{" +
+                "material=" + material +
+                ", partQuantity=" + partQuantity +
+                ", partPrice=" + partPrice +
+                '}';
+    }
 }

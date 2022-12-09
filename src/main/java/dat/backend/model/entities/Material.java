@@ -66,4 +66,16 @@ public class Material {
     public void setProductVariant(String productVariant) {
         this.productVariant = productVariant;
     }
+
+    @Override
+    public String toString() {
+        return "Material{" +
+                "materialQuantity=" + materialQuantity +
+                ", materialName='" + materialName + '\'' +
+                ", unitType='" + unitType + '\'' +
+                ", materialPrice=" + materialPrice +
+                ", materialId=" + materialId +
+                ", productVariant='" + productVariant + '\'' +
+                '}';
+    }
 }

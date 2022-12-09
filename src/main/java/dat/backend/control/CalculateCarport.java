@@ -1,12 +1,10 @@
 package dat.backend.control;
 
 import dat.backend.model.config.ApplicationStart;
-import dat.backend.model.entities.BillOfMaterials;
-import dat.backend.model.entities.Carport;
-import dat.backend.model.entities.Part;
-import dat.backend.model.entities.User;
+import dat.backend.model.entities.*;
 import dat.backend.model.exceptions.DatabaseException;
 import dat.backend.model.persistence.ConnectionPool;
+import dat.backend.model.persistence.MaterialFacade;
 import dat.backend.model.persistence.UserFacade;
 
 import javax.servlet.ServletException;
@@ -16,25 +14,27 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.ArrayList;
 
-@WebServlet(name = "CalculateCarport", urlPatterns = {"/calculatecarport"} )
-public class CalculateCarport extends HttpServlet
-{
+@WebServlet(name = "CalculateCarport", urlPatterns = {"/calculatecarport"})
+public class CalculateCarport extends HttpServlet {
 
+    private ConnectionPool connectionPool = ApplicationStart.getConnectionPool();
 
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
-    {
-    response.sendRedirect("index.jsp");
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        response.sendRedirect("index.jsp");
     }
 
-    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
-    {
-        Carport carport = BillOfMaterials.buildCarport(new Carport(780, 600));
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
+        ArrayList<Material> materialArrayList = MaterialFacade.getMaterials(connectionPool);
 
+        HttpSession session = request.getSession();
 
+        Carport carport = BillOfMaterials.buildCarport(new Carport(780, 600), materialArrayList);
+        session.setAttribute("carport", carport);
 
-            request.getRequestDispatcher("skitseside.jsp").forward(request, response);
-        }
+        request.getRequestDispatcher("skitseside.jsp").forward(request, response);
+    }
 
 }

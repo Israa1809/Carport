@@ -6,16 +6,17 @@ import dat.backend.model.persistence.MaterialFacade;
 
 import dat.backend.model.services.Calculator;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BillOfMaterials {
 
-    private static ConnectionPool connectionPool = ApplicationStart.getConnectionPool();
-    private static List<Material> materialList = MaterialFacade.getMaterials(connectionPool);
+//    List<Material> materialList = MaterialFacade.getMaterials(connectionPool);
 
-    public static Carport buildCarport(Carport carport) {
+    public static Carport buildCarport(Carport carport, ArrayList<Material> materialList) {
 
-        Part beamPart = addBeams(carport.getLength(), carport.getWidth(), carport.getHeight());
+
+        Part beamPart = addBeams(carport.getLength(), carport.getWidth(), carport.getHeight(), materialList);
         carport.setPartList(beamPart);
 
 
@@ -23,7 +24,7 @@ public class BillOfMaterials {
     }
 
 
-    public static Part addBeams(int length, int width, int height) {
+    public static Part addBeams(int length, int width, int height, ArrayList<Material> materialList) {
         int partQuantity = Calculator.calcBeams(length, width, height);
         Material finalMaterial = null;
 
@@ -34,7 +35,7 @@ public class BillOfMaterials {
                 if(finalMaterial == null){
                     finalMaterial = material;
                 }
-
+// skal være længere end height
                 else if(material.getMaterialQuantity()%height < finalMaterial.getMaterialQuantity()%height){
                     finalMaterial = material;
                 }
