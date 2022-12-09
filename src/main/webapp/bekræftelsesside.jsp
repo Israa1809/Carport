@@ -7,6 +7,9 @@
 
     <jsp:body>
 
+        <h1>HER</h1>
+        ${requestScope.customerId}
+
         <div class="display-6 text-center mb-4">Tak for din bestilling</div>
         <div class="row">
             <div class="col-3"></div>
