@@ -69,4 +69,38 @@ public class CarportMapper {
         }
         return null;
     }
+
+    public static ArrayList<Carport> getCarportList(ConnectionPool connectionPool) {
+        String sql = "SELECT * FROM carport.carport";
+        ArrayList<Carport> carports = new ArrayList<>();
+
+        try (Connection connection = connectionPool.getConnection()) {
+
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ResultSet rs = ps.executeQuery();
+
+                while (rs.next()) {
+
+                    int id = rs.getInt("carport_id");
+                    int length = rs.getInt("length");
+                    int width = rs.getInt("width");
+                    float material_full_price = rs.getFloat("material_full_price");
+                    float fee_price = rs.getFloat("fee_price");
+
+                    Carport carport = new Carport(length, width);
+                    carport.setMaterialFullPrice(material_full_price);
+                    carport.setFeePrice(fee_price);
+                    carport.setCarportId(id);
+                    carports.add(carport);
+
+                }
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return carports;
+    }
 }

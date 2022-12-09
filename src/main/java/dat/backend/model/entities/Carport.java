@@ -11,11 +11,13 @@ public class Carport {
     private float materialFullPrice = 0;  //bør muligvis lægges som default i DB
     private float feePrice = 5000;  //bør muligvis lægges som default i DB
     private List<Part> partList = new ArrayList<>();
+    private int carportId;
 
     public Carport(int length, int width) {
         this.length = length;
         this.width = width;
 //        this.height = height;
+        this.carportId = carportId;
     }
 
     public int getLength() {
@@ -53,5 +55,13 @@ public class Carport {
     public void setPartList(Part part) {
         partList.add(part);
         materialFullPrice = materialFullPrice + part.getPartPrice();
+    }
+
+    public int getCarportId() {
+        return carportId;
+    }
+
+    public void setCarportId(int carportId) {
+        this.carportId = carportId;
     }
 }

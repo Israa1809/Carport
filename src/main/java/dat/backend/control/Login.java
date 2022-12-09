@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 @WebServlet(name = "login", urlPatterns = {"/login"} )
 public class Login extends HttpServlet
@@ -53,6 +54,11 @@ public class Login extends HttpServlet
 
             if(user.getRole().equals("admin")){
                 session.setAttribute("user", user);
+
+                ArrayList<Carport> carportList = CarportFacade.getCarportList(connectionPool);
+                request.setAttribute("carportList", carportList);
+                request.setAttribute("size", carportList.size());
+
                 request.getRequestDispatcher("WEB-INF/kundeordrer.jsp").forward(request, response);
             }
 
@@ -62,6 +68,7 @@ public class Login extends HttpServlet
             session.setAttribute("carport", carport);
             float totalCarportPrice = carport.getMaterialFullPrice()+carport.getFeePrice();
             session.setAttribute("totalCarportPrice", totalCarportPrice);
+
 
 
             request.getRequestDispatcher("WEB-INF/ordrevisning.jsp").forward(request, response);
