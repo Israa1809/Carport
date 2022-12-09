@@ -9,67 +9,13 @@
         <div class="container ">
             <div class="display-6 text-center">Kundeordrer</div>
 
-<%--            <div class="row">--%>
+            <form action="todesign" method="post">
+            <div class="text-end mt-3 mb-3">
+                <button type="submit" class="btn btn-primary">Se design
+                </button>
+            </div>
+            </form>
 
-<%--                <div class="col-2"></div>--%>
-<%--                <div class="col-8">--%>
-<%--                    <table class="table table-striped ps-5">--%>
-<%--                        <thead>--%>
-<%--                        <tr>--%>
-<%--                            <th>Produkt</th>--%>
-<%--                            <th>Mængde</th>--%>
-<%--                            <th>Pris</th>--%>
-<%--                            <th>til knap</th>--%>
-<%--                        </tr>--%>
-<%--                        <div class="text-end mt-3 mb-3">--%>
-<%--                            <form action="toaddmaterial">--%>
-<%--                                <button type="submit" value="addNewMaterial" class="btn btn-primary">Opret nyt materiale--%>
-<%--                                </button>--%>
-<%--                            </form>--%>
-<%--                        </div>--%>
-<%--                        </thead>--%>
-<%--                        <c:forEach var="material" items="${sessionScope.materialArrayList}">--%>
-<%--                            <tr>--%>
-<%--                                <div class="row">--%>
-<%--                                    <td class="col-3">--%>
-<%--                                            ${material.materialName}--%>
-<%--                                    </td>--%>
-
-<%--                                    <td class="col-3">--%>
-<%--                                            ${material.materialQuantity}${material.unitType}--%>
-<%--                                    </td>--%>
-
-<%--                                    <td class="col-3">--%>
-<%--                                            ${material.materialPrice}--%>
-<%--                                    </td>--%>
-
-<%--                                    <td class="col">--%>
-<%--                                        <form action="deletematerial" method="post">--%>
-<%--                                            <button type="submit" value="${material.materialId}" class="btn btn-primary"--%>
-<%--                                                    name="material_id">Slet--%>
-<%--                                            </button>--%>
-<%--                                        </form>--%>
-<%--                                    </td>--%>
-
-
-<%--                                </div>--%>
-
-<%--                            </tr>--%>
-<%--                        </c:forEach>--%>
-
-
-<%--                    </table>--%>
-<%--                    <div class="text-end mt-3 mb-3">--%>
-<%--                        <form action="toaddmaterial">--%>
-<%--                            <button type="submit" value="addNewMaterial" class="btn btn-primary">Opret nyt materiale--%>
-<%--                            </button>--%>
-<%--                        </form>--%>
-<%--                    </div>--%>
-
-<%--                </div>--%>
-
-
-<%--                <div class="col-2"></div>--%>
 
             </div>
 
