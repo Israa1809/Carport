@@ -2,7 +2,7 @@ package dat.backend.model.services;
 
 public class Calculator {
 
-    public static int calcBeams(int carportLength, int carportWidth, int materialLength) {     //'beams' er 'stolper' på dansk
+    public static int calcBeams(int carportLength, int carportWidth) {     //'beams' er 'stolper' på dansk
 
         float lengthInterval = 310f; //vi har besluttet at længde og bredde måles i cm, og vi antager at hvis længden overstiger 310 cm skal der indsættes en ekstra stolpe
         float widthInterval = 530f; //vi har besluttet at længde og bredde måles i cm, og vi antager at hvis bredden overstiger 530 cm skal der indsættes en ekstra stolpe
