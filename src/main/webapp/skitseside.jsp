@@ -9,7 +9,7 @@
 
 
 
-        <c:forEach var="carport" items="${requestScope.carport.partList}">
+        <c:forEach var="carport" items="${sessionScope.carport.partList}">
 
             Her er måske en stolpe:
             ${carport}

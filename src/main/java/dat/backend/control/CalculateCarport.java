@@ -28,9 +28,9 @@ public class CalculateCarport extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
         ArrayList<Material> materialArrayList = MaterialFacade.getMaterials(connectionPool);
-
+        HttpSession session = request.getSession();
         Carport carport = BillOfMaterials.buildCarport(new Carport(780, 600), materialArrayList);
-        request.setAttribute("carport", carport);
+        session.setAttribute("carport", carport);
 
         request.getRequestDispatcher("skitseside.jsp").forward(request, response);
     }
