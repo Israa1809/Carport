@@ -43,10 +43,12 @@ public class CalculateCarport extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
         Locale.setDefault(new Locale("US"));
 
-        SVG svgCarport = CarportSVG.createNewSVG(0, 0, 100, 60, "0 0 855 690");
-        svgCarport = CarportSVG.addBeams(svgCarport, length);
+        SVG svgCarport = CarportSVG.createNewSVG(0, 0, 100, 60, "0 0 1600 1300");
+        svgCarport = CarportSVG.addFascia(svgCarport, length, width);
+        svgCarport = CarportSVG.addBeams(svgCarport, length, width);
         svgCarport = CarportSVG.addWallPlate(svgCarport, length);
-        svgCarport = CarportSVG.addPoles(svgCarport, length);
+        svgCarport = CarportSVG.addPoles(svgCarport, length, width);
+        svgCarport = CarportSVG.addPerforatedTape(svgCarport, length, width);
         request.setAttribute("svgCarport", svgCarport);
 
 
