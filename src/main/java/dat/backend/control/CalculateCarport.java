@@ -6,6 +6,8 @@ import dat.backend.model.exceptions.DatabaseException;
 import dat.backend.model.persistence.ConnectionPool;
 import dat.backend.model.persistence.MaterialFacade;
 import dat.backend.model.persistence.UserFacade;
+import dat.backend.model.services.CarportSVG;
+import dat.backend.model.services.SVG;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Locale;
 
 @WebServlet(name = "CalculateCarport", urlPatterns = {"/calculatecarport"})
 public class CalculateCarport extends HttpServlet {
@@ -34,6 +37,18 @@ public class CalculateCarport extends HttpServlet {
 
         Carport carport = BillOfMaterials.buildCarport(new Carport(length, width), materialArrayList);
         session.setAttribute("carport", carport);
+
+
+        request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
+        Locale.setDefault(new Locale("US"));
+
+        SVG svgCarport = CarportSVG.createNewSVG(0, 0, 100, 60, "0 0 855 690");
+        svgCarport = CarportSVG.addBeams(svgCarport, length);
+        svgCarport = CarportSVG.addWallPlate(svgCarport, length);
+        svgCarport = CarportSVG.addPoles(svgCarport, length);
+        request.setAttribute("svgCarport", svgCarport);
+
 
         request.getRequestDispatcher("skitseside.jsp").forward(request, response);
     }

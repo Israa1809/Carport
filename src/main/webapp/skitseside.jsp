@@ -8,14 +8,15 @@
     <jsp:body>
 
 
+        ${requestScope.svgCarport}
 
-        <c:forEach var="carport" items="${sessionScope.carport.partList}">
+<%--        <c:forEach var="carport" items="${sessionScope.carport.partList}">--%>
 
-            Her er måske en stolpe:
-            ${carport}
+<%--            Her er måske en stolpe:--%>
+<%--            ${carport}--%>
 
 
-        </c:forEach>
+<%--        </c:forEach>--%>
 
 
 
