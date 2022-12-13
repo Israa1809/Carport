@@ -19,5 +19,12 @@ public class CarportFacade {
         return CarportMapper.getCarportList(connectionPool);
     }
 
+    public static void toggleOffer(int carport_id, ConnectionPool connectionPool){
+        CarportMapper.toggleOffer(carport_id, connectionPool);
+    }
+    public static void togglePayment(int carport_id, ConnectionPool connectionPool){
+        CarportMapper.togglePayment(carport_id, connectionPool);
+    }
+
 
 }

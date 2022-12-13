@@ -35,7 +35,7 @@
                     </c:if>
                     <c:if test="${sessionScope.user != null && sessionScope.user.role == 'admin' }">
                         <a class="nav-item nav-link" href="${pageContext.request.contextPath}/tomaterialist">Materialevarer</a>
-                        <a class="nav-item nav-link" href="${pageContext.request.contextPath}/tocustomerorder">Kundeordrer</a>
+                        <a class="nav-item nav-link" href="${pageContext.request.contextPath}/tocustomerorders">Kundeordrer</a>
                     </c:if>
                     <c:if test="${sessionScope.user != null }">
                         <a class="nav-item nav-link" href="${pageContext.request.contextPath}/logout">Log out</a>

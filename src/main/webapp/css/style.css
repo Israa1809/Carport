@@ -11,5 +11,15 @@ th, td {
     padding:15px;
 }
 
+.redColor{
+    color: red !important;
+
+}
+
+.greenColor{
+    color: green !important;
+
+}
+
 
 

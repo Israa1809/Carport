@@ -6,8 +6,6 @@
 <t:pagetemplate>
 
     <jsp:body>
-        her!
-        ${requestScope.size()}
 
         <div class="container ">
             <div class="display-6 text-center">Kundeordrer</div>
@@ -23,40 +21,61 @@
                 </tr>
 
                 </thead>
-                <c:forEach var="carport" items="${requestScope.carportList}">
-                    <tr>
-                        <div class="row">
-                            <td class="col">
+                <c:forEach var="carport" items="${sessionScope.carportList}">
+                <tr>
+                    <div class="row">
+                        <td class="col">
+                            <p class="lead">
                                     ${carport.carportId}
-                            </td>
+                            </p>
+                        </td>
 
-                            <td class="col">
+                        <td class="col">
+                            <p class="lead">
                                 carport ${carport.length}cm x ${carport.width}cm
-                            </td>
+                            </p>
+                        </td>
 
-                            <td class="col">
-                                    ${carport.materialFullPrice}
-                            </td>
-                            <td class="col">
-                                <form action="todesign" method="post">
-                                    <button type="submit" class="btn btn-primary">Se design
+                        <td class="col">
+                            <p class="lead">
+                                    ${carport.materialFullPrice}kr.
+                            </p>
+                        </td>
+                        <td class="col">
+                            <form action="todesign" method="post">
+                                <button type="submit" class="btn btn-primary">Se design
+                                </button>
+                            </form>
+                        </td>
+
+                        <td class="col">
+                            <form action="toggleoffer" method="post">
+                                <c:if test="${carport.offerStatus == false}">
+                                    <button type="submit" class="btn btn-primary" name="carportId"
+                                            value="${carport.carportId}">Send tilbud
                                     </button>
-                                </form>
-                            </td>
+                                </c:if>
+                                <c:if test="${carport.offerStatus == true}">
+                                    <p class="lead greenColor"> Tilbud sendt </p>
+                                </c:if>
+                            </form>
+                        </td>
 
-                            <td class="col">
-                                tiny int tilbud
-                            </td>
+                        <td class="col">
+                            <c:if test="${carport.paymentStatus == false}">
+                                <p class="lead redColor"> Ikke betalt </p>
 
-                            <td class="col">
-                                tiny int betalt
-                            </td>
+                            </c:if>
+                            <c:if test="${carport.paymentStatus == true}">
+                                <p class="lead greenColor"> Betalt </p>
+                            </c:if>
 
+                        </td>
 
-                        </div>
+                        </c:forEach>
+                    </div>
 
-                    </tr>
-                </c:forEach>
+                </tr>
 
             </table>
         </div>

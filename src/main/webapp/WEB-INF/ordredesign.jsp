@@ -8,7 +8,7 @@
     <jsp:body>
         <div class="container ">
 
-            <form action="tocustomerorder">
+            <form action="tocustomerorders">
                 <div class="text-left mt-3 mb-3">
                     <button type="submit" class="btn btn-primary">Tilbage
                     </button>

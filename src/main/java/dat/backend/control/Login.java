@@ -56,8 +56,7 @@ public class Login extends HttpServlet
                 session.setAttribute("user", user);
 
                 ArrayList<Carport> carportList = CarportFacade.getCarportList(connectionPool);
-                request.setAttribute("carportList", carportList);
-                request.setAttribute("size", carportList.size());
+                session.setAttribute("carportList", carportList);
 
                 request.getRequestDispatcher("WEB-INF/kundeordrer.jsp").forward(request, response);
             }
@@ -68,8 +67,6 @@ public class Login extends HttpServlet
             session.setAttribute("carport", carport);
             float totalCarportPrice = carport.getMaterialFullPrice()+carport.getFeePrice();
             session.setAttribute("totalCarportPrice", totalCarportPrice);
-
-
 
             request.getRequestDispatcher("WEB-INF/ordrevisning.jsp").forward(request, response);
         }

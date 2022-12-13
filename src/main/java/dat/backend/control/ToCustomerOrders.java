@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "ToCustomerOrders", urlPatterns = {"/tocustomerorder"} )
+@WebServlet(name = "ToCustomerOrders", urlPatterns = {"/tocustomerorders"} )
 public class ToCustomerOrders extends HttpServlet
 {
 

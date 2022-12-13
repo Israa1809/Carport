@@ -12,6 +12,8 @@ public class Carport {
     private float feePrice = 5000;  //bør muligvis lægges som default i DB
     private List<Part> partList = new ArrayList<>();
     private int carportId;
+    Boolean offerStatus;
+    Boolean paymentStatus;
 
     public Carport(int length, int width) {
         this.length = length;
@@ -63,5 +65,21 @@ public class Carport {
 
     public void setCarportId(int carportId) {
         this.carportId = carportId;
+    }
+
+    public Boolean getOfferStatus() {
+        return offerStatus;
+    }
+
+    public void setOfferStatus(Boolean offerStatus) {
+        this.offerStatus = offerStatus;
+    }
+
+    public Boolean getPaymentStatus() {
+        return paymentStatus;
+    }
+
+    public void setPaymentStatus(Boolean paymentStatus) {
+        this.paymentStatus = paymentStatus;
     }
 }

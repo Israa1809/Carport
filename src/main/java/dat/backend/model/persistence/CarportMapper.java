@@ -86,11 +86,15 @@ public class CarportMapper {
                     int width = rs.getInt("width");
                     float material_full_price = rs.getFloat("material_full_price");
                     float fee_price = rs.getFloat("fee_price");
+                    boolean offerStatus = rs.getBoolean("offer_status");
+                    boolean paymentStatus = rs.getBoolean("payment_status");
 
                     Carport carport = new Carport(length, width);
                     carport.setMaterialFullPrice(material_full_price);
                     carport.setFeePrice(fee_price);
                     carport.setCarportId(id);
+                    carport.setOfferStatus(offerStatus);
+                    carport.setPaymentStatus(paymentStatus);
                     carports.add(carport);
 
                 }
@@ -103,4 +107,37 @@ public class CarportMapper {
         }
         return carports;
     }
+
+
+    public static void togglePayment(int carport_id, ConnectionPool connectionPool) {
+        String sql = "UPDATE carport.carport SET payment_status = 1 - payment_status WHERE carport_id = ?";
+
+        try (Connection connection = connectionPool.getConnection()) {
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ps.setInt(1, carport_id);
+                ps.executeUpdate();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void toggleOffer(int carport_id, ConnectionPool connectionPool) {
+        String sql = "UPDATE carport.carport SET offer_status = 1 - offer_status WHERE carport_id = ?";
+
+        try (Connection connection = connectionPool.getConnection()) {
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ps.setInt(1, carport_id);
+                ps.executeUpdate();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
 }
