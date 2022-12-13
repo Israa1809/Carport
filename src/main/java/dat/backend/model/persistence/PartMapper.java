@@ -9,7 +9,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 public class PartMapper {
-    public static int addParts(Carport carport, ConnectionPool connectionPool) {
+    public static void addParts(Carport carport, ConnectionPool connectionPool) {
         String sql = "INSERT INTO carport.part (part_quantity, carport_id, part_price, material_id) VALUES (?,?,?,?)";
 
         try (Connection connection = connectionPool.getConnection();
@@ -22,12 +22,11 @@ public class PartMapper {
                 ps.setInt(4, part.getMaterial().getMaterialId());
                 ps.executeUpdate();
 
+
             }
 
 
-            ResultSet rs = ps.getGeneratedKeys();
-            rs.next();
-            return rs.getInt(1);
+
 
 
 
@@ -35,7 +34,7 @@ public class PartMapper {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return 0;
+
     }
         
     }
