@@ -5,10 +5,7 @@ import dat.backend.model.entities.Carport;
 import dat.backend.model.entities.Customer;
 import dat.backend.model.entities.User;
 import dat.backend.model.exceptions.DatabaseException;
-import dat.backend.model.persistence.CarportFacade;
-import dat.backend.model.persistence.ConnectionPool;
-import dat.backend.model.persistence.CustomerFacade;
-import dat.backend.model.persistence.UserFacade;
+import dat.backend.model.persistence.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -44,12 +41,13 @@ public class RequestCarportOffer extends HttpServlet {
         Carport carport = (Carport) session.getAttribute("carport");
 
         int carportId = CarportFacade.addCarport(carport, customerId, connectionPool);
+        carport.setCarportId(carportId);
 
         request.setAttribute("carportId", carportId);
 
         try {
             User user = new User(String.valueOf(carportId), String.valueOf(customer.getPhoneNumber()), "user");
-
+            PartFacade.addParts(carport, connectionPool);
             UserFacade.createUser(user.getUsername(), user.getPassword(), user.getRole(), connectionPool);
             customer.setUser(user);
 
