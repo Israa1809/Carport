@@ -53,10 +53,14 @@ public class CarportMapper {
                     int width = rs.getInt("width");
                     float material_full_price = rs.getFloat("material_full_price");
                     float fee_price = rs.getFloat("fee_price");
+                    boolean offerStatus = rs.getBoolean("offer_status");
+                    boolean paymentStatus = rs.getBoolean("payment_status");
 
                     Carport carport = new Carport(length, width);
                     carport.setMaterialFullPrice(material_full_price);
                     carport.setFeePrice(fee_price);
+                    carport.setOfferStatus(offerStatus);
+                    carport.setPaymentStatus(paymentStatus);
 
                     return carport;
                 }

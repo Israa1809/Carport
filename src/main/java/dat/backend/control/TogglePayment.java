@@ -27,7 +27,7 @@ public class TogglePayment extends HttpServlet {
         int carport_id = Integer.parseInt(request.getParameter("carportId"));
         CarportFacade.togglePayment(carport_id, connectionPool);
 
-        request.getRequestDispatcher("WEB-INF/kundeorder.jsp").forward(request, response);
+        request.getRequestDispatcher("WEB-INF/stykliste.jsp").forward(request, response);
 
     }
 }

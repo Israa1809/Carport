@@ -19,7 +19,6 @@ public class ToggleOffer extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        request.getRequestDispatcher("WEB-INF/kundeordrer.jsp");
     }
 
     @Override

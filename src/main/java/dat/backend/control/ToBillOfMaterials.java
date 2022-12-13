@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 @WebServlet(name = "ToBillOfMaterials", urlPatterns = {"/tobillofmaterials"} )
-public class tobillofmaterials extends HttpServlet
+public class ToBillOfMaterials extends HttpServlet
 {
 
     private ConnectionPool connectionPool = ApplicationStart.getConnectionPool();
@@ -24,7 +24,6 @@ public class tobillofmaterials extends HttpServlet
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
     {
         request.getRequestDispatcher("WEB-INF/stykliste.jsp").forward(request, response);
-
 
     }
 

@@ -21,9 +21,9 @@
                         <div class="card-body">
                             <p class="lead"> Længde ${sessionScope.carport.length}cm </p>
                             <p class="lead"> Bredde ${sessionScope.carport.width}cm </p>
-
-                            Husk at lave et if statement om offerStatus
-                            <p class="lead"> Pris  ${sessionScope.totalCarportPrice}kr. </p>
+                            <c:if test="${sessionScope.carport.offerStatus == true}">
+                                <p class="lead"> Pris  ${sessionScope.totalCarportPrice}kr.</p>
+                            </c:if>
                         </div>
                     </div>
 
@@ -31,10 +31,12 @@
             </div>
 
             <div class="text-end mt-3 mb-3">
-                <form action="tobillofmaterials">
-                    Husk at lave et if statement om offerStatus
-                    <button type="submit" value="addNewMaterial" class="btn btn-primary">Betal
-                    </button>
+                <form action="togglepayment" method="post">
+                    <c:if test="${sessionScope.carport.offerStatus == true}">
+                        <button type="submit" class="btn btn-primary" name="carportId" value="${sessionScope.carportId}">Betal
+                        </button>
+                    </c:if>
+
                 </form>
             </div>
 
