@@ -20,6 +20,14 @@ public class Part {
         return partPrice;
     }
 
+    public Material getMaterial() {
+        return material;
+    }
+
+    public int getPartQuantity() {
+        return partQuantity;
+    }
+
     @Override
     public String toString() {
         return "Part{" +
