@@ -11,6 +11,12 @@ public class Part {
         setPartPrice(partQuantity, material.getMaterialPrice());
     }
 
+    public Part(Material material, int partQuantity, float partPrice) {
+        this.material = material;
+        this.partQuantity = partQuantity;
+        this.partPrice = partPrice;
+    }
+
     public float setPartPrice(int partQuantity, float materialPrice){
         partPrice = partQuantity * materialPrice;
         return partPrice;

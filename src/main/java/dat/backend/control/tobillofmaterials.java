@@ -1,9 +1,11 @@
 package dat.backend.control;
 
 import dat.backend.model.config.ApplicationStart;
+import dat.backend.model.entities.Carport;
 import dat.backend.model.entities.Material;
 import dat.backend.model.persistence.ConnectionPool;
 import dat.backend.model.persistence.MaterialFacade;
+import dat.backend.model.persistence.PartFacade;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -25,13 +27,13 @@ public class tobillofmaterials extends HttpServlet
     {
         request.getRequestDispatcher("WEB-INF/stykliste.jsp").forward(request, response);
 
-
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
     {
-
-
+        HttpSession session = request.getSession();
+        Carport carport = (Carport) session.getAttribute("carport");
+        PartFacade.getPartListbyCarportId(carport.getCarportId(), connectionPool);
     }
 
 }
