@@ -48,9 +48,9 @@ public class CalculateCarport extends HttpServlet {
         viewbox.append(" ");
         viewbox.append(0);
         viewbox.append(" ");
-        viewbox.append(width+100);
-        viewbox.append(" ");
         viewbox.append(length+100);
+        viewbox.append(" ");
+        viewbox.append(width+100);
 
         SVG svgCarport = CarportSVG.createNewSVG(0, 0, 100, 60, viewbox.toString());
         svgCarport = CarportSVG.addFascia(svgCarport, length, width);
