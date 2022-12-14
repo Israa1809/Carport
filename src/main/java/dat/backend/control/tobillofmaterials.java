@@ -3,6 +3,7 @@ package dat.backend.control;
 import dat.backend.model.config.ApplicationStart;
 import dat.backend.model.entities.Carport;
 import dat.backend.model.entities.Material;
+import dat.backend.model.entities.Part;
 import dat.backend.model.persistence.ConnectionPool;
 import dat.backend.model.persistence.MaterialFacade;
 import dat.backend.model.persistence.PartFacade;
@@ -25,7 +26,7 @@ public class tobillofmaterials extends HttpServlet
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
     {
-        request.getRequestDispatcher("WEB-INF/stykliste.jsp").forward(request, response);
+
 
     }
 
@@ -33,7 +34,9 @@ public class tobillofmaterials extends HttpServlet
     {
         HttpSession session = request.getSession();
         Carport carport = (Carport) session.getAttribute("carport");
-        PartFacade.getPartListbyCarportId(carport.getCarportId(), connectionPool);
+        ArrayList<Part> partList = PartFacade.getPartListbyCarportId(carport.getCarportId(), connectionPool);
+        request.setAttribute("partList", partList);
+        request.getRequestDispatcher("WEB-INF/stykliste.jsp").forward(request, response);
     }
 
 }

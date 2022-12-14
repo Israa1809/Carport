@@ -13,6 +13,38 @@
                     <h4>
                         Her kommer der en tegning af carporten
                     </h4>
+
+                    Her kommer styklisten:
+
+                    <c:forEach var="part" items="${requestScope.partList}">
+                        <tr>
+                            <div class="row">
+                                <td class="col">
+                                        ${part.partQuantity} x
+                                </td>
+
+                                <td class="col">
+                                    carport ${part.material.materialName}
+                                </td>
+
+                                <td class="col">
+                                        ${part.material.materialQuantity}
+                                </td>
+                                <td class="col">
+                                        ${part.material.unitType}
+                                </td>
+                                <td class="col">
+                                        ${part.material.unitType}
+                                </td>
+                                <td class="col">
+                                        ${part.partPrice}
+                                </td>
+                            </div>
+                        </tr>
+                    </c:forEach>
+
+                    Her slutter styklisten
+
                 </div>
                 <div class="col-6">
                     <div class="card">
@@ -23,17 +55,17 @@
                                     <th class="text-center">Stykliste for carport 3 x 5 m</th>
                                 </tr>
                                 </thead>
-                                    <tr>
+                                <tr>
 
-                                        <td class="col-3">
-                                            materialer kommer her
-                                        </td>
+                                    <td class="col-3">
+                                        materialer kommer her
+                                    </td>
 
-                                    </tr>
+                                </tr>
 
 
                             </table>
-                            <p class="lead text-end"> I alt          kr.</p>
+                            <p class="lead text-end"> I alt kr.</p>
                         </div>
                     </div>
 
