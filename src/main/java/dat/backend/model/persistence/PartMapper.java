@@ -54,7 +54,7 @@ public class PartMapper {
 
                     Material material = new Material(material_quantity, materialName, unitType, materialPrice, productVariant);
                     Part part = new Part(material, partQuantity, partPrice);
-                    carport.setPartListFromDB(part);
+                    carport.addPartFromDB(part);
                 }
 
             }

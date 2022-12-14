@@ -68,16 +68,24 @@ public class Carport {
     }
 
     public float getCarportFullPrice() {
-        return carportFullPrice;
+        return carportFullPrice = materialFullPrice + feePrice;
     }
 
-    public void setPartListFirstTime(Part part) {
+    public void addPartFirstTime(Part part) {
         partList.add(part);
         materialFullPrice = materialFullPrice + part.getPartPrice();
     }
 
-    public void setPartListFromDB(Part part) {
+    public void addPartFromDB(Part part) {
         partList.add(part);
+    }
+
+    public void setPartList(ArrayList<Part> partList){      //hjælp til at ændre i carportmål for admin på "redigering af carport" uden at ændre carportId / username
+        this.partList = partList;
+        this.materialFullPrice = 0;
+        for (Part part : partList) {
+            materialFullPrice = materialFullPrice + part.getPartPrice();
+        }
     }
 
     public int getCarportId() {

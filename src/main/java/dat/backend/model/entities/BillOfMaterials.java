@@ -12,20 +12,20 @@ public class BillOfMaterials {
 
 
         Part beamPart = addBeam(carport.getLength(), carport.getWidth(), carport.getHeight(), materialList);
-        carport.setPartListFirstTime(beamPart);
+        carport.addPartFirstTime(beamPart);
 
         Part rafterPart = addRafter(carport.getLength(), carport.getWidth(), materialList);
-        carport.setPartListFirstTime(rafterPart);
+        carport.addPartFirstTime(rafterPart);
 
         Part wallPlatePart = addWallPlate(carport.getLength(), carport.getWidth(), materialList);
-        carport.setPartListFirstTime(wallPlatePart);
+        carport.addPartFirstTime(wallPlatePart);
 
         // calcFascia sammenligner ud fra en sammenlagt længde, kan udvides så der gives 2 resultater retur - 1 for bredde og 1 for længde
         Part fasciaTopPart = addFascia(carport.getLength(), carport.getWidth(), materialList, "overstern");
-        carport.setPartListFirstTime(fasciaTopPart);
+        carport.addPartFirstTime(fasciaTopPart);
 
         Part fasciaBottomPart = addFascia(carport.getLength(), carport.getWidth(), materialList, "understern");
-        carport.setPartListFirstTime(fasciaBottomPart);
+        carport.addPartFirstTime(fasciaBottomPart);
 
 
 
