@@ -12,10 +12,7 @@
 
             <div class="row">
                 <div class="col-8">
-                    <h4>
-                        Her kommer der en tegning af carporten
-                    </h4>
-
+                        ${requestScope.svgCarport}
                 </div>
                 <div class="col-4">
                     <div class="card">

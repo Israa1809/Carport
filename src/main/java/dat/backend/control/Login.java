@@ -7,6 +7,8 @@ import dat.backend.model.entities.Part;
 import dat.backend.model.entities.User;
 import dat.backend.model.exceptions.DatabaseException;
 import dat.backend.model.persistence.*;
+import dat.backend.model.services.CarportSVG;
+import dat.backend.model.services.SVG;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,6 +19,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 @WebServlet(name = "login", urlPatterns = {"/login"} )
 public class Login extends HttpServlet
@@ -37,6 +40,11 @@ public class Login extends HttpServlet
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
     {
+
+        request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
+        Locale.setDefault(new Locale("US"));
+
         response.setContentType("text/html");
         HttpSession session = request.getSession();
         ArrayList<Material> materialArrayList = MaterialFacade.getMaterials(connectionPool);
@@ -63,6 +71,27 @@ public class Login extends HttpServlet
 
             Carport carport = CarportFacade.getCarportById(Integer.parseInt(username),connectionPool);
             session.setAttribute("carportId",   Integer.parseInt(username));
+
+            int length = carport.getLength();
+            int width = carport.getWidth();
+            StringBuilder viewbox = new StringBuilder();
+            viewbox.append(0);
+            viewbox.append(" ");
+            viewbox.append(0);
+            viewbox.append(" ");
+            viewbox.append(length+100);
+            viewbox.append(" ");
+            viewbox.append(width+100);
+
+
+            SVG svgCarport = CarportSVG.createNewSVG(0, 0, 100, 60, viewbox.toString());
+            svgCarport = CarportSVG.addFascia(svgCarport, length, width);
+            svgCarport = CarportSVG.addBeams(svgCarport, length, width);
+            svgCarport = CarportSVG.addWallPlate(svgCarport, length, width);
+            svgCarport = CarportSVG.addPerforatedTape(svgCarport, length, width);
+            svgCarport = CarportSVG.addPoles(svgCarport, length, width);
+            request.setAttribute("svgCarport", svgCarport);
+
 
 //            float totalCarportPrice = carport.getMaterialFullPrice()+carport.getFeePrice();
 //            session.setAttribute("totalCarportPrice", totalCarportPrice);

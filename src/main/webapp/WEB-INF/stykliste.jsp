@@ -8,22 +8,20 @@
     <jsp:body>
         <div class="container ">
             <div class="display-6 text-center mb-5">Stykliste</div>
+            <p class="lead text-end">Stykliste for carport ${sessionScope.carport.width} cm
+                x ${sessionScope.carport.length} cm</p>
             <div class="row">
-                <div class="col-6">
-                    <h4>
-                        Her kommer der en tegning af carporten
-                    </h4>
+                <div class="col-8">
+
+                        ${requestScope.svgCarport}
 
                 </div>
-                <div class="col-6">
+                <div class="col-4">
 
-                    <div class="card">
-                        <th class="text-center">Stykliste for carport ${sessionScope.carport.width} cm
-                            x ${sessionScope.carport.length} cm
-                        </th>
-                        <div class="card-body">
+
 
                             <table class="table table-striped ps-5">
+
                                 <thead>
                                 <tr>
                                     <th>Mængde</th>
@@ -58,8 +56,7 @@
                         </div>
                     </div>
 
-                </div>
-            </div>
+
 
 
         </div>

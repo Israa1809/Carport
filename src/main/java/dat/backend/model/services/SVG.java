@@ -26,6 +26,7 @@ public class SVG {
     private final static String LINETEMPLATE = "<line x1=\"%f\" y1=\"%f\" x2=\"%f\" y2=\"%f\" style=\"stroke:#000000; stroke-dasharray: 5 5;\"/>";
 
 
+
     public SVG(int x, int y, int height, int width, String viewbox)
     {
         svgString.append(String.format(HEADERTEMPLATE, x, y, height, width, viewbox));

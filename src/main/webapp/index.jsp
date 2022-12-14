@@ -16,6 +16,8 @@
                         <select class="form-select" name="length">
                             <option selected>Længde</option>
                             <option> 780 </option>
+                            <option> 1000 </option>
+                            <option> 1300 </option>
                             <option> 1560 </option>
                         </select>
                     </div>
@@ -24,6 +26,8 @@
                             <option selected>Bredde</option>
                             <option> 600 </option>
                             <option> 610 </option>
+                            <option> 800 </option>
+                            <option> 900 </option>
                             <option> 1200 </option>
                         </select>
                     </div>
