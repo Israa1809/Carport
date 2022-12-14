@@ -33,33 +33,29 @@ public class PartMapper {
     }
 
 
-    protected static ArrayList<Part> getPartListbyCarportId(int carportId, ConnectionPool connectionPool) {
+    protected static void getPartListbyCarportId(Carport carport, ConnectionPool connectionPool) {
 
-        ArrayList<Part> partList = new ArrayList<>();
-
-        String sql = "SELECT part_quantity, part_price, material.material_id, material_quantity, material_name, unit_type, material_price FROM material\n" +
+        String sql = "SELECT part_quantity, material_quantity, material_name, unit_type, material_price, product_variant, part_price FROM material\n" +
                 "INNER JOIN part p on material.material_id = p.material_id\n" +
                 "WHERE carport_id = ?;";
 
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ps.setInt(1, carport.getCarportId());
                 ResultSet rs = ps.executeQuery();
 
                 while (rs.next()) {
                     int partQuantity = rs.getInt("part_quantity");
-
-                    int material_id = rs.getInt("material_id");
                     int material_quantity = rs.getInt("material_quantity");
                     String materialName = rs.getString("material_name");
                     String unitType = rs.getString("unit_type");
                     float materialPrice = rs.getFloat("material_price");
                     String productVariant = rs.getString("product_variant");
-
                     float partPrice = rs.getFloat("part_price");
 
                     Material material = new Material(material_quantity, materialName, unitType, materialPrice, productVariant);
                     Part part = new Part(material, partQuantity, partPrice);
-                    partList.add(part);
+                    carport.setPartList(part);
                 }
 
             }
@@ -67,7 +63,6 @@ public class PartMapper {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        return partList;
     }
 
 }

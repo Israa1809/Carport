@@ -3,12 +3,10 @@ package dat.backend.control;
 import dat.backend.model.config.ApplicationStart;
 import dat.backend.model.entities.Carport;
 import dat.backend.model.entities.Material;
+import dat.backend.model.entities.Part;
 import dat.backend.model.entities.User;
 import dat.backend.model.exceptions.DatabaseException;
-import dat.backend.model.persistence.CarportFacade;
-import dat.backend.model.persistence.MaterialFacade;
-import dat.backend.model.persistence.UserFacade;
-import dat.backend.model.persistence.ConnectionPool;
+import dat.backend.model.persistence.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -64,11 +62,14 @@ public class Login extends HttpServlet
             session.setAttribute("user", user); // adding user object to session scope
 
             Carport carport = CarportFacade.getCarportById(Integer.parseInt(username),connectionPool);
-            session.setAttribute("carport", carport);
             session.setAttribute("carportId",   Integer.parseInt(username));
 
             float totalCarportPrice = carport.getMaterialFullPrice()+carport.getFeePrice();
             session.setAttribute("totalCarportPrice", totalCarportPrice);
+
+            PartFacade.getPartListbyCarportId(carport, connectionPool);
+            session.setAttribute("partList", carport.getPartList());
+            session.setAttribute("carport", carport);
 
             request.getRequestDispatcher("WEB-INF/ordrevisning.jsp").forward(request, response);
         }

@@ -61,6 +61,7 @@ public class CarportMapper {
                     carport.setFeePrice(fee_price);
                     carport.setOfferStatus(offerStatus);
                     carport.setPaymentStatus(paymentStatus);
+                    carport.setCarportId(carportId);
 
                     return carport;
                 }

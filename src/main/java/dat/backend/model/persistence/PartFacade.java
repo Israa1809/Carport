@@ -11,7 +11,7 @@ public class PartFacade {
         PartMapper.addParts(carport, connectionPool);
     }
 
-    public static ArrayList<Part> getPartListbyCarportId(int carportId, ConnectionPool connectionPool) {
-        return PartMapper.getPartListbyCarportId(carportId, connectionPool);
+    public static void getPartListbyCarportId(Carport carport, ConnectionPool connectionPool) {
+        PartMapper.getPartListbyCarportId(carport, connectionPool);
     }
 }

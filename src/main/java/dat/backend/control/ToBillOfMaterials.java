@@ -33,8 +33,7 @@ public class ToBillOfMaterials extends HttpServlet
     {
         HttpSession session = request.getSession();
         Carport carport = (Carport) session.getAttribute("carport");
-        ArrayList<Part> partList = PartFacade.getPartListbyCarportId(carport.getCarportId(), connectionPool);
-        request.setAttribute("partList", partList);
+        session.setAttribute("carport", carport);
         request.getRequestDispatcher("WEB-INF/stykliste.jsp").forward(request, response);
     }
 
