@@ -26,5 +26,7 @@ public class CarportFacade {
         CarportMapper.togglePayment(carport_id, connectionPool);
     }
 
-
+    public static void updateCarportPartList(Carport carport, ConnectionPool connectionPool){
+        CarportMapper.updateCarportPartList(carport, connectionPool);
+    }
 }
