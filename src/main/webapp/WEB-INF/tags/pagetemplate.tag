@@ -20,9 +20,21 @@
 <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
+            <c:if test="${sessionScope.user == null }">
             <a class="navbar-brand" href="index.jsp">
-                <img src="${pageContext.request.contextPath}/images/cphbusiness.png" width="400px;" class="img-fluid"/>
+                <img src="${pageContext.request.contextPath}/images/FOGLogo.jpg" width="120px;" class="img-fluid"/>
             </a>
+            </c:if>
+            <c:if test="${sessionScope.user != null && sessionScope.user.role == 'admin' }">
+                <a class="navbar-brand" href="tocustomerorders">
+                    <img src="${pageContext.request.contextPath}/images/FOGLogo.jpg" width="120px;" class="img-fluid"/>
+                </a>
+            </c:if>
+            <c:if test="${sessionScope.user != null && sessionScope.user.role == 'user' }">
+                <a class="navbar-brand" href="toorderview">
+                    <img src="${pageContext.request.contextPath}/images/FOGLogo.jpg" width="120px;" class="img-fluid"/>
+                </a>
+            </c:if>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
                     aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -38,7 +50,7 @@
                         <a class="nav-item nav-link" href="${pageContext.request.contextPath}/tocustomerorders">Kundeordrer</a>
                     </c:if>
                     <c:if test="${sessionScope.user != null }">
-                        <a class="nav-item nav-link" href="${pageContext.request.contextPath}/logout">Log out</a>
+                        <a class="nav-item nav-link" href="${pageContext.request.contextPath}/logout">Log ud</a>
                     </c:if>
                 </div>
             </div>
