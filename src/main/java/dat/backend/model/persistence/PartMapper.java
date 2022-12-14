@@ -5,7 +5,6 @@ import dat.backend.model.entities.Material;
 import dat.backend.model.entities.Part;
 
 import java.sql.*;
-import java.util.ArrayList;
 
 public class PartMapper {
 
@@ -55,7 +54,7 @@ public class PartMapper {
 
                     Material material = new Material(material_quantity, materialName, unitType, materialPrice, productVariant);
                     Part part = new Part(material, partQuantity, partPrice);
-                    carport.setPartList(part);
+                    carport.setPartListFromDB(part);
                 }
 
             }

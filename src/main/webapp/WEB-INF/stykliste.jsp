@@ -34,31 +34,27 @@
                                 </thead>
 
 
-                                    <c:forEach var="part" items="${sessionScope.partList}">
-                                        <tr>
-                                            <div class="row">
-                                                <td class="col">
-                                                        ${part.partQuantity} x
-                                                </td>
-                                                <td class="col">
-                                                        ${part.material.materialQuantity}${part.material.unitType}
-                                                </td>
-                                                <td class="col">
-                                                    carport ${part.material.materialName}
-                                                </td>
-                                                <td class="col">
-                                                        ${part.partPrice}kr
-                                                </td>
-                                            </div>
-                                        </tr>
-                                    </c:forEach>
-
-
-
-
+                                <c:forEach var="part" items="${sessionScope.partList}">
+                                    <tr>
+                                        <div class="row">
+                                            <td class="col">
+                                                    ${part.partQuantity} x
+                                            </td>
+                                            <td class="col">
+                                                    ${part.material.materialQuantity}${part.material.unitType}
+                                            </td>
+                                            <td class="col">
+                                                carport ${part.material.materialName}
+                                            </td>
+                                            <td class="col">
+                                                    ${part.partPrice}kr
+                                            </td>
+                                        </div>
+                                    </tr>
+                                </c:forEach>
 
                             </table>
-                            <p class="lead text-end"> I alt ${sessionScope.carport.materialFullPrice} kr.</p>
+                            <p class="lead text-end"> I alt ${sessionScope.carport.carportFullPrice} kr.</p>
                         </div>
                     </div>
 

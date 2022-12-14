@@ -23,7 +23,7 @@
                             <p class="lead"> Længde ${sessionScope.carport.length}cm </p>
                             <p class="lead"> Bredde ${sessionScope.carport.width}cm </p>
                             <c:if test="${sessionScope.carport.offerStatus == true}">
-                                <p class="lead"> Pris  ${sessionScope.totalCarportPrice}kr.</p>
+                                <p class="lead"> Pris  ${sessionScope.carport.carportFullPrice}kr.</p>
                             </c:if>
                         </div>
                     </div>

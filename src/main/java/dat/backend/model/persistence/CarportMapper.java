@@ -1,12 +1,9 @@
 package dat.backend.model.persistence;
 
 import dat.backend.model.entities.Carport;
-import dat.backend.model.entities.Customer;
-import dat.backend.model.persistence.ConnectionPool;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.List;
 
 public class CarportMapper {
 
@@ -56,12 +53,7 @@ public class CarportMapper {
                     boolean offerStatus = rs.getBoolean("offer_status");
                     boolean paymentStatus = rs.getBoolean("payment_status");
 
-                    Carport carport = new Carport(length, width);
-                    carport.setMaterialFullPrice(material_full_price);
-                    carport.setFeePrice(fee_price);
-                    carport.setOfferStatus(offerStatus);
-                    carport.setPaymentStatus(paymentStatus);
-                    carport.setCarportId(carportId);
+                    Carport carport = new Carport(length, width, material_full_price, fee_price, carportId, offerStatus, paymentStatus);
 
                     return carport;
                 }

@@ -2,7 +2,6 @@ package dat.backend.model.entities;
 
 import dat.backend.model.services.Calculator;
 
-import javax.lang.model.element.Element;
 import java.util.ArrayList;
 
 public class BillOfMaterials {
@@ -13,20 +12,20 @@ public class BillOfMaterials {
 
 
         Part beamPart = addBeam(carport.getLength(), carport.getWidth(), carport.getHeight(), materialList);
-        carport.setPartList(beamPart);
+        carport.setPartListFirstTime(beamPart);
 
         Part rafterPart = addRafter(carport.getLength(), carport.getWidth(), materialList);
-        carport.setPartList(rafterPart);
+        carport.setPartListFirstTime(rafterPart);
 
         Part wallPlatePart = addWallPlate(carport.getLength(), carport.getWidth(), materialList);
-        carport.setPartList(wallPlatePart);
+        carport.setPartListFirstTime(wallPlatePart);
 
         // calcFascia sammenligner ud fra en sammenlagt længde, kan udvides så der gives 2 resultater retur - 1 for bredde og 1 for længde
         Part fasciaTopPart = addFascia(carport.getLength(), carport.getWidth(), materialList, "overstern");
-        carport.setPartList(fasciaTopPart);
+        carport.setPartListFirstTime(fasciaTopPart);
 
         Part fasciaBottomPart = addFascia(carport.getLength(), carport.getWidth(), materialList, "understern");
-        carport.setPartList(fasciaBottomPart);
+        carport.setPartListFirstTime(fasciaBottomPart);
 
 
 

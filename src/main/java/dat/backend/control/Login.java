@@ -64,8 +64,8 @@ public class Login extends HttpServlet
             Carport carport = CarportFacade.getCarportById(Integer.parseInt(username),connectionPool);
             session.setAttribute("carportId",   Integer.parseInt(username));
 
-            float totalCarportPrice = carport.getMaterialFullPrice()+carport.getFeePrice();
-            session.setAttribute("totalCarportPrice", totalCarportPrice);
+//            float totalCarportPrice = carport.getMaterialFullPrice()+carport.getFeePrice();
+//            session.setAttribute("totalCarportPrice", totalCarportPrice);
 
             PartFacade.getPartListbyCarportId(carport, connectionPool);
             session.setAttribute("partList", carport.getPartList());
