@@ -22,7 +22,6 @@
                             <th>Mængde</th>
                             <th>Enhed</th>
                             <th>Materiale</th>
-                            <th>Pris</th>
                         </tr>
                         </thead>
 
@@ -37,17 +36,14 @@
                                             ${part.material.materialQuantity}${part.material.unitType}
                                     </td>
                                     <td class="col">
-                                        carport ${part.material.materialName}
-                                    </td>
-                                    <td class="col">
-                                            ${part.partPrice}kr
+                                            ${part.material.materialName}
                                     </td>
                                 </div>
                             </tr>
                         </c:forEach>
 
                     </table>
-                    <p class="lead text-end"> I alt ${sessionScope.carport.carportFullPrice} kr.</p>
+                    <p class="lead text-end"> I alt: ${sessionScope.carport.carportFullPrice} kr.</p>
                 </div>
             </div>
 

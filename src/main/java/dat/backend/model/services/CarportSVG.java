@@ -19,7 +19,28 @@ public class CarportSVG {
         svg.addRect(i, width-35-5, 10, 10);
             if(width > 600){
                 svg.addRect(i, (width/2)-5, 10, 10);
+                svg.addRect(length-60, (width/2)-5, 10, 10);
             }
+
+
+//            Udkommenteret kode er start på hvis der vælges ikke "perfekte" længder
+//            //2 poles sættes
+//            if (length == 470) {
+//                svg.addRect(i, 35-5, 10, 10);
+//                svg.addRect(i, width-35-5, 10, 10);
+//            }
+//            //3 poles sættes
+//            if(length > 470 && length <= 780){
+//                svg.addRect(length-60, 35-5, 10,10);
+//                svg.addRect(length-60, width-35-5, 10,10);
+//            }
+//            //4 poles sættes
+//            if(length > 780 && length <= 1090){
+//                svg.addRect(length-60, 35-5, 10,10);
+//                svg.addRect(length-60, width-35-5, 10,10);
+//            }
+
+
 
 
         }
@@ -49,16 +70,13 @@ public class CarportSVG {
     //Hulbånd
     public static SVG addPerforatedTape(SVG svg, int length, int width){
         int x = 0;
-        int y = 0;
+        int y = 35;
 
         for (int i = 100; i < length; i += 310) {
             x = i;
         }
-        for (int j = 35; j < width; j +=530) {
-            y = j;
-        }
-        svg.addLine(100,35,x,y);
-        svg.addLine(100, y, x,35);
+        svg.addLine(100,y,x,width-y-5);
+        svg.addLine(100, width-y-5, x,y);
         return svg;
     }
 

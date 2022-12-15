@@ -7,37 +7,31 @@
 
     <jsp:body>
 
+        <div class="container ">
+            <div class="display-6 text-center">Ordredesign</div>
 
+            <div class="row">
+                <div class="col">
+                    <form action="calculatecarport">
+                        <div class="text-left mt-3 mb-3">
+                            <button type="submit" value="recalculate" class="btn btn-primary">Genberegn
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <div class="col">
+                    <form action="approvecarport" method="post">
+                        <div class="text-end mt-3 mb-3">
+                            <button type="submit" value="approve" class="btn btn-primary">Godkend
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="text-center">
         ${requestScope.svgCarport}
-
-<%--        <c:forEach var="carport" items="${sessionScope.carport.partList}">--%>
-
-<%--            Her er måske en stolpe:--%>
-<%--            ${carport}--%>
-
-
-<%--        </c:forEach>--%>
-
-
-
-        <h1>Her kommer din carport skitse!</h1>
-        <form action="calculatecarport">
-        <div class="row">
-            <div class="text-end mt-3 mb-3">
-                <button type="submit" value="recalculate" class="btn btn-primary">Genberegn
-                </button>
-            </div>
         </div>
-        </form>
-
-        <form action="approvecarport" method="post">
-        <div class="row">
-            <div class="text-end mt-3 mb-3">
-                <button type="submit" value="approve" class="btn btn-primary">Godkend
-                </button>
-            </div>
-        </div>
-        </form>
 
 
     </jsp:body>
