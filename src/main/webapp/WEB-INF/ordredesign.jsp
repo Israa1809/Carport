@@ -21,7 +21,7 @@
                 <div class="col">
                     <form action="toeditcarport" method="post">
                         <div class="text-end mt-3 mb-3">
-                            <button type="submit" class="btn btn-primary" value="${carport.carportId}">Rediger carport
+                            <button type="submit" class="btn btn-primary" name="carportId" value="${carport.carportId}">Rediger carport
                             </button>
                         </div>
                     </form>

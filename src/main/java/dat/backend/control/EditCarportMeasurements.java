@@ -6,6 +6,7 @@ import dat.backend.model.entities.Carport;
 import dat.backend.model.entities.Material;
 import dat.backend.model.persistence.CarportFacade;
 import dat.backend.model.persistence.ConnectionPool;
+import dat.backend.model.persistence.MaterialFacade;
 import dat.backend.model.persistence.PartFacade;
 
 import javax.servlet.*;
@@ -29,13 +30,13 @@ public class EditCarportMeasurements extends HttpServlet {
 
         int carportId = Integer.parseInt(request.getParameter("carportId"));
         Carport carport = CarportFacade.getCarportById(carportId, connectionPool);
-        request.setAttribute("carport", carport);
 
         HttpSession session = request.getSession();
         int length = Integer.parseInt(request.getParameter("length"));
         int width = Integer.parseInt(request.getParameter("width"));
 
-        ArrayList<Material> materialArrayList = (ArrayList<Material>) session.getAttribute("materialArrayList");
+        ArrayList<Material> materialArrayList = MaterialFacade.getMaterials(connectionPool);
+        session.setAttribute("materialArrayList", materialArrayList);
 
         Carport editedCarport = BillOfMaterials.buildCarport(new Carport(length, width), materialArrayList);
         editedCarport.setCarportId(carport.getCarportId());
@@ -44,6 +45,10 @@ public class EditCarportMeasurements extends HttpServlet {
         carport.setPartList(editedCarport.getPartList());
         PartFacade.updatePartList(carport, connectionPool);
         CarportFacade.updateCarportInfo(editedCarport, connectionPool);
+
+        carport = CarportFacade.getCarportById(carportId, connectionPool);
+        request.setAttribute("carport", carport);
+
 
 
 

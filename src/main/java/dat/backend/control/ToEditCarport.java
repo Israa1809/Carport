@@ -1,10 +1,7 @@
 package dat.backend.control;
 
 import dat.backend.model.config.ApplicationStart;
-import dat.backend.model.entities.BillOfMaterials;
-import dat.backend.model.entities.Carport;
-import dat.backend.model.entities.Material;
-import dat.backend.model.entities.User;
+import dat.backend.model.entities.*;
 import dat.backend.model.persistence.CarportFacade;
 import dat.backend.model.persistence.ConnectionPool;
 import dat.backend.model.persistence.MaterialFacade;
@@ -38,7 +35,10 @@ public class ToEditCarport extends HttpServlet
 
         int carportId = Integer.parseInt(request.getParameter("carportId"));
         Carport carport = CarportFacade.getCarportById(carportId, connectionPool);
+        PartFacade.getPartListbyCarportId(carport, connectionPool);
+        request.setAttribute("partList", carport.getPartList());
         request.setAttribute("carport", carport);
+
 
         request.getRequestDispatcher("WEB-INF/redigercarport.jsp").forward(request, response);
 
