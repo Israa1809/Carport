@@ -60,6 +60,11 @@ public class CalculateCarport extends HttpServlet {
         svgCarport = CarportSVG.addPoles(svgCarport, length, width);
         request.setAttribute("svgCarport", svgCarport);
 
+        SVG svgCarportSide = CarportSVG.createNewSVG(0,0,100,60,viewbox.toString());
+        svgCarportSide = CarportSVG.addPolesSide(svgCarportSide,length);
+        svgCarportSide = CarportSVG.addRoofSide(svgCarportSide,length,width);
+        request.setAttribute("svgCarportSide", svgCarportSide);
+
 
         request.getRequestDispatcher("skitseside.jsp").forward(request, response);
     }

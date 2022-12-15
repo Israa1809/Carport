@@ -23,7 +23,9 @@ public class SVG {
             "        </marker>\n" +
             "    </defs>";
 
-    private final static String LINETEMPLATE = "<line x1=\"%f\" y1=\"%f\" x2=\"%f\" y2=\"%f\" style=\"stroke:#000000; stroke-dasharray: 5 5;\"/>";
+    private final static String DASHEDLINETEMPLATE = "<line x1=\"%f\" y1=\"%f\" x2=\"%f\" y2=\"%f\" style=\"stroke:#000000; stroke-dasharray: 5 5;\"/>";
+
+    private final static String LINETEMPLATE = "<line x1=\"%f\" y1=\"%f\" x2=\"%f\" y2=\"%f\" style=\"stroke:#000000;\"/>";
 
 
 
@@ -41,6 +43,10 @@ public class SVG {
     public void addRect(int x, int y, double height, double width)
     {
         svgString.append(String.format(RECTTEMPLATE, x, y, height, width));
+    }
+
+    public void addDashedLine(double x1, double y1, double x2, double y2){
+        svgString.append(String.format(DASHEDLINETEMPLATE, x1, y1, x2, y2));
     }
 
     public void addLine(double x1, double y1, double x2, double y2){

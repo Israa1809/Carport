@@ -90,6 +90,9 @@ public class Login extends HttpServlet
             request.setAttribute("svgCarport", svgCarport);
 
 
+
+
+
 //            float totalCarportPrice = carport.getMaterialFullPrice()+carport.getFeePrice();
 //            session.setAttribute("totalCarportPrice", totalCarportPrice);
 

@@ -29,9 +29,12 @@
                 </div>
             </div>
         </div>
+        ${requestScope.svgCarportSide}
         <div class="text-center">
+
         ${requestScope.svgCarport}
         </div>
+
 
 
     </jsp:body>
