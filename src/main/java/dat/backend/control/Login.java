@@ -1,10 +1,7 @@
 package dat.backend.control;
 
 import dat.backend.model.config.ApplicationStart;
-import dat.backend.model.entities.Carport;
-import dat.backend.model.entities.Material;
-import dat.backend.model.entities.Part;
-import dat.backend.model.entities.User;
+import dat.backend.model.entities.*;
 import dat.backend.model.exceptions.DatabaseException;
 import dat.backend.model.persistence.*;
 import dat.backend.model.services.CarportSVG;
@@ -96,9 +93,10 @@ public class Login extends HttpServlet
 //            float totalCarportPrice = carport.getMaterialFullPrice()+carport.getFeePrice();
 //            session.setAttribute("totalCarportPrice", totalCarportPrice);
 
-            PartFacade.getPartListbyCarportId(carport, connectionPool);
             session.setAttribute("partList", carport.getPartList());
             session.setAttribute("carport", carport);
+
+
 
             request.getRequestDispatcher("WEB-INF/ordrevisning.jsp").forward(request, response);
         }

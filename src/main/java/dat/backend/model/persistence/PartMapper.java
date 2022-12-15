@@ -63,6 +63,46 @@ public class PartMapper {
             throwables.printStackTrace();
         }
     }
+    public static void deletePartListByCarportID(int carport_id, ConnectionPool connectionPool) {
+        String sql = "DELETE FROM carport.part WHERE carport_id =?";
+
+        try (Connection connection = connectionPool.getConnection()) {
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+
+                ps.setInt(1, carport_id);
+                ps.executeUpdate();
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /*
+    *   Udkast til "opdater" knap servlet
+    *
+    * int weight = session.getAttribute("width");
+    * int length = session.getAttribute("length");
+    * ArrayList<Material> materialArrayList = MaterialFacade.getMaterials(connectionPool);
+    *
+    * Carport newCarport = billOfMaterials.buildCarport(new tempCarport(length, width), connectionPool);
+    * Carport carport = (Carport) session.getAttribute("carport");
+    *
+    * partFacade.deletePartListByCarportID(carport.getCarportId(), connectionPool);
+    * carport.setPartList(newCarport.getPartList())
+    * carportFacade.updateCarportPartList(carport, connectionPool);
+    *
+    * *Funktion herunder mangler*
+    * carportFacade.updateCarportinfo(int length, int width, float materialFullPrice, float fee_price);
+    *
+    *
+    * */
+
+
+
+
 
 }
 
