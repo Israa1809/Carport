@@ -1,23 +1,19 @@
 package dat.backend.control;
 
 import dat.backend.model.config.ApplicationStart;
-import dat.backend.model.entities.BillOfMaterials;
 import dat.backend.model.entities.Carport;
-import dat.backend.model.entities.Material;
 import dat.backend.model.persistence.CarportFacade;
 import dat.backend.model.persistence.ConnectionPool;
-import dat.backend.model.persistence.MaterialFacade;
 import dat.backend.model.persistence.PartFacade;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Locale;
 
-@WebServlet(name = "EditCarportMeasurements", value = "/editcarportmeasurements")
-public class EditCarportMeasurements extends HttpServlet {
+@WebServlet(name = "EditFeePrice", value = "/editfeeprice")
+public class EditFeePrice extends HttpServlet {
 
     private ConnectionPool connectionPool = ApplicationStart.getConnectionPool();
 
@@ -32,22 +28,10 @@ public class EditCarportMeasurements extends HttpServlet {
         int carportId = Integer.parseInt(request.getParameter("carportId"));
         Carport carport = CarportFacade.getCarportById(carportId, connectionPool);
 
-        HttpSession session = request.getSession();
-        int length = Integer.parseInt(request.getParameter("length"));
-        int width = Integer.parseInt(request.getParameter("width"));
+        float feePrice = Float.parseFloat(request.getParameter("feePrice"));
+        carport.setFeePrice(feePrice);
 
-        ArrayList<Material> materialArrayList = MaterialFacade.getMaterials(connectionPool);
-        session.setAttribute("materialArrayList", materialArrayList);
-
-        Carport editedCarport = BillOfMaterials.buildCarport(new Carport(length, width), materialArrayList);
-        editedCarport.setCarportId(carport.getCarportId());
-        PartFacade.deletePartListByCarportID(carport.getCarportId(), connectionPool);
-
-        carport.setPartList(editedCarport.getPartList());
-        PartFacade.updatePartList(carport, connectionPool);
-        CarportFacade.updateCarportInfo(editedCarport, connectionPool);
-
-        carport = CarportFacade.getCarportById(carportId, connectionPool);
+        CarportFacade.updateCarportInfo(carport, connectionPool);
 
         PartFacade.getPartListbyCarportId(carport, connectionPool);
         request.setAttribute("partList", carport.getPartList());
