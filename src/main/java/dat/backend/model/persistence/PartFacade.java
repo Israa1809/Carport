@@ -17,6 +17,9 @@ public class PartFacade {
 
     public static void deletePartListByCarportID(int carport_id, ConnectionPool connectionPool){
         PartMapper.deletePartListByCarportID(carport_id, connectionPool);
+    }
 
+    public static void updatePartList(Carport carport, ConnectionPool connectionPool){
+        PartMapper.updatePartList(carport, connectionPool);
     }
 }

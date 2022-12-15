@@ -17,15 +17,52 @@
 
             <div class="display-6 text-center">Rediger carport</div>
 
-            <div class="text-end mt-3 mb-3">
-                længde og bredde
-                <button type="submit" class="btn btn-primary">Opdater
-                </button>
-            </div>
+
+            HER STARTER DET NYE
+            <form action="editcarportmeasurements" method="post">
+                <div class="container light-grey">
+                    <h1>Vælg mål for din carport</h1>
+                    <div class="row">
+                        <div class="col  form-group  mt-5 me-5 ms-5">
+                            <select class="form-select" name="length">
+                                <option selected>Længde</option>
+                                <option> 780 </option>
+                                <option> 1000 </option>
+                                <option> 1300 </option>
+                                <option> 1560 </option>
+                            </select>
+                        </div>
+                        <div class="col form-group  mt-5  me-5 ">
+                            <select class="form-select" name="width">
+                                <option selected>Bredde</option>
+                                <option> 600 </option>
+                                <option> 610 </option>
+                                <option> 800 </option>
+                                <option> 900 </option>
+                                <option> 1200 </option>
+                            </select>
+                        </div>
+
+                        <div class="col-2 form-group mt-5 me-4">
+
+                        </div>
+                        <div class="row">
+                            <div class="text-end mt-3 mb-3">
+                                <button type="submit" value="calculate" class="btn btn-primary">Opdater carportdesign
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </form>
+            HER SLUTTER DET NYE
+
+
 
 
             <div class="text-end mt-3 mb-3">
-                <button type="submit" class="btn btn-primary">Opdater pris
+                <button type="submit" class="btn btn-primary">Opdater honorarpris
                 </button>
             </div>
 
