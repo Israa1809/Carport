@@ -15,14 +15,14 @@
             </div>
         </form>
 
-        <div class="display-6 text-center">Rediger carport</div>
+        <div class="display-6 text-center mb-5">Rediger carport</div>
 
 
         <form action="editcarportmeasurements" method="post">
 
-            <h1>Vælg mål for din carport</h1>
+            <h3>Vælg mål for din carport</h3>
             <div class="row">
-                <div class="col  form-group  mt-5 me-5 ms-5">
+                <div class="col  form-group  mt-2 me-5 ms-0">
                     <select class="form-select" name="length">
                         <option selected>Længde</option>
                         <option> 780</option>
@@ -31,7 +31,7 @@
                         <option> 1560</option>
                     </select>
                 </div>
-                <div class="col form-group  mt-5  me-5 ">
+                <div class="col form-group  mt-2  me-5 ">
                     <select class="form-select" name="width">
                         <option selected>Bredde</option>
                         <option> 600</option>
@@ -41,9 +41,8 @@
                         <option> 1200</option>
                     </select>
                 </div>
-
-                <div class="col-2 form-group mt-5 me-4">
-                    <div class="text-end mb-3">
+                <div class="col form-group mt-2 me-5">
+                    <div class="text-left mb-3">
                         <button type="submit" class="btn btn-primary" name="carportId"
                                 value="${carport.carportId}">Opdater carportdesign
                         </button>
@@ -136,18 +135,18 @@
         <%--            </form>--%>
 
 
-        TEST
+
 
         <div class="row">
             <div class="col-sm-6">
-                <div class="card">
+                <div class="card" style="border: none">
                     <div class="card-body">
                         <table class="table table-striped ps-5">
                             <thead>
-                            <div class="text-center">
+                            <div class="text-center mb-3">
 
-                                Stykliste for carport ${requestScope.carport.width} cm
-                                x ${requestScope.carport.length} cm
+                                Stykliste for carport <b>${requestScope.carport.width} cm
+                                x ${requestScope.carport.length} cm</b>
                             </div>
                             </thead>
 
@@ -190,37 +189,40 @@
                 </div>
             </div>
             <div class="col-sm-6">
-                <div class="card">
-                    <div class="card-body">
+                <div class="card" style="border: none">
+                    <div class="card-body mt-4">
+                        <hr>
                         <form action="editfeeprice" method="post">
+                            <p class="text-center">
                             Ønsker du at redigere rådgivningshonoraret, så indtast den nye pris her:
                             <br>
 
-                            <input type="text" id="feePrice" name="feePrice" value="${requestScope.carport.feePrice}"
+                            <input class="text-center mt-3" style="font-weight: bold;" type="text" id="feePrice" name="feePrice" value="${requestScope.carport.feePrice}"
                                    minlength="4"
                                    maxlength="8" size="10">
                             <input type="hidden" id="carportId" name="carportId" value="${carport.carportId}">
+                            </p>
 
 
-                            <div class="text-end mt-3 mb-3">
+                            <div class="text-center mt-3 mb-3">
                                 <button type="submit" class="btn btn-primary" name="feePrice" value="feePrice">Opdater
                                     honorarpris
                                 </button>
                             </div>
 
                             <p class="text-center">
-                            Samlet materialepris:
+                                Samlet materialepris: <b>I alt ${requestScope.carport.materialFullPrice} kr.</b>
                             </p>
 
-                            <p class="lead text-end"> I alt ${requestScope.carport.materialFullPrice} kr.</p>
+
                             <p class="text-center">
-                            Rådgivningshonorar:
+                            Rådgivningshonorar: <b>I alt ${requestScope.carport.feePrice} kr.</b>
                             </p>
-                            <p class="lead text-end"> I alt ${requestScope.carport.feePrice} kr.</p>
+                            <hr>
                             <p class="text-center">
-                            SAMLET PRIS:
+                            SAMLET PRIS: <b>I alt ${requestScope.carport.carportFullPrice} kr.</b>
                             </p>
-                            <p class="lead text-end"> I alt ${requestScope.carport.carportFullPrice} kr.</p>
+
                         </form>
                     </div>
                 </div>
