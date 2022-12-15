@@ -38,7 +38,7 @@
 
                         <td class="col">
                             <p class="lead">
-                                    ${carport.materialFullPrice}kr.
+                                    ${carport.carportFullPrice}kr.
                             </p>
                         </td>
                         <td class="col">
