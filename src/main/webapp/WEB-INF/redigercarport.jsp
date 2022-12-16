@@ -17,7 +17,6 @@
 
         <div class="display-6 text-center mb-5">Rediger carport</div>
 
-
         <form action="editcarportmeasurements" method="post">
 
             <h3>Vælg mål for din carport</h3>
@@ -48,94 +47,8 @@
                         </button>
                     </div>
                 </div>
-
             </div>
-
-
         </form>
-
-
-        <%--                        <table class="table table-striped ps-5">--%>
-        <%--                            <thead>--%>
-        <%--                            <div class="text-center">--%>
-
-        <%--                                Stykliste for carport ${requestScope.carport.width} cm--%>
-        <%--                                x ${requestScope.carport.length} cm--%>
-        <%--                            </div>--%>
-        <%--                            </thead>--%>
-
-        <%--                            <thead>--%>
-        <%--                            <tr>--%>
-        <%--                                <th>Materiale</th>--%>
-        <%--                                <th>Pris</th>--%>
-
-        <%--                            </tr>--%>
-        <%--                            </thead>--%>
-
-        <%--                            <c:forEach var="part" items="${requestScope.partList}">--%>
-        <%--                                <tr>--%>
-        <%--                                    <div class="row">--%>
-        <%--                                        <td class="col">--%>
-        <%--                                                ${part.partQuantity}--%>
-        <%--                                            x ${part.material.materialName} ${part.material.materialQuantity}${part.material.unitType}--%>
-        <%--                                        </td>--%>
-
-        <%--                                        <td class="col">--%>
-        <%--                                                ${part.partPrice}kr--%>
-        <%--                                        </td>--%>
-        <%--                                    </div>--%>
-
-        <%--                                </tr>--%>
-        <%--                            </c:forEach>--%>
-
-        <%--                            <div class="row">--%>
-        <%--                                <td class="col">--%>
-        <%--                                    Samlet materialepris--%>
-        <%--                                </td>--%>
-
-        <%--                                <td class="col">--%>
-        <%--                                        ${requestScope.carport.materialFullPrice}kr--%>
-        <%--                                </td>--%>
-        <%--                            </div>--%>
-
-        <%--                        </table>--%>
-        <%--                    --%>
-
-
-        <%--            <form action="editfeeprice" method="post">--%>
-        <%--                <div class="col-5">--%>
-        <%--                    <div class="card">--%>
-        <%--                        <div class="card-body">--%>
-        <%--                            Ønsker du at redigere rådgivningshonoraret, så indtast den nye pris her:--%>
-        <%--                            <br>--%>
-
-        <%--                            <input type="text" id="feePrice" name="feePrice" value="${requestScope.carport.feePrice}"--%>
-        <%--                                   minlength="4"--%>
-        <%--                                   maxlength="8" size="10">--%>
-        <%--                            <input type="hidden" id="carportId" name="carportId" value="${carport.carportId}">--%>
-
-
-        <%--                            <div class="text-end mt-3 mb-3">--%>
-        <%--                                <button type="submit" class="btn btn-primary" name="feePrice" value="feePrice">Opdater--%>
-        <%--                                    honorarpris--%>
-        <%--                                </button>--%>
-        <%--                            </div>--%>
-
-        <%--                            Samlet materialepris:--%>
-        <%--                            <p class="lead text-end"> I alt ${requestScope.carport.materialFullPrice} kr.</p>--%>
-        <%--                            <br>--%>
-        <%--                            Rådgivningshonorar:--%>
-        <%--                            <p class="lead text-end"> I alt ${requestScope.carport.feePrice} kr.</p>--%>
-        <%--                            <br>--%>
-        <%--                            SAMLET PRIS:--%>
-        <%--                            <p class="lead text-end"> I alt ${requestScope.carport.carportFullPrice} kr.</p>--%>
-        <%--                        </div>--%>
-        <%--                    </div>--%>
-        <%--                </div>--%>
-        <%--            </form>--%>
-
-
-
 
         <div class="row">
             <div class="col-sm-6">
