@@ -130,9 +130,6 @@ public class CarportMapper {
                 ps.setInt(1, carport_id);
                 ps.executeUpdate();
 
-
-
-
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -141,23 +138,21 @@ public class CarportMapper {
         }
     }
 
+    public static void updateCarportInfo(Carport carport, ConnectionPool connectionPool){
 
-    public static void updateCarportPartList(Carport carport, ConnectionPool connectionPool){
-
-        String sql = "INSERT INTO carport.part (part_quantity , carport_id, part_price, material_id) VALUES (?,?,?,?)";
+        String sql = "UPDATE carport.carport SET length = ? , width = ?, material_full_price = ?, fee_price = ? WHERE carport_id = ?";
 
 
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ps.setInt(5, carport.getCarportId());
 
+                ps.setInt(1, carport.getLength());
+                ps.setInt(2, carport.getWidth());
+                ps.setFloat(3, carport.getMaterialFullPrice());
+                ps.setFloat(4, carport.getFeePrice());
 
-                for (Part part : carport.getPartList()) {
-                    ps.setInt(1, part.getPartQuantity());
-                    ps.setInt(2, carport.getCarportId());
-                    ps.setFloat(3, part.getPartPrice());
-                    ps.setInt(4, part.getMaterial().getMaterialId());
-                    ps.executeUpdate();
-                }
+                ps.executeUpdate();
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -166,11 +161,5 @@ public class CarportMapper {
             e.printStackTrace();
         }
     }
-
-
-
-
-
-
 
 }

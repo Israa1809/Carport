@@ -11,7 +11,7 @@ public class Carport {
     private float materialFullPrice;  //bør muligvis lægges som default i DB
     private float feePrice;  //bør muligvis lægges som default i DB
     private float carportFullPrice;
-    private List<Part> partList = new ArrayList<>();
+    private ArrayList<Part> partList = new ArrayList<>();
     private int carportId;
     Boolean offerStatus;
     Boolean paymentStatus;
@@ -55,7 +55,7 @@ public class Carport {
         return feePrice;
     }
 
-    public List<Part> getPartList() {
+    public ArrayList<Part> getPartList() {
         return partList;
     }
 

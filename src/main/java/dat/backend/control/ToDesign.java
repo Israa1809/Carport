@@ -34,9 +34,8 @@ public class ToDesign extends HttpServlet
 
         int carportId = Integer.parseInt(request.getParameter("carportId"));
         Carport carport = CarportFacade.getCarportById(carportId, connectionPool);
-        request.setAttribute("carport", carport);
         PartFacade.getPartListbyCarportId(carport, connectionPool);
-        request.setAttribute("partlist", carport.getPartList());
+
 
 
 
@@ -66,7 +65,10 @@ public class ToDesign extends HttpServlet
         svgCarport = CarportSVG.addWallPlate(svgCarport, length, width);
         svgCarport = CarportSVG.addPerforatedTape(svgCarport, length, width);
         svgCarport = CarportSVG.addPoles(svgCarport, length, width);
+
         request.setAttribute("svgCarport", svgCarport);
+        request.setAttribute("partlist", carport.getPartList());
+        request.setAttribute("carport", carport);
 
 
 
