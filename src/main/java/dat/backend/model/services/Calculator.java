@@ -128,6 +128,6 @@ public class Calculator {
 
         double hypotenuse = Math.sqrt((tempCaportLength * tempCaportLength) + (tempCaportWidth * tempCaportWidth));
 
-        return hypotenuse * 2;
+        return hypotenuse;
     }
 }

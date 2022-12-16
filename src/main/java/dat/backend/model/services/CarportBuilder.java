@@ -3,7 +3,6 @@ package dat.backend.model.services;
 import dat.backend.model.entities.Carport;
 import dat.backend.model.entities.Material;
 import dat.backend.model.entities.Part;
-import dat.backend.model.services.Calculator;
 
 import java.util.ArrayList;
 
@@ -45,6 +44,10 @@ public class CarportBuilder {
 
         Part fasciaScrewsPart = addFasciaScrews(carport.getLength(), carport.getWidth(), materialList);
         carport.addPartFirstTime(fasciaScrewsPart);
+
+        //Perforated Tape
+        Part perforatedTapePart = addPerforatedTape(carport.getLength(), carport.getWidth(), materialList);
+        carport.addPartFirstTime(perforatedTapePart);
 
         return carport;
     }
@@ -299,6 +302,31 @@ public class CarportBuilder {
 
         Part fasciaScrewsPart = new Part(finalMaterial, partQuantity);
         return fasciaScrewsPart;
+    }
+
+    public static Part addPerforatedTape(int carportLength, int carportWidth, ArrayList<Material> materialList) {
+
+        Material finalMaterial = null;
+
+        for (Material material : materialList) {
+            if (material.getProductVariant().contains("hulbånd") && material.getUnitType().contains("cm")) {
+                finalMaterial = material;
+            }
+        }
+
+        double partQuantity = Calculator.calcPerforatedTapeInCM(carportLength, carportWidth);
+
+        float devider = (float) partQuantity / finalMaterial.getMaterialQuantity();
+
+        partQuantity = (int) devider;
+        if (devider % 1 > 0) {
+            partQuantity = partQuantity + 1;
+        }
+
+        int intPartQuantity = (int) partQuantity * 2;
+
+        Part perforatedTapePart = new Part(finalMaterial, intPartQuantity);
+        return perforatedTapePart;
     }
 
 }
