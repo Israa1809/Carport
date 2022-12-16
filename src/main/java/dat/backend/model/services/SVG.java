@@ -27,6 +27,9 @@ public class SVG {
 
     private final static String LINETEMPLATE = "<line x1=\"%f\" y1=\"%f\" x2=\"%f\" y2=\"%f\" style=\"stroke:#000000;\"/>";
 
+    private final static String ARROWLINETEMPLATE = "<line x1=\"%f\" y1=\"%f\" x2=\"%f\" y2=\"%f\" style=\"stroke:#000000; marker-start: url(#beginArrow); marker-end: url(#endArrow); \"/>";
+
+    private final static String TEXTTEMPLATE = "<text style=\"text-anchor: middle\" transform=\"translate(%d,%d) %s\">%d%s</text>";
 
 
     public SVG(int x, int y, int height, int width, String viewbox)
@@ -56,6 +59,15 @@ public class SVG {
     public void addInnerSvg(SVG innerSVGDrawing)
     {
         svgString.append(innerSVGDrawing);
+    }
+
+
+    public void addArrowLine(double x1, double y1, double x2, double y2){
+        svgString.append(String.format(ARROWLINETEMPLATE, x1, y1, x2, y2));
+    }
+
+    public void addText(int x1, int y1,String rotate, int value, String unit){
+        svgString.append(String.format(TEXTTEMPLATE, x1, y1, rotate, value, unit));
     }
 
     @Override

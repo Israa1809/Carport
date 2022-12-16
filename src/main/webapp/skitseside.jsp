@@ -32,7 +32,7 @@
         ${requestScope.svgCarportSide}
         <div class="text-center">
 
-        ${requestScope.svgCarport}
+        ${requestScope.svgWithArrows}
         </div>
 
 
