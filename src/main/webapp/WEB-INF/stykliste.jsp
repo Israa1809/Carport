@@ -12,7 +12,7 @@
                 x ${sessionScope.carport.length} cm</p>
             <div class="row">
                 <div class="col-8">
-                        ${requestScope.svgCarport}
+                        ${requestScope.svgCarportTopView}
                 </div>
                 <div class="col-4">
                     <table class="table table-striped ps-5">
@@ -47,7 +47,7 @@
                 </div>
             </div>
 
-
+                ${requestScope.svgCarportSideView}
         </div>
 
 

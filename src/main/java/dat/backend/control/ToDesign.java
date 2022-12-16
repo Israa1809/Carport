@@ -55,18 +55,22 @@ public class ToDesign extends HttpServlet
         viewbox.append(" ");
         viewbox.append(0);
         viewbox.append(" ");
-        viewbox.append(length+100);
+        viewbox.append(length+150);
         viewbox.append(" ");
-        viewbox.append(width+100);
+        viewbox.append(width+150);
 
-        SVG svgCarport = CarportSVG.createNewSVG(0, 0, 100, 60, viewbox.toString());
+        SVG svgCarport = CarportSVG.createNewSVG(120, 50, 100, 100, viewbox.toString());
         svgCarport = CarportSVG.addFascia(svgCarport, length, width);
         svgCarport = CarportSVG.addBeams(svgCarport, length, width);
         svgCarport = CarportSVG.addWallPlate(svgCarport, length, width);
         svgCarport = CarportSVG.addPerforatedTape(svgCarport, length, width);
         svgCarport = CarportSVG.addPoles(svgCarport, length, width);
 
-        request.setAttribute("svgCarport", svgCarport);
+        SVG svgWithArrows = CarportSVG.createNewSVG( 0, 0, 100, 60, viewbox.toString());
+        svgWithArrows.addInnerSvg(svgCarport);
+        svgWithArrows = CarportSVG.addArrow(svgWithArrows, length, width);
+
+        request.setAttribute("svgCarportTopView", svgWithArrows);
         request.setAttribute("partlist", carport.getPartList());
         request.setAttribute("carport", carport);
 
