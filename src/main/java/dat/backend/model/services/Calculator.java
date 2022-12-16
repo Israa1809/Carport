@@ -2,7 +2,7 @@ package dat.backend.model.services;
 
 public class Calculator {
 
-    public static int calcBeams(int carportLength, int carportWidth) {     //'beams' er 'stolper' på dansk
+    public static int calcPoles(int carportLength, int carportWidth) {     //'poles' er 'stolper' på dansk
 
         float lengthInterval = 310f; //vi har besluttet at længde og bredde måles i cm, og vi antager at hvis længden overstiger 310 cm skal der indsættes en ekstra stolpe
         float widthInterval = 530f; //vi har besluttet at længde og bredde måles i cm, og vi antager at hvis bredden overstiger 530 cm skal der indsættes en ekstra stolpe
@@ -30,7 +30,7 @@ public class Calculator {
     }
 
     // Udregner spær - 15 total på given vejledning
-    public static int calcRafter(int carportLength, int carportWidth, int materialLength) {
+    public static int calcBeams(int carportLength, int carportWidth, int materialLength) {      //'beams' er 'spær' på dansk
         float interval = 55f;
         int numberOfRows;
         int devider;
@@ -58,8 +58,8 @@ public class Calculator {
         return numberOfMaterial;
     }
 
-    //Udregner 1x stern
-    public static int calcFascia(int carportLength, int carportWidth, int materialLength){
+    //Udregner 1x stern over/under
+    public static int calcFascia(int carportLength, int carportWidth, int materialLength){       //'fascia' er 'stern' på dansk
         float faLength;
         float faWidth;
         int fasciaMatieral;
@@ -80,7 +80,7 @@ public class Calculator {
         return fasciaMatieral;
     }
 
-    public static int calcWallPlate(int carportLength, int carportWidth, int materialLength) {
+    public static int calcWallPlate(int carportLength, int carportWidth, int materialLength) {     //'wallPlate' er 'rem' på dansk
 
         float widthInterval = 530f; //vi har besluttet at længde og bredde måles i cm, og vi antager at hvis bredden overstiger 530 cm skal der indsættes en ekstra stolpe
         float wpLength;
@@ -104,7 +104,30 @@ public class Calculator {
         resTotal = resWidth * (int)wpLength;
 
         return resTotal;
-
     }
 
+    public static int calcBeamScrews(int beamsQuantity){
+        return beamsQuantity * 9 * 2;
+    }
+
+    public static int calcBeamFittings(int beamsQuantity) {
+        return beamsQuantity * 2;
+    }
+
+    public static int calcPoleWallPlateBolts(int poleQuantity) {
+        return poleQuantity * 2;
+    }
+
+    public static int calcFasciaScrews(int fasciaLength) {
+        return ((fasciaLength/100)+1)*2;    //400cm / 100 = 4 + 1 = 5 * 2 = 10
+    } //Vi har vedtaget at der ved over- og understern bruges 2 skruer per meter
+
+    public static double calcPerforatedTapeInCM(int carportLength, int carportWidth) {
+        int tempCaportLength = carportLength - 160;
+        int tempCaportWidth = carportWidth - 70;
+
+        double hypotenuse = Math.sqrt((tempCaportLength * tempCaportLength) + (tempCaportWidth * tempCaportWidth));
+
+        return hypotenuse;
+    }
 }

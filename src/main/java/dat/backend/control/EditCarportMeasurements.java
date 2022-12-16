@@ -1,7 +1,7 @@
 package dat.backend.control;
 
 import dat.backend.model.config.ApplicationStart;
-import dat.backend.model.entities.BillOfMaterials;
+import dat.backend.model.services.CarportBuilder;
 import dat.backend.model.entities.Carport;
 import dat.backend.model.entities.Material;
 import dat.backend.model.persistence.CarportFacade;
@@ -14,7 +14,6 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Locale;
 
 @WebServlet(name = "EditCarportMeasurements", value = "/editcarportmeasurements")
 public class EditCarportMeasurements extends HttpServlet {
@@ -39,7 +38,7 @@ public class EditCarportMeasurements extends HttpServlet {
         ArrayList<Material> materialArrayList = MaterialFacade.getMaterials(connectionPool);
         session.setAttribute("materialArrayList", materialArrayList);
 
-        Carport editedCarport = BillOfMaterials.buildCarport(new Carport(length, width), materialArrayList);
+        Carport editedCarport = CarportBuilder.buildCarport(new Carport(length, width), materialArrayList);
         editedCarport.setCarportId(carport.getCarportId());
         PartFacade.deletePartListByCarportID(carport.getCarportId(), connectionPool);
 

@@ -2,10 +2,9 @@ package dat.backend.control;
 
 import dat.backend.model.config.ApplicationStart;
 import dat.backend.model.entities.*;
-import dat.backend.model.exceptions.DatabaseException;
 import dat.backend.model.persistence.ConnectionPool;
 import dat.backend.model.persistence.MaterialFacade;
-import dat.backend.model.persistence.UserFacade;
+import dat.backend.model.services.CarportBuilder;
 import dat.backend.model.services.CarportSVG;
 import dat.backend.model.services.SVG;
 
@@ -35,7 +34,7 @@ public class CalculateCarport extends HttpServlet {
 
         ArrayList<Material> materialArrayList = MaterialFacade.getMaterials(connectionPool);
 
-        Carport carport = BillOfMaterials.buildCarport(new Carport(length, width), materialArrayList);
+        Carport carport = CarportBuilder.buildCarport(new Carport(length, width), materialArrayList);
         session.setAttribute("carport", carport);
 
 
@@ -85,5 +84,7 @@ public class CalculateCarport extends HttpServlet {
 
         request.getRequestDispatcher("skitseside.jsp").forward(request, response);
     }
+
+
 
 }
