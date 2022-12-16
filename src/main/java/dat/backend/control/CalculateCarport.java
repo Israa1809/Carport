@@ -2,10 +2,9 @@ package dat.backend.control;
 
 import dat.backend.model.config.ApplicationStart;
 import dat.backend.model.entities.*;
-import dat.backend.model.exceptions.DatabaseException;
 import dat.backend.model.persistence.ConnectionPool;
 import dat.backend.model.persistence.MaterialFacade;
-import dat.backend.model.persistence.UserFacade;
+import dat.backend.model.services.BillOfMaterials;
 import dat.backend.model.services.CarportSVG;
 import dat.backend.model.services.SVG;
 

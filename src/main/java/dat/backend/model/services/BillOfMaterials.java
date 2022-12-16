@@ -1,5 +1,8 @@
-package dat.backend.model.entities;
+package dat.backend.model.services;
 
+import dat.backend.model.entities.Carport;
+import dat.backend.model.entities.Material;
+import dat.backend.model.entities.Part;
 import dat.backend.model.services.Calculator;
 
 import java.util.ArrayList;
