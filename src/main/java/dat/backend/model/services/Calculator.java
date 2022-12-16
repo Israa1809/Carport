@@ -121,4 +121,13 @@ public class Calculator {
     public static int calcFasciaScrews(int fasciaLength) {
         return ((fasciaLength/100)+1)*2;    //400cm / 100 = 4 + 1 = 5 * 2 = 10
     } //Vi har vedtaget at der ved over- og understern bruges 2 skruer per meter
+
+    public static double calcPerforatedTapeInCM(int carportLength, int carportWidth) {
+        int tempCaportLength = carportLength - 160;
+        int tempCaportWidth = carportWidth - 70;
+
+        double hypotenuse = Math.sqrt((tempCaportLength * tempCaportLength) + (tempCaportWidth * tempCaportWidth));
+
+        return hypotenuse * 2;
+    }
 }
