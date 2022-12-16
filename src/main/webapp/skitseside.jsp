@@ -29,10 +29,12 @@
                 </div>
             </div>
         </div>
-        ${requestScope.svgCarportSide}
+        <div class="text-center">
+        ${requestScope.svgCarportSideView}
+        </div>
         <div class="text-center">
 
-        ${requestScope.svgWithArrows}
+        ${requestScope.svgCarportTopView}
         </div>
 
 

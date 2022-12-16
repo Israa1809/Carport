@@ -59,26 +59,29 @@ public class CalculateCarport extends HttpServlet {
         svgCarport = CarportSVG.addPerforatedTape(svgCarport, length, width);
         svgCarport = CarportSVG.addPoles(svgCarport, length, width);
 
-
         SVG svgWithArrows = CarportSVG.createNewSVG( 0, 0, 100, 60, viewbox.toString());
         svgWithArrows.addInnerSvg(svgCarport);
         svgWithArrows = CarportSVG.addArrow(svgWithArrows, length, width);
 
-        request.setAttribute("svgWithArrows", svgWithArrows);
+        request.setAttribute("svgCarportTopView", svgWithArrows);
 
+        StringBuilder sideViewbox = new StringBuilder();
+        sideViewbox.append(0);
+        sideViewbox.append(" ");
+        sideViewbox.append(0);
+        sideViewbox.append(" ");
+        sideViewbox.append(length+150);
+        sideViewbox.append(" ");
+        sideViewbox.append(380);
 
-
-
-
-
-
-
-
-        SVG svgCarportSide = CarportSVG.createNewSVG(0,0,100,60,viewbox.toString());
+        SVG svgCarportSide = CarportSVG.createNewSVG(120,50,100,100, sideViewbox.toString());
         svgCarportSide = CarportSVG.addPolesSide(svgCarportSide,length);
         svgCarportSide = CarportSVG.addRoofSide(svgCarportSide,length,width);
-        request.setAttribute("svgCarportSide", svgCarportSide);
 
+        SVG svgCarportSideArrows = CarportSVG.createNewSVG(0,0,100,60, sideViewbox.toString());
+        svgCarportSideArrows.addInnerSvg(svgCarportSide);
+        svgCarportSideArrows = CarportSVG.addArrowSide(svgCarportSideArrows, length, width);
+        request.setAttribute("svgCarportSideView", svgCarportSideArrows);
 
         request.getRequestDispatcher("skitseside.jsp").forward(request, response);
     }
