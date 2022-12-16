@@ -7,7 +7,7 @@ import dat.backend.model.services.Calculator;
 
 import java.util.ArrayList;
 
-public class BillOfMaterials {
+public class CarportBuilder {
 
     public static Carport buildCarport(Carport carport, ArrayList<Material> materialList) {
 
