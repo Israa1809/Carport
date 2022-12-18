@@ -8,26 +8,28 @@
     <jsp:body>
         <div class="containerlight-grey">
 
-            <div class="row">
-                <div class="display-6 mb-5"> Skrædersy din carport ud fra dine egne mål
-                </div>
 
+            <div class="row">
+                <div class="display-6 mb-5"> Skrædersy din carport ud fra dine egne mål</div>
                 <div class="col-6">
                     <div class="card">
-                        <div class="card-body">
-                            <p class="lead"><small>
+                        <div class="card-body lightBlueBg">
+                            <div class="fs-5 fw-light darkGreenText">
                                 Drømmer du om, at bilen holder i tørvejr?
                                 Vil du gerne undgå frost på ruderne om vinteren?
                                 Har du måske brug for et redskabsrum til dæk, græsslåmaskine, haveredskaber, grill m.m.?
                                 Gør drømmen til virkelighed her i foråret.
                                 Der er mange fordele ved selv at bygge en carport.
                                 Du sparer både penge og får en lækker carport, der kan beskytte bilen.
-                                Men hvilke behov har du? Hvad bør du i det hele taget overveje, inden du går i gang?
-                            </small></p>
+                                <div class="lead text-end">
+                                    <a class="btn btn-primary " href="#" role="button">Læs mere</a>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
-                </div>
 
+                </div>
                 <div class="col">
                     <form action="calculatecarport" method="post">
                         <div class="row">
@@ -62,15 +64,8 @@
 
                     </form>
                 </div>
-
-
             </div>
-
-
-
-
         </div>
-
     </jsp:body>
 
 </t:pagetemplate>

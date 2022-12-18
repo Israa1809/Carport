@@ -19,9 +19,7 @@
                     </div>
                     <div class="text-center">
                         <p class="lead"><strong> Carport set oppefra</strong></p>
-                        <div class="ms-5">
                                 ${requestScope.svgCarportTopView}
-                        </div>
 
                     </div>
 

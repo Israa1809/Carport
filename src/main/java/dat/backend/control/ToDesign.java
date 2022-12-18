@@ -2,8 +2,10 @@ package dat.backend.control;
 
 import dat.backend.model.config.ApplicationStart;
 import dat.backend.model.entities.Carport;
+import dat.backend.model.entities.Customer;
 import dat.backend.model.persistence.CarportFacade;
 import dat.backend.model.persistence.ConnectionPool;
+import dat.backend.model.persistence.CustomerFacade;
 import dat.backend.model.persistence.PartFacade;
 import dat.backend.model.services.CarportSVG;
 import dat.backend.model.services.SVG;
@@ -30,25 +32,16 @@ public class ToDesign extends HttpServlet
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
     {
-
-
         int carportId = Integer.parseInt(request.getParameter("carportId"));
         Carport carport = CarportFacade.getCarportById(carportId, connectionPool);
         PartFacade.getPartListbyCarportId(carport, connectionPool);
-
-
-
-
 
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         Locale.setDefault(new Locale("US"));
 
-
         int length = carport.getLength();
         int width = carport.getWidth();
-
-
 
         StringBuilder viewbox = new StringBuilder();
         viewbox.append(0);
@@ -70,13 +63,10 @@ public class ToDesign extends HttpServlet
         request.setAttribute("partlist", carport.getPartList());
         request.setAttribute("carport", carport);
 
-
-
+        Customer customer = CustomerFacade.getCustomerById(carportId, connectionPool);
+        request.setAttribute("customer", customer);
 
         request.getRequestDispatcher("WEB-INF/ordredesign.jsp").forward(request, response);
-
-
-
     }
 
 }

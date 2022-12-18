@@ -43,14 +43,14 @@
                 <div class="navbar-nav">
 
                     <c:if test="${sessionScope.user == null }">
-                        <a class="nav-item nav-link whiteText" href="${pageContext.request.contextPath}/login.jsp">Login</a>
+                        <a class="nav-item nav-link whiteText lead" href="${pageContext.request.contextPath}/login.jsp">Login</a>
                     </c:if>
                     <c:if test="${sessionScope.user != null && sessionScope.user.role == 'admin' }">
-                        <a class="nav-item nav-link  whiteText" href="${pageContext.request.contextPath}/tomaterialist">Materialevarer</a>
-                        <a class="nav-item nav-link  whiteText" href="${pageContext.request.contextPath}/tocustomerorders">Kundeordrer</a>
+                        <a class="nav-item nav-link  whiteText lead" href="${pageContext.request.contextPath}/tomaterialist">Materialevarer</a>
+                        <a class="nav-item nav-link  whiteText lead" href="${pageContext.request.contextPath}/tocustomerorders">Kundeordrer</a>
                     </c:if>
                     <c:if test="${sessionScope.user != null }">
-                        <a class="nav-item nav-link whiteText" href="${pageContext.request.contextPath}/logout">Log ud</a>
+                        <a class="nav-item nav-link whiteText lead" href="${pageContext.request.contextPath}/logout">Log ud</a>
                     </c:if>
                 </div>
             </div>

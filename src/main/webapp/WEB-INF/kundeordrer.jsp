@@ -10,7 +10,7 @@
         <div class="container ">
             <div class="display-6 text-center mb-5">Kundeordrer</div>
             <div class="row">
-                <div class="col-1"></div>
+
                 <div class="col">
             <table class="table table-striped ps-5">
                 <thead>
@@ -59,18 +59,18 @@
                                     </button>
                                 </c:if>
                                 <c:if test="${carport.offerStatus == true}">
-                                    <p class="lead greenColor"> Tilbud sendt </p>
+                                    <p class="lead greenColor"><Strong> Tilbud sendt </Strong></p>
                                 </c:if>
                             </form>
                         </td>
 
                         <td class="col">
                             <c:if test="${carport.paymentStatus == false}">
-                                <p class="lead redColor"> Ikke betalt </p>
+                                <p class="lead redColor"><Strong> Ikke betalt </Strong></p>
 
                             </c:if>
                             <c:if test="${carport.paymentStatus == true}">
-                                <p class="lead greenColor"> Betalt </p>
+                                <p class="lead greenColor"><Strong> Betalt </Strong></p>
                             </c:if>
 
                         </td>

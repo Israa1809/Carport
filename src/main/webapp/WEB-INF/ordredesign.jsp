@@ -21,7 +21,8 @@
                 <div class="col">
                     <form action="toeditcarport" method="post">
                         <div class="text-end mt-3 mb-3">
-                            <button type="submit" class="btn btn-primary" name="carportId" value="${carport.carportId}">Rediger carport
+                            <button type="submit" class="btn btn-primary" name="carportId" value="${carport.carportId}">
+                                Rediger carport
                             </button>
                         </div>
                     </form>
@@ -32,19 +33,19 @@
         <div class="row">
             <div class="col-6">
 
-                    <div class="card col-6 mb-4">
-                        <div class="card-body">
-                            Peter Nielsen <br>
+                <div class="card col-6 mb-4">
+                    <div class="card-body">
+                            ${requestScope.customer.customerName} <br>
 
-                            Vejenpåvejen 50 <br>
+                            ${requestScope.customer.address} <br>
 
-                            1234 København <br>
+                            ${requestScope.customer.postalCode} ${requestScope.customer.city} <br>
 
-                            sebastianberry11@gmail.com <br>
+                            ${requestScope.customer.email} <br>
 
-                            12345678 <br>
-                        </div>
+                            ${requestScope.customer.phoneNumber} <br>
                     </div>
+                </div>
 
                     ${requestScope.svgCarport}
             </div>

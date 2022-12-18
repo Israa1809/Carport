@@ -3,38 +3,48 @@
 table {
     border-collapse: collapse;
     border: 1px solid silver;
-    padding:15px;
+    padding: 15px;
 }
 
 th, td {
     border: 1px solid silver;
-    padding:15px;
+    padding: 15px;
 
 }
 
-.redColor{
+.redColor {
     color: red !important;
 
 }
 
-.greenColor{
+.greenColor {
     color: green !important;
 }
 
-.btn-primary{
+.btn-primary {
     background-color: #456594 !important;
 }
 
-.fog-blue{
-     background-color: #456594 !important;
+.fog-blue {
+    background-color: #456594 !important;
 
 }
 
-.whiteText{
+.whiteText {
     color: #ffffff !important;
 }
 
 
-.whiteBg{
-    background-color:  #ffffff !important;
+.whiteBg {
+    background-color: #ffffff !important;
+}
+
+
+.custom-toggler .navbar-toggler-icon {
+    color: white;
+
+}
+
+.lightBlueBg{
+    background-color: rgba(143, 187, 220, 0.58);
 }

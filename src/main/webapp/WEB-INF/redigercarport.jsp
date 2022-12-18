@@ -19,7 +19,7 @@
 
         <form action="editcarportmeasurements" method="post">
 
-            <h3>Vælg mål for din carport</h3>
+            <div class="display-6">Vælg nye mål for carporten</div>
             <div class="row">
                 <div class="col  form-group  mt-2 me-5 ms-0">
                     <select class="form-select" name="length">
@@ -56,11 +56,10 @@
                     <div class="card-body">
                         <table class="table table-striped ps-5">
                             <thead>
-                            <div class="text-center mb-3">
-
+                            <p class="lead text-center mb-3">
                                 Stykliste for carport <b>${requestScope.carport.width} cm
                                 x ${requestScope.carport.length} cm</b>
-                            </div>
+                            </p>
                             </thead>
 
                             <thead>
