@@ -8,7 +8,10 @@
     <jsp:body>
 
         <div class="container ">
-            <div class="display-6 text-center">Kundeordrer</div>
+            <div class="display-6 text-center mb-5">Kundeordrer</div>
+            <div class="row">
+                <div class="col-1"></div>
+                <div class="col">
             <table class="table table-striped ps-5">
                 <thead>
                 <tr>
@@ -78,6 +81,9 @@
                 </tr>
 
             </table>
+
+                <div class="col-1"></div>
+            </div>
         </div>
 
     </jsp:body>

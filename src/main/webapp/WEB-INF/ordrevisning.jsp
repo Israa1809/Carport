@@ -12,6 +12,7 @@
 
             <div class="row">
                 <div class="col-8">
+                    <p class="lead"><strong> Carport set oppefra</strong></p>
                         ${requestScope.svgCarport}
                 </div>
                 <div class="col-4">
@@ -24,19 +25,19 @@
                             </c:if>
                         </div>
                     </div>
+                    <div class="text-end mt-3 mb-3">
+                        <form action="togglepayment" method="post">
+                            <c:if test="${sessionScope.carport.offerStatus == true}">
+                                <button type="submit" class="btn btn-primary" name="carportId" value="${sessionScope.carportId}">Betal
+                                </button>
+                            </c:if>
 
+                        </form>
+                    </div>
                 </div>
             </div>
 
-            <div class="text-end mt-3 mb-3">
-                <form action="togglepayment" method="post">
-                    <c:if test="${sessionScope.carport.offerStatus == true}">
-                        <button type="submit" class="btn btn-primary" name="carportId" value="${sessionScope.carportId}">Betal
-                        </button>
-                    </c:if>
 
-                </form>
-            </div>
 
         </div>
 

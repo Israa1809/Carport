@@ -9,6 +9,7 @@ table {
 th, td {
     border: 1px solid silver;
     padding:15px;
+
 }
 
 .redColor{
@@ -18,8 +19,22 @@ th, td {
 
 .greenColor{
     color: green !important;
+}
+
+.btn-primary{
+    background-color: #456594 !important;
+}
+
+.fog-blue{
+     background-color: #456594 !important;
 
 }
 
+.whiteText{
+    color: #ffffff !important;
+}
 
 
+.whiteBg{
+    background-color:  #ffffff !important;
+}

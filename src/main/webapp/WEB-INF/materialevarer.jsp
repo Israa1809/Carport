@@ -19,7 +19,7 @@
                             <th>Produkt</th>
                             <th>Mængde</th>
                             <th>Pris</th>
-                            <th>til knap</th>
+                            <th></th>
                         </tr>
                         <div class="text-end mt-3 mb-3">
                             <form action="toaddmaterial">
@@ -40,7 +40,7 @@
                                     </td>
 
                                     <td class="col-3">
-                                            ${material.materialPrice}
+                                            ${material.materialPrice}kr.
                                     </td>
 
                                     <td class="col">

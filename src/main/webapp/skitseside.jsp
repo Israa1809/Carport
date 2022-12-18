@@ -12,6 +12,7 @@
 
             <div class="row">
                 <div class="col">
+
                     <form action="calculatecarport">
                         <div class="text-left mt-3 mb-3">
                             <button type="submit" value="recalculate" class="btn btn-primary">Genberegn
@@ -29,14 +30,26 @@
                 </div>
             </div>
         </div>
-        <div class="text-center">
-        ${requestScope.svgCarportSideView}
-        </div>
-        <div class="text-center">
 
-        ${requestScope.svgCarportTopView}
+
+
+        <div class="text-center">
+            <p class="lead"><strong> Carport set fra siden</strong></p>
+            <div class="card mb-5">
+                <div class="card-body">
+                        ${requestScope.svgCarportSideView}
+                </div>
+            </div>
         </div>
 
+        <div class="text-center">
+            <p class="lead"><strong> Carport set oppefra</strong></p>
+            <div class="card">
+                <div class="card-body">
+                        ${requestScope.svgCarportTopView}
+                </div>
+            </div>
+        </div>
 
 
     </jsp:body>

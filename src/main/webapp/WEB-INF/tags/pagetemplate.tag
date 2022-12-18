@@ -18,10 +18,10 @@
 </head>
 <body>
 <header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light fog-blue">
         <div class="container">
             <c:if test="${sessionScope.user == null }">
-            <a class="navbar-brand" href="index.jsp">
+            <a class="navbar-brand " href="index.jsp">
                 <img src="${pageContext.request.contextPath}/images/FOGLogo.jpg" width="120px;" class="img-fluid"/>
             </a>
             </c:if>
@@ -43,14 +43,14 @@
                 <div class="navbar-nav">
 
                     <c:if test="${sessionScope.user == null }">
-                        <a class="nav-item nav-link" href="${pageContext.request.contextPath}/login.jsp">Login</a>
+                        <a class="nav-item nav-link whiteText" href="${pageContext.request.contextPath}/login.jsp">Login</a>
                     </c:if>
                     <c:if test="${sessionScope.user != null && sessionScope.user.role == 'admin' }">
-                        <a class="nav-item nav-link" href="${pageContext.request.contextPath}/tomaterialist">Materialevarer</a>
-                        <a class="nav-item nav-link" href="${pageContext.request.contextPath}/tocustomerorders">Kundeordrer</a>
+                        <a class="nav-item nav-link  whiteText" href="${pageContext.request.contextPath}/tomaterialist">Materialevarer</a>
+                        <a class="nav-item nav-link  whiteText" href="${pageContext.request.contextPath}/tocustomerorders">Kundeordrer</a>
                     </c:if>
                     <c:if test="${sessionScope.user != null }">
-                        <a class="nav-item nav-link" href="${pageContext.request.contextPath}/logout">Log ud</a>
+                        <a class="nav-item nav-link whiteText" href="${pageContext.request.contextPath}/logout">Log ud</a>
                     </c:if>
                 </div>
             </div>

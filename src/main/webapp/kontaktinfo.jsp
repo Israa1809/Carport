@@ -7,7 +7,7 @@
 
     <jsp:body>
 
-        <h1>Skriv dine kontakt oplysninger</h1>
+        <div class="display-6 mb-5">Skriv dine kontakt oplysninger</div>
 
 
         <form action="requestcarportoffer" method="post">
