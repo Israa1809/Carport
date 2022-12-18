@@ -118,9 +118,10 @@ public class Calculator {
         return poleQuantity * 2;
     }
 
+
     public static int calcFasciaScrews(int fasciaLength) {
-        return ((fasciaLength/100)+1)*2;    //400cm / 100 = 4 + 1 = 5 * 2 = 10
-    } //Vi har vedtaget at der ved over- og understern bruges 2 skruer per meter
+        return ((fasciaLength/55)+1)*2;    //400cm / 100 = 4 + 1 = 5 * 2 = 10
+    } //Vi har vedtaget at der ved over- og understern bruges 2 skruer per pr spær interval
 
     public static double calcPerforatedTapeInCM(int carportLength, int carportWidth) {
         int tempCaportLength = carportLength - 160;
@@ -129,5 +130,42 @@ public class Calculator {
         double hypotenuse = Math.sqrt((tempCaportLength * tempCaportLength) + (tempCaportWidth * tempCaportWidth));
 
         return hypotenuse;
+    }
+
+    public static int calcRoof(int carportLength, int carportWidth, int materialLength){
+        double materialWidth = 109.0;
+
+        double devider = (carportLength / materialWidth) - 1;
+
+        if (devider % 1 > 0) {
+            devider = devider + 1;
+        }
+
+        int tempCarportLength = carportLength + (20*(int) devider);
+
+        double numberOfMaterialPRCarportLength = tempCarportLength / materialWidth;
+
+        if (numberOfMaterialPRCarportLength % 1 > 0) {
+            numberOfMaterialPRCarportLength = numberOfMaterialPRCarportLength + 1;
+        }
+
+        if(carportWidth > materialLength){
+
+            float widthDevider = ((float)carportWidth / (float)materialLength) - 1;
+
+            if (widthDevider % 1 > 0) {
+                widthDevider = widthDevider + 1;
+            }
+
+            int tempCarportWidth = carportWidth + (20*(int) widthDevider);
+
+            int numberOfMaterialPRCarportWidth = (tempCarportWidth / materialLength) + 1;
+
+            return numberOfMaterialPRCarportWidth * (int)numberOfMaterialPRCarportLength;
+        }
+
+        return (int)numberOfMaterialPRCarportLength;
+
+
     }
 }
