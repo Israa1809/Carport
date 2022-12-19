@@ -132,6 +132,8 @@ public class Calculator {
         return hypotenuse;
     }
 
+
+
     public static int calcRoof(int carportLength, int carportWidth, int materialLength){
         double materialWidth = 109.0;
 
@@ -168,4 +170,11 @@ public class Calculator {
 
 
     }
+
+    public static int calcRoofScrews(int carportLength, int carportWidth){
+        return ((carportLength  / 100 ) * (carportWidth  / 100)) * 12;
+    }
+
+
+
 }
