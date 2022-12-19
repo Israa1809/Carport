@@ -22,7 +22,7 @@
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label class="mb-2 mt-2" for="inputZip">Post Nr</label>
-                        <input type="text" class="form-control" id="inputZip" name="zipcode" required>
+                        <input type="number" class="form-control" id="inputZip" name="zipcode" required>
                     </div>
                     <div class="form-group col-md-6">
                         <label class="mb-2 mt-2" for="inputCity">By</label>

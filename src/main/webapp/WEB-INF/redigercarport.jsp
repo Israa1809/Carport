@@ -105,7 +105,7 @@
                             <p class="text-center">
                                 Ønsker du at redigere rådgivningshonoraret, så indtast den nye pris her:
                                 <br>
-                                <input class="text-center mt-3" style="font-weight: bold;" type="text" id="feePrice"
+                                <input class="text-center mt-3" style="font-weight: bold;" type="number" id="feePrice"
                                        name="feePrice" value="${requestScope.carport.feePrice}"
                                        minlength="4"
                                        maxlength="8" size="10">
