@@ -49,8 +49,6 @@ public class CarportBuilder {
         Part perforatedTapePart = addPerforatedTape(carport.getLength(), carport.getWidth(), materialList);
         carport.addPartFirstTime(perforatedTapePart);
 
-        System.out.println(Calculator.calcRoof(780, 620, 600));
-
         return carport;
     }
 
