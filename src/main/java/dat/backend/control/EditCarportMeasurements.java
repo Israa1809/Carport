@@ -31,29 +31,45 @@ public class EditCarportMeasurements extends HttpServlet {
         int carportId = Integer.parseInt(request.getParameter("carportId"));
         Carport carport = CarportFacade.getCarportById(carportId, connectionPool);
 
-        HttpSession session = request.getSession();
-        int length = Integer.parseInt(request.getParameter("length"));
-        int width = Integer.parseInt(request.getParameter("width"));
-
-        ArrayList<Material> materialArrayList = MaterialFacade.getMaterials(connectionPool);
-        session.setAttribute("materialArrayList", materialArrayList);
-
-        Carport editedCarport = CarportBuilder.buildCarport(new Carport(length, width), materialArrayList);
-        editedCarport.setCarportId(carport.getCarportId());
-        PartFacade.deletePartListByCarportID(carport.getCarportId(), connectionPool);
-
-        carport.setPartList(editedCarport.getPartList());
-        PartFacade.updatePartList(carport, connectionPool);
-        CarportFacade.updateCarportInfo(editedCarport, connectionPool);
-
-        carport = CarportFacade.getCarportById(carportId, connectionPool);
-
         PartFacade.getPartListbyCarportId(carport, connectionPool);
         request.setAttribute("partList", carport.getPartList());
-
         request.setAttribute("carport", carport);
 
-        request.getRequestDispatcher("WEB-INF/redigercarport.jsp").forward(request, response);
+
+        try {
+            if(request.getParameter("length") != null || request.getParameter("width") != null) {
+
+                HttpSession session = request.getSession();
+                int length = Integer.parseInt(request.getParameter("length"));
+                int width = Integer.parseInt(request.getParameter("width"));
+
+                ArrayList<Material> materialArrayList = MaterialFacade.getMaterials(connectionPool);
+                session.setAttribute("materialArrayList", materialArrayList);
+
+                Carport editedCarport = CarportBuilder.buildCarport(new Carport(length, width), materialArrayList);
+                editedCarport.setCarportId(carport.getCarportId());
+                PartFacade.deletePartListByCarportID(carport.getCarportId(), connectionPool);
+
+                carport.setPartList(editedCarport.getPartList());
+                PartFacade.updatePartList(carport, connectionPool);
+                CarportFacade.updateCarportInfo(editedCarport, connectionPool);
+
+                carport = CarportFacade.getCarportById(carportId, connectionPool);
+
+                PartFacade.getPartListbyCarportId(carport, connectionPool);
+                request.setAttribute("partList", carport.getPartList());
+
+                request.setAttribute("carport", carport);
+
+                request.getRequestDispatcher("WEB-INF/redigercarport.jsp").forward(request, response);
+
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            String errormessage = "Husk at vælge både længde og bredde";
+            request.setAttribute("errormessage", errormessage);
+            request.getRequestDispatcher("WEB-INF/redigercarport.jsp").forward(request, response);
+        }
 
     }
 }

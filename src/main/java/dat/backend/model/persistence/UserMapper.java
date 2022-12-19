@@ -30,7 +30,7 @@ class UserMapper
                     user = new User(username, password, role);
                 } else
                 {
-                    throw new DatabaseException("Wrong username or password");
+                    throw new DatabaseException("Forkert brugernavn eller adgangskode. Prøv igen!");
                 }
             }
         } catch (SQLException ex)

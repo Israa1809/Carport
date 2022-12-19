@@ -19,7 +19,7 @@
 
         <form action="editcarportmeasurements" method="post">
 
-            <div class="display-6">Vælg nye mål for carporten</div>
+            <h3>Vælg nye mål for carporten</h3>
             <div class="row">
                 <div class="col  form-group  mt-2 me-5 ms-0">
                     <select class="form-select" name="length">
@@ -46,7 +46,11 @@
                                 value="${carport.carportId}">Opdater carportdesign
                         </button>
                     </div>
+                    <p class="mt-3"><small>
+                            ${requestScope.errormessage}
+                    </small></p>
                 </div>
+
             </div>
         </form>
 

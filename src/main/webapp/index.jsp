@@ -58,6 +58,9 @@
                                 <button type="submit" value="calculate" class="btn btn-primary">Beregn
                                 </button>
                             </div>
+                            <p class="text-end mt-3"><small>
+                                    ${requestScope.errormessage}
+                            </small></p>
 
 
                         </div>
