@@ -4,26 +4,23 @@
 <%@page errorPage="../error.jsp" isErrorPage="false" %>
 
 <t:pagetemplate>
-
     <jsp:body>
         <form action="addmaterial" method="post">
-        <div class="container ">
-            <div class="display-6 text-center">Tilføj materiale</div>
-
-            <div class="row">
-
-                <div class="col-2"></div>
-                <div class="col-8">
-                    <table class="table table-striped ps-5">
-                        <thead>
-                        <tr>
-                            <th>Produkt</th>
-                            <th>Mængde</th>
-                            <th>Enhed</th>
-                            <th>Produktvariant</th>
-                            <th>Pris</th>
-                        </tr>
-                        </thead>
+            <div class="container ">
+                <div class="display-6 text-center">Tilføj materiale</div>
+                <div class="row">
+                    <div class="col-2"></div>
+                    <div class="col-8">
+                        <table class="table table-striped ps-5">
+                            <thead>
+                            <tr>
+                                <th>Produkt</th>
+                                <th>Mængde</th>
+                                <th>Enhed</th>
+                                <th>Produktvariant</th>
+                                <th>Pris</th>
+                            </tr>
+                            </thead>
                             <tr>
                                 <div class="row">
                                     <td class="col-3">
@@ -45,30 +42,17 @@
                                     <td class="col-2">
                                         <input type="text" class="form-control" name="price">
                                     </td>
-
-
                                 </div>
-
                             </tr>
-
-
-
-                    </table>
-                    <div class="text-end mt-3 mb-3">
+                        </table>
+                        <div class="text-end mt-3 mb-3">
                             <button type="submit" class="btn btn-primary">Opret
                             </button>
+                        </div>
                     </div>
-
+                    <div class="col-2"></div>
                 </div>
-
-
-                <div class="col-2"></div>
-
             </div>
-
-
-        </div>
         </form>
     </jsp:body>
-
 </t:pagetemplate>

@@ -30,7 +30,6 @@
                                 value="${sessionScope.carportId}">Betal
                         </button>
                     </c:if>
-
                 </form>
             </div>
         </div>
@@ -40,8 +39,6 @@
                     ${requestScope.svgCarportTopView}
             </div>
         </div>
-
-
     </jsp:body>
 
 </t:pagetemplate>

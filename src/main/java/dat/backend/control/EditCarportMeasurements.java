@@ -35,7 +35,6 @@ public class EditCarportMeasurements extends HttpServlet {
         request.setAttribute("partList", carport.getPartList());
         request.setAttribute("carport", carport);
 
-
         try {
             if(request.getParameter("length") != null || request.getParameter("width") != null) {
 

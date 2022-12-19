@@ -112,18 +112,12 @@ public class Login extends HttpServlet
             svgCarportSideArrows = CarportSVG.addArrowSide(svgCarportSideArrows, length, width);
             request.setAttribute("svgCarportSideView", svgCarportSideArrows);
 
-
-
-
-
 //            float totalCarportPrice = carport.getMaterialFullPrice()+carport.getFeePrice();
 //            session.setAttribute("totalCarportPrice", totalCarportPrice);
 
             PartFacade.getPartListbyCarportId(carport, connectionPool);
             session.setAttribute("partList", carport.getPartList());
             session.setAttribute("carport", carport);
-
-
 
             request.getRequestDispatcher("WEB-INF/ordrevisning.jsp").forward(request, response);
         }

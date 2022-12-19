@@ -8,9 +8,7 @@
     <jsp:body>
         <div class="container ">
             <div class="display-6 text-center">Materialeliste</div>
-
             <div class="row">
-
                 <div class="col-2"></div>
                 <div class="col-8">
                     <table class="table table-striped ps-5">
@@ -34,15 +32,12 @@
                                     <td class="col-3">
                                             ${material.materialName}
                                     </td>
-
                                     <td class="col-3">
                                             ${material.materialQuantity}${material.unitType}
                                     </td>
-
                                     <td class="col-3">
                                             ${material.materialPrice}kr.
                                     </td>
-
                                     <td class="col">
                                         <form action="deletematerial" method="post">
                                             <button type="submit" value="${material.materialId}" class="btn btn-primary"
@@ -50,14 +45,9 @@
                                             </button>
                                         </form>
                                     </td>
-
-
                                 </div>
-
                             </tr>
                         </c:forEach>
-
-
                     </table>
                     <div class="text-end mt-3 mb-3">
                         <form action="toaddmaterial">
@@ -67,15 +57,9 @@
                     </div>
 
                 </div>
-
-
                 <div class="col-2"></div>
-
             </div>
-
-
         </div>
-
     </jsp:body>
 
 </t:pagetemplate>

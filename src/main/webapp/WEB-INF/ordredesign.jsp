@@ -8,7 +8,6 @@
     <jsp:body>
         <div class="container ">
             <div class="display-6 text-center">Ordredesign</div>
-
             <div class="row">
                 <div class="col">
                     <form action="tocustomerorders">
@@ -87,12 +86,8 @@
                 </table>
                 <p class="lead text-end"> I alt ${requestScope.carport.carportFullPrice} kr.</p>
             </div>
-
         </div>
-
-
         </div>
-
     </jsp:body>
 
 </t:pagetemplate>

@@ -7,18 +7,14 @@
 
     <jsp:body>
         <div class="container ">
-
         <form action="tocustomerorders">
             <div class="text-left mt-3 mb-3">
                 <button type="submit" class="btn btn-primary">Tilbage
                 </button>
             </div>
         </form>
-
         <div class="display-6 text-center mb-5">Rediger carport</div>
-
         <form action="editcarportmeasurements" method="post">
-
             <h3>Vælg nye mål for carporten</h3>
             <div class="row">
                 <div class="col  form-group  mt-2 me-5 ms-0">
@@ -50,10 +46,8 @@
                             ${requestScope.errormessage}
                     </small></p>
                 </div>
-
             </div>
         </form>
-
         <div class="row">
             <div class="col-sm-6">
                 <div class="card" style="border: none">
@@ -99,7 +93,6 @@
                                         ${requestScope.carport.materialFullPrice}kr
                                 </td>
                             </div>
-
                         </table>
                     </div>
                 </div>
@@ -110,42 +103,34 @@
                         <hr>
                         <form action="editfeeprice" method="post">
                             <p class="text-center">
-                            Ønsker du at redigere rådgivningshonoraret, så indtast den nye pris her:
-                            <br>
-
-                            <input class="text-center mt-3" style="font-weight: bold;" type="text" id="feePrice" name="feePrice" value="${requestScope.carport.feePrice}"
-                                   minlength="4"
-                                   maxlength="8" size="10">
-                            <input type="hidden" id="carportId" name="carportId" value="${carport.carportId}">
+                                Ønsker du at redigere rådgivningshonoraret, så indtast den nye pris her:
+                                <br>
+                                <input class="text-center mt-3" style="font-weight: bold;" type="text" id="feePrice"
+                                       name="feePrice" value="${requestScope.carport.feePrice}"
+                                       minlength="4"
+                                       maxlength="8" size="10">
+                                <input type="hidden" id="carportId" name="carportId" value="${carport.carportId}">
                             </p>
-
-
                             <div class="text-center mt-3 mb-3">
                                 <button type="submit" class="btn btn-primary" name="feePrice" value="feePrice">Opdater
                                     honorarpris
                                 </button>
                             </div>
-
                             <p class="text-center">
                                 Samlet materialepris: <b>I alt ${requestScope.carport.materialFullPrice} kr.</b>
                             </p>
-
-
                             <p class="text-center">
-                            Rådgivningshonorar: <b>I alt ${requestScope.carport.feePrice} kr.</b>
+                                Rådgivningshonorar: <b>I alt ${requestScope.carport.feePrice} kr.</b>
                             </p>
                             <hr>
                             <p class="text-center">
-                            SAMLET PRIS: <b>I alt ${requestScope.carport.carportFullPrice} kr.</b>
+                                SAMLET PRIS: <b>I alt ${requestScope.carport.carportFullPrice} kr.</b>
                             </p>
-
                         </form>
                     </div>
                 </div>
             </div>
         </div>
-
-
     </jsp:body>
 
 </t:pagetemplate>

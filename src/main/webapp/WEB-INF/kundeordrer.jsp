@@ -4,13 +4,10 @@
 <%@page errorPage="../error.jsp" isErrorPage="false" %>
 
 <t:pagetemplate>
-
     <jsp:body>
-
         <div class="container ">
             <div class="display-6 text-center mb-5">Kundeordrer</div>
             <div class="row">
-
                 <div class="col">
             <table class="table table-striped ps-5">
                 <thead>
@@ -22,7 +19,6 @@
                     <th>Tilbud</th>
                     <th>Status</th>
                 </tr>
-
                 </thead>
                 <c:forEach var="carport" items="${sessionScope.carportList}">
                 <tr>
@@ -87,5 +83,4 @@
         </div>
 
     </jsp:body>
-
 </t:pagetemplate>
