@@ -47,7 +47,7 @@
                     </div>
                 </div>
 
-                    ${requestScope.svgCarport}
+                    ${requestScope.svgCarportTopView}
             </div>
 
 

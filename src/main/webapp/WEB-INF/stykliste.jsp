@@ -23,6 +23,7 @@
 
                     </div>
 
+
                 </div>
                 <div class="col">
 
@@ -62,7 +63,6 @@
                     <p class="lead text-end"><strong>I alt: ${sessionScope.carport.carportFullPrice} kr.</strong></p>
                 </div>
             </div>
-            <div class="col"></div>
 
         </div>
 
