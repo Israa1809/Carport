@@ -49,8 +49,21 @@ public class CarportBuilder {
         Part perforatedTapePart = addPerforatedTape(carport.getLength(), carport.getWidth(), materialList);
         carport.addPartFirstTime(perforatedTapePart);
 
+//        Part perforatedTapePartScrews = addPerforatedTapeScrews(perforatedTapePart.getPartQuantity(), materialList);
+//        carport.addPartFirstTime(perforatedTapePartScrews);
+
+
+        //Roof
+        Part roofPart = addRoofPlates(carport.getLength(), carport.getWidth(), materialList);
+        carport.addPartFirstTime(roofPart);
+
+        Part roofScrews = addRoofScrews(carport.getLength(), carport.getWidth(), materialList);
+        carport.addPartFirstTime(roofScrews);
+
         return carport;
     }
+
+
 
 
     public static Part addBeams(int carportLength, int carportWidth, ArrayList<Material> materialList) {
@@ -328,6 +341,95 @@ public class CarportBuilder {
         Part perforatedTapePart = new Part(finalMaterial, intPartQuantity);
         return perforatedTapePart;
     }
+
+
+    private static Part addPerforatedTapeScrews(int perforatedTapeQuantity, ArrayList<Material> materialList) {
+
+        Material finalMaterial = null;
+
+        for (Material material : materialList) {
+            if (material.getProductVariant().contains("hulbånd") && material.getUnitType().contains("stk") && material.getMaterialName().contains("skrue")) {
+                finalMaterial = material;
+            }
+        }
+
+        int partQuantity = 4 * perforatedTapeQuantity;
+
+        float devider = (float) partQuantity / finalMaterial.getMaterialQuantity();
+
+        partQuantity = (int) devider;
+        if (devider % 1 > 0) {
+            partQuantity = partQuantity + 1;
+        }
+
+        Part perforatedTapeScrews = new Part(finalMaterial, partQuantity);
+        return perforatedTapeScrews;
+    }
+
+
+
+    public static Part addRoofPlates(int carportLength, int carportWidth, ArrayList<Material> materialList) {
+
+        Material finalMaterial = null;
+
+        for (Material material : materialList) {
+
+            // case 1: der findes et materiale der overstiger det ønskede mål
+            if (material.getProductVariant().contains("trapetz") && material.getUnitType().contains("cm")) {
+                if (finalMaterial == null) {
+                    finalMaterial = material;
+
+                } else if (material.getMaterialQuantity() % carportWidth < finalMaterial.getMaterialQuantity() % carportWidth) {    //tjekker hvilket mål der ligger tættest på det ønskede mål, og hvis det "nye" materiale er mere optimalt, erstattes finalMaterial med det "nye" material
+                    finalMaterial = material;
+                }
+            }
+
+            // case 2: der findes IKKE et materiale der overstiger det ønskede mål OG der findes et materiale der kan dække halvdelen af det ønskede mål
+            if (material.getProductVariant().contains("trapetz") && material.getUnitType().contains("cm") && material.getMaterialQuantity() < carportWidth) {
+
+                if (finalMaterial == null) {
+                    finalMaterial = material;
+
+                } else if (Calculator.calcRoof(carportLength, carportWidth, material.getMaterialQuantity()) < Calculator.calcRoof(carportLength, carportWidth, finalMaterial.getMaterialQuantity())) {
+                    finalMaterial = material;
+                }
+            }
+
+
+        }
+
+        int partQuantity = Calculator.calcRoof(carportLength, carportWidth, finalMaterial.getMaterialQuantity());
+
+        Part trapezRoofPlate= new Part(finalMaterial, partQuantity);
+        return trapezRoofPlate;
+    }
+
+    public static Part addRoofScrews(int carportLength, int carportWidth, ArrayList<Material> materialList){
+        Material finalMaterial = null;
+
+        for (Material material : materialList) {
+            if (material.getProductVariant().contains("trapetz") && material.getUnitType().contains("stk")) {
+                finalMaterial = material;
+            }
+        }
+
+        int partQuantity = Calculator.calcRoofScrews(carportLength, carportWidth);
+
+        float devider = (float) partQuantity / finalMaterial.getMaterialQuantity();
+
+        partQuantity = (int) devider;
+        if (devider % 1 > 0) {
+            partQuantity = partQuantity + 1;
+        }
+
+        Part trapezRoofScrews= new Part(finalMaterial, partQuantity);
+        return trapezRoofScrews;
+
+    }
+
+
+
+
 
 }
 
