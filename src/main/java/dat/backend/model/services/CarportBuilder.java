@@ -375,7 +375,7 @@ public class CarportBuilder {
         for (Material material : materialList) {
 
             // der findes et materiale der overstiger det ønskede mål
-            if (material.getProductVariant().contains("trapetz") && material.getUnitType().contains("cm")) {
+            if (material.getProductVariant().contains("trapetz") && material.getUnitType().contains("cm") && material.getMaterialQuantity() >= carportWidth) {
                 if (finalMaterial == null) {
                     finalMaterial = material;
 
