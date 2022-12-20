@@ -10,7 +10,7 @@
 
 
             <div class="row">
-                <div class="display-6 mb-5"> Skrædersy din carport ud fra dine egne mål</div>
+                <div class="display-6 mb-5"> Skræddersy din carport ud fra dine egne mål</div>
                 <div class="col-6">
                     <div class="card">
                         <div class="card-body lightBlueBg">

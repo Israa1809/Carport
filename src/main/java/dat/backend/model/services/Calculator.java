@@ -4,9 +4,18 @@ public class Calculator {
 
     public static int calcPoles(int carportLength, int carportWidth) {     //'poles' er 'stolper' på dansk
 
-        float lengthInterval = 310f; //vi har besluttet at længde og bredde måles i cm, og vi antager at hvis længden overstiger 310 cm skal der indsættes en ekstra stolpe
-        float widthInterval = 530f; //vi har besluttet at længde og bredde måles i cm, og vi antager at hvis bredden overstiger 530 cm skal der indsættes en ekstra stolpe
+        // alle de følgende antagelser er baseret på en skitse af en standard carport på 780 cm x 600 cm udleveret af Fog
+
+        // vi har besluttet at længde er det man også ville kalde dybden på carporten, når man står ved indgangen hvor bilen kan køre ind. I eksemplet er det 7,8 m
+        // vi har besluttet at bredden er målet fra højre til venstre, når man står ved indgangen hvor bilen kan køre ind. I eksemplet er det 6,0 m
+
+        // vi har besluttet at længde og bredde måles i cm, og vi antager at hvis længden overstiger 310 cm skal der indsættes en ekstra stolpe
+        float lengthInterval = 310f;
+        // vi har besluttet at længde og bredde måles i cm, og vi antager at hvis bredden overstiger 530 cm skal der indsættes en ekstra stolpe
+        float widthInterval = 530f;
+        // vi har besluttet at der lægges 100 cm til foran på carporten samt 60 cm ved bagenden af carporten
         int lengthStandOff = 160;
+        // vi har besluttet at der lægges 35 cm til i hver side af carporten
         int widthStandOff = 70;
         int resLength;
         int resWidth;
@@ -14,7 +23,10 @@ public class Calculator {
         float lengthDiv = (carportLength-lengthStandOff)/lengthInterval;
         float widthDiv = (carportWidth-widthStandOff)/widthInterval;
 
+        // der tilføjes en ekstra stolpe efter længden er divideret med intervallet, da den forrige linje udregner antallet af mellemrum, ikke antallet af stolper
+        // og der skal dermed sættes en stolpe efter sidste mellemrum
         resLength = (int) lengthDiv + 1;
+        // hvis der var en rest da carportens længde blev divideret med det givne interval, skal der tilføjes en ekstra stolpe, så intervallet ikke overstiges
         if(lengthDiv%1 > 0){
             resLength = resLength + 1;
         }
