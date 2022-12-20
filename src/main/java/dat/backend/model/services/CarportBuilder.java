@@ -72,7 +72,7 @@ public class CarportBuilder {
 
         for (Material material : materialList) {
 
-            // case 1: der findes et materiale der overstiger det ønskede mål
+            // der findes et materiale der overstiger det ønskede mål
             if (material.getProductVariant().contains("spær") && material.getUnitType().contains("cm") && material.getMaterialQuantity() >= carportWidth) {
 
                 if (finalMaterial == null) {
@@ -83,7 +83,7 @@ public class CarportBuilder {
                 }
             }
 
-            // case 2: der findes IKKE et materiale der overstiger det ønskede mål OG der findes et materiale der kan dække halvdelen af det ønskede mål
+            // der findes IKKE et materiale der overstiger det ønskede mål OG der findes et materiale der kan dække halvdelen af det ønskede mål
             if (material.getProductVariant().contains("spær") && material.getUnitType().contains("cm") && material.getMaterialQuantity() < carportWidth) {
 
                 if (finalMaterial == null) {
@@ -108,7 +108,7 @@ public class CarportBuilder {
 
         for (Material material : materialList) {
 
-            // case 1: der findes et materiale der overstiger det ønskede mål
+            // der findes et materiale der overstiger det ønskede mål
             if (material.getProductVariant().contains("rem") && material.getUnitType().contains("cm") && material.getMaterialQuantity() >= carportWidth) {
 
                 if (finalMaterial == null) {
@@ -119,7 +119,7 @@ public class CarportBuilder {
                 }
             }
 
-            // case 2: der findes IKKE et materiale der overstiger det ønskede mål OG der findes et materiale der kan dække halvdelen af det ønskede mål
+            // der findes IKKE et materiale der overstiger det ønskede mål OG der findes et materiale der kan dække halvdelen af det ønskede mål
             if (material.getProductVariant().contains("rem") && material.getUnitType().contains("cm") && material.getMaterialQuantity() < carportWidth) {
 
                 if (finalMaterial == null) {
@@ -144,7 +144,7 @@ public class CarportBuilder {
 
         for (Material material : materialList) {
 
-            // case 1: der findes et materiale der overstiger det ønskede mål
+            // der findes et materiale der overstiger det ønskede mål
             if (material.getProductVariant().contains(fasciaType) && material.getUnitType().contains("cm") && material.getMaterialQuantity() >= carportWidth) {
 
                 if (finalMaterial == null) {
@@ -155,7 +155,7 @@ public class CarportBuilder {
                 }
             }
 
-            // case 2: der findes IKKE et materiale der overstiger det ønskede mål OG der findes et materiale der kan dække halvdelen af det ønskede mål
+            // der findes IKKE et materiale der overstiger det ønskede mål OG der findes et materiale der kan dække halvdelen af det ønskede mål
             if (material.getProductVariant().contains(fasciaType) && material.getUnitType().contains("cm") && material.getMaterialQuantity() < carportWidth) {
 
                 if (finalMaterial == null) {
@@ -181,7 +181,7 @@ public class CarportBuilder {
 
         for (Material material : materialList) {
 
-            // case 1: der findes et materiale der overstiger det ønskede mål
+            // der findes kun et materiale der overstiger det ønskede mål
             if (material.getProductVariant().contains("stolpe") && material.getUnitType().contains("cm") && material.getMaterialQuantity() >= carportHeight) {
 
                 if (finalMaterial == null) {
@@ -374,7 +374,7 @@ public class CarportBuilder {
 
         for (Material material : materialList) {
 
-            // case 1: der findes et materiale der overstiger det ønskede mål
+            // der findes et materiale der overstiger det ønskede mål
             if (material.getProductVariant().contains("trapetz") && material.getUnitType().contains("cm")) {
                 if (finalMaterial == null) {
                     finalMaterial = material;
@@ -384,7 +384,7 @@ public class CarportBuilder {
                 }
             }
 
-            // case 2: der findes IKKE et materiale der overstiger det ønskede mål OG der findes et materiale der kan dække halvdelen af det ønskede mål
+            // der findes IKKE et materiale der overstiger det ønskede mål OG der findes et materiale der kan dække halvdelen af det ønskede mål
             if (material.getProductVariant().contains("trapetz") && material.getUnitType().contains("cm") && material.getMaterialQuantity() < carportWidth) {
 
                 if (finalMaterial == null) {
@@ -426,10 +426,6 @@ public class CarportBuilder {
         return trapezRoofScrews;
 
     }
-
-
-
-
 
 }
 
