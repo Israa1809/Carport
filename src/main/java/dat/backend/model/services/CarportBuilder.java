@@ -81,6 +81,7 @@ public class CarportBuilder {
                 } else if (material.getMaterialQuantity() % carportWidth < finalMaterial.getMaterialQuantity() % carportWidth) {    //tjekker hvilket mål der ligger tættest på det ønskede mål, og hvis det "nye" materiale er mere optimalt, erstattes finalMaterial med det "nye" material
                     finalMaterial = material;
                 }
+
             }
 
             // der findes IKKE et materiale der overstiger det ønskede mål OG der findes et materiale der kan dække halvdelen af det ønskede mål
@@ -375,7 +376,7 @@ public class CarportBuilder {
         for (Material material : materialList) {
 
             // der findes et materiale der overstiger det ønskede mål
-            if (material.getProductVariant().contains("trapetz") && material.getUnitType().contains("cm")) {
+            if (material.getProductVariant().contains("trapetz") && material.getUnitType().contains("cm") && material.getMaterialQuantity() >= carportWidth) {
                 if (finalMaterial == null) {
                     finalMaterial = material;
 
