@@ -1,0 +1,36 @@
+@startuml
+Title Carport
+|Kunde|
+start
+:Gå til website;
+|#antiqueWhite|Website|
+:Vælg længde * brede;
+
+|Kunde|
+:Godkend;
+|Website|
+:Indtast kundeoplysninger;
+|Kunde|
+:Bestil tilbud;
+|Website|
+:Gem ordre;
+:Lav kvittering;
+|Admin|
+:Login i seperat program;
+|#antiqueWhite|Admin Program|
+:Indtast kundes carport størrelse;
+:Vælg Skur ønske;
+:Generer stykliste;
+:Bestem pris;
+:Vis tegning;
+|Admin|
+:Kontakt kunde;
+|Kunde|
+:Betal;
+|Kunde|
+:Stykliste]
+|Admin|
+:Udlevering af materialer;
+
+stop
+@enduml

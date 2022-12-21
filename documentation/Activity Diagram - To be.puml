@@ -1,0 +1,41 @@
+@startuml
+Title Carport
+|Kunde|
+start
+:Gå til website;
+repeat
+|#antiqueWhite|Website|
+:Vælg længde * brede;
+:Ser carport skitser;
+repeat while (godkendt carport mål) is (no)
+->yes;
+|Kunde|
+:Godkend;
+|Website|
+:Indtast kundeoplysninger;
+|Kunde|
+:Bestil tilbud;
+|Website|
+:Gem ordre;
+:Lav kvittering;
+|Admin|
+:Login;
+|Website|
+:Se Design;
+|Admin|
+:Kontakt kunde;
+|Website|
+:Godkend eller rediger;
+:Send tilbud;
+|Kunde|
+:Login;
+:Betal;
+|Website|
+:Lav Stykliste;
+|Kunde|
+:Stykliste]
+|Admin|
+:Udlevering af materialer;
+
+stop
+@enduml
