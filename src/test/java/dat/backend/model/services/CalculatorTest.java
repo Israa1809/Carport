@@ -123,4 +123,45 @@ class CalculatorTest {
 
     }
 
+    @Test
+    void calcShedPoles() {             // stolper til skur
+
+        int expected = 0;
+        int actual = Calculator.calcShedPoles(780, 600);
+
+        assertEquals(expected, actual);
+
+    }
+
+    @Test
+    void calcShedFrame() {             // ramme til skur
+
+        int expected = 0;
+        int actual = Calculator.calcShedFrame(780, 600);
+
+        assertEquals(expected, actual);
+
+    }
+
+    @Test
+    void calcShedCladding() {             // beklædning til skur
+
+        int expected = 0;
+        int actual = Calculator.calcShedCladding(780, 600);
+
+        assertEquals(expected, actual);
+
+    }
+
+    @Test
+    void calcShedDoorZ() {             // Z til dør på skur
+
+        int expected = 0;
+        int actual = Calculator.calcShedDoorZ(600);
+
+        assertEquals(expected, actual);
+
+    }
+
+
 }

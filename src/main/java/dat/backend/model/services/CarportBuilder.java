@@ -46,6 +46,7 @@ public class CarportBuilder {
         carport.addPartFirstTime(fasciaScrewsPart);
 
         //Perforated Tape
+
         Part perforatedTapePart = addPerforatedTape(carport.getLength(), carport.getWidth(), materialList);
         carport.addPartFirstTime(perforatedTapePart);
 
@@ -59,6 +60,9 @@ public class CarportBuilder {
 
         Part roofScrews = addRoofScrews(carport.getLength(), carport.getWidth(), materialList);
         carport.addPartFirstTime(roofScrews);
+
+
+        // Skur - har ikke calc til t-hængsler og stalddørsgreb - skal bare add'es her
 
         return carport;
     }

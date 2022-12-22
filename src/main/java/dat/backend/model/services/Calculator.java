@@ -130,7 +130,6 @@ public class Calculator {
         return poleQuantity * 2;
     }
 
-
     public static int calcFasciaScrews(int fasciaLength) {
         return ((fasciaLength/55)+1)*2;    //400cm / 100 = 4 + 1 = 5 * 2 = 10
     } //Vi har vedtaget at der ved over- og understern bruges 2 skruer per pr spær interval
@@ -143,8 +142,6 @@ public class Calculator {
 
         return hypotenuse;
     }
-
-
 
     public static int calcRoof(int carportLength, int carportWidth, int materialLength){
         double materialWidth = 109.0;
@@ -188,5 +185,32 @@ public class Calculator {
     }
 
 
+    public static int calcShedPoles(int carportWidth, int materialLength){
+        int shedHeight = 210;
+        int quantity = 0;
+        return quantity;
+    }
+
+    public static int calcShedFrame(int carportWidth, int materialLength){
+        int doorWidth = 80;
+        int shedLength = 210;
+        int quantity = 0;
+        int carportFrame = 0;
+        int frameQuantity = quantity * 3 - carportFrame;
+        return frameQuantity;
+    }
+
+    public static int calcShedCladding(int carportWidth, int materialLength){
+        int shedLength = 210;
+        int quantity = 0;
+        return quantity;
+    }
+
+    public static int calcShedDoorZ(int materialLength){
+        int doorHeight = 180;
+        int doorWidth = 80;
+        int quantity = 0;
+        return quantity;
+    }
 
 }
