@@ -20,19 +20,19 @@ public class Calculator {
         int resLength;
         int resWidth;
 
-        float lengthDiv = (carportLength-lengthStandOff)/lengthInterval;
-        float widthDiv = (carportWidth-widthStandOff)/widthInterval;
+        float lengthDiv = (carportLength - lengthStandOff) / lengthInterval;
+        float widthDiv = (carportWidth - widthStandOff) / widthInterval;
 
         // der tilføjes en ekstra stolpe efter længden er divideret med intervallet, da den forrige linje udregner antallet af mellemrum, ikke antallet af stolper
         // og der skal dermed sættes en stolpe efter sidste mellemrum
         resLength = (int) lengthDiv + 1;
         // hvis der var en rest da carportens længde blev divideret med det givne interval, skal der tilføjes en ekstra stolpe, så intervallet ikke overstiges
-        if(lengthDiv%1 > 0){
+        if (lengthDiv % 1 > 0) {
             resLength = resLength + 1;
         }
 
-        resWidth =  (int) widthDiv + 1;
-        if(widthDiv%1 > 0){
+        resWidth = (int) widthDiv + 1;
+        if (widthDiv % 1 > 0) {
             resWidth = resWidth + 1;
         }
 
@@ -71,23 +71,23 @@ public class Calculator {
     }
 
     //Udregner 1x stern over/under
-    public static int calcFascia(int carportLength, int carportWidth, int materialLength){       //'fascia' er 'stern' på dansk
+    public static int calcFascia(int carportLength, int carportWidth, int materialLength) {       //'fascia' er 'stern' på dansk
         float faLength;
         float faWidth;
         int fasciaMatieral;
 
-        faLength = (float)carportLength / materialLength;
-        faWidth = (float)carportWidth / materialLength;
+        faLength = (float) carportLength / materialLength;
+        faWidth = (float) carportWidth / materialLength;
 
 
-        if(faLength % 1 > 0){
+        if (faLength % 1 > 0) {
             faLength = faLength + 1;
         }
-        if(faWidth % 1 > 0){
+        if (faWidth % 1 > 0) {
             faWidth = faWidth + 1;
         }
 
-        fasciaMatieral = ((int)faWidth + (int)faLength) * 2;
+        fasciaMatieral = ((int) faWidth + (int) faLength) * 2;
 
         return fasciaMatieral;
     }
@@ -107,18 +107,18 @@ public class Calculator {
             resWidth = resWidth + 1;
         }
 
-        wpLength = (float)carportLength / materialLength;
+        wpLength = (float) carportLength / materialLength;
 
-        if(wpLength % 1 > 0){
+        if (wpLength % 1 > 0) {
             wpLength = wpLength + 1;
         }
 
-        resTotal = resWidth * (int)wpLength;
+        resTotal = resWidth * (int) wpLength;
 
         return resTotal;
     }
 
-    public static int calcBeamScrews(int beamsQuantity){
+    public static int calcBeamScrews(int beamsQuantity) {
         return beamsQuantity * 9 * 2;
     }
 
@@ -131,7 +131,7 @@ public class Calculator {
     }
 
     public static int calcFasciaScrews(int fasciaLength) {
-        return ((fasciaLength/55)+1)*2;    //400cm / 100 = 4 + 1 = 5 * 2 = 10
+        return ((fasciaLength / 55) + 1) * 2;    //400cm / 100 = 4 + 1 = 5 * 2 = 10
     } //Vi har vedtaget at der ved over- og understern bruges 2 skruer per pr spær interval
 
     public static double calcPerforatedTapeInCM(int carportLength, int carportWidth) {
@@ -143,7 +143,7 @@ public class Calculator {
         return hypotenuse;
     }
 
-    public static int calcRoof(int carportLength, int carportWidth, int materialLength){
+    public static int calcRoof(int carportLength, int carportWidth, int materialLength) {
         double materialWidth = 109.0;
 
         double devider = (carportLength / materialWidth) - 1;
@@ -152,7 +152,7 @@ public class Calculator {
             devider = devider + 1;
         }
 
-        int tempCarportLength = carportLength + (20*(int) devider);
+        int tempCarportLength = carportLength + (20 * (int) devider);
 
         double numberOfMaterialPRCarportLength = tempCarportLength / materialWidth;
 
@@ -160,53 +160,104 @@ public class Calculator {
             numberOfMaterialPRCarportLength = numberOfMaterialPRCarportLength + 1;
         }
 
-        if(carportWidth > materialLength){
+        if (carportWidth > materialLength) {
 
-            float widthDevider = ((float)carportWidth / (float)materialLength) - 1;
+            float widthDevider = ((float) carportWidth / (float) materialLength) - 1;
 
             if (widthDevider % 1 > 0) {
                 widthDevider = widthDevider + 1;
             }
 
-            int tempCarportWidth = carportWidth + (20*(int) widthDevider);
+            int tempCarportWidth = carportWidth + (20 * (int) widthDevider);
 
             int numberOfMaterialPRCarportWidth = (tempCarportWidth / materialLength) + 1;
 
-            return numberOfMaterialPRCarportWidth * (int)numberOfMaterialPRCarportLength;
+            return numberOfMaterialPRCarportWidth * (int) numberOfMaterialPRCarportLength;
         }
 
-        return (int)numberOfMaterialPRCarportLength;
+        return (int) numberOfMaterialPRCarportLength;
 
 
     }
 
-    public static int calcRoofScrews(int carportLength, int carportWidth){
-        return ((carportLength  / 100 ) * (carportWidth  / 100)) * 12;
+    public static int calcRoofScrews(int carportLength, int carportWidth) {
+        return ((carportLength / 100) * (carportWidth / 100)) * 12;
     }
 
 
-    public static int calcShedPoles(int carportWidth, int materialLength){
-        int shedHeight = 210;
-        int quantity = 0;
+    public static int calcShedPoles(int carportWidth) {
 
-        //        for(carportWidth-70/530){
-//            frameQuantity = frameQuantity + 1;
-//        }
+        int carportWidthWithoutStandOff = carportWidth - 70;
+        int poleForDoor = 1;
+        int interval265 = 265; // hver gang dette "rammes" skal der sættes 2 ekstra
+        int interval530 = 530; // hver gang dette "rammes" skal der sættes 1 ekstra
+        int divider265 = 0;
+        int divider530 = 0;
+        int quantity = poleForDoor;
+
+        if (carportWidthWithoutStandOff < interval265) {        // hvis carporten er UNDER 335 cm (265 - 70)
+            return quantity + 2;
+        }
+
+
+        if (carportWidthWithoutStandOff > interval265) {         // hvis carporten er OVER 335 cm (265 - 70)
+            divider265 = carportWidthWithoutStandOff / interval265;
+            if (divider265 % 1 > 0) {
+                divider265 = divider265 + 2;
+            }
+        }
+
+
+        if (carportWidthWithoutStandOff > interval530) {         // hvis carporten er OVER 600 cm (265 * 2 - 70)
+            divider530 = carportWidthWithoutStandOff / interval530;
+            if (divider530 % 1 > 0) {
+                divider530 = divider530 + 1;
+            }
+        }
+
+        quantity = quantity + divider265 + divider530;
+
         return quantity;
     }
 
-    public static int calcShedFrame(int carportWidth, int materialLength){
+    public static int calcShedFrame(int carportWidth, int materialLength) {
         int doorWidth = 80;
-        int shedLength = 210;
         int doorWidthTwice = doorWidth * 2;
-        int quantity = 0;
-        int carportFrame = 0;
-        int frameQuantity = quantity * 3 - carportFrame;
+        int carportWidthWithoutStandOff = carportWidth - 70;
 
-        return frameQuantity;
+        int shedLength = 210;
+
+        int shedLeft = shedLength * 2;
+        int shedRight = shedLength * 2;
+        int shedBack = carportWidthWithoutStandOff * 3;
+        int shedFront = carportWidthWithoutStandOff * 3 - doorWidthTwice;
+
+        int dividerLeft = shedLeft / materialLength;
+        if (dividerLeft % 1 > 0) {
+            dividerLeft = dividerLeft + 1;
+        }
+
+        int dividerRight = shedRight / materialLength;
+        if (dividerRight % 1 > 0) {
+            dividerRight = dividerRight + 1;
+        }
+
+        int dividerBack = shedBack / materialLength;
+        if (dividerBack % 1 > 0) {
+            dividerBack = dividerRight + 1;
+        }
+
+        int dividerFront = shedFront / materialLength;
+        if (dividerFront % 1 > 0) {
+            dividerFront = dividerFront + 1;
+        }
+
+        int quantity = dividerLeft + dividerRight + dividerBack + dividerFront;
+
+        return quantity;
     }
 
-    public static int calcShedCladding(int carportWidth){
+    public static int calcShedCladding(int carportWidth) {
 
         int materialWidth = 20;
 
@@ -217,12 +268,12 @@ public class Calculator {
 
         int fullShedCirc = (carportInnerWidth * 2) + (shedLength * 2);
 
-        int quantity = fullShedCirc/materialWidth;
+        int quantity = fullShedCirc / materialWidth;
 
         return quantity;
     }
 
-    public static int calcShedDoorZ(int materialLength){
+    public static int calcShedDoorZ(int materialLength) {
 
         int doorWidth = 80;
         int doorLength = 180;
@@ -231,7 +282,7 @@ public class Calculator {
         double c = Math.sqrt(Math.pow(doorLengthWithoutStandOff, 2) + Math.pow(doorWidth, 2));
         double fullLengthZ = c + (2 * doorWidth);
 
-        double divider = fullLengthZ/materialLength;
+        double divider = fullLengthZ / materialLength;
 
         if (divider % 1 > 0) {
             divider = (int) divider + 1;
