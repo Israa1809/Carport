@@ -126,7 +126,7 @@ class CalculatorTest {
     @Test
     void calcShedPoles() {             // stolper til skur
 
-        int expected = 0;
+        int expected = 5;   // 1 til dør + 2 til de manglende hjørner + 2 * carportWidthInterval hvilket er maks 530 cm
         int actual = Calculator.calcShedPoles(780, 600);
 
         assertEquals(expected, actual);
@@ -135,8 +135,8 @@ class CalculatorTest {
 
     @Test
     void calcShedFrame() {             // ramme til skur
-
-        int expected = 0;
+                                    // der skal være 1 øverst, 1 i midten og 1 nederst, men de øverste erstattes af spær og rem
+        int expected = 12;       // 530 cm = 2 * 270 cm og det er * 4 = 8 og 210 cm = 4 dvs i alt har vi brug for 12
         int actual = Calculator.calcShedFrame(780, 600);
 
         assertEquals(expected, actual);
@@ -146,8 +146,23 @@ class CalculatorTest {
     @Test
     void calcShedCladding() {             // beklædning til skur
 
-        int expected = 0;
-        int actual = Calculator.calcShedCladding(780, 600);
+        int materialWidth = 20;
+
+        int carportWidth = 600;
+        int standoff = 70;
+        int carportInnerWidth = carportWidth - standoff;
+
+        int shedLength = 210;
+
+        int fullShedCirc = (carportInnerWidth * 2) + (shedLength * 2);  // 1480 ved carport på 780 * 600
+
+        int shedCladding = fullShedCirc/materialWidth;
+
+        int expected = shedCladding;       // 74
+
+//        assertEquals(expected, shedCladding);
+
+        int actual = Calculator.calcShedCladding(600);
 
         assertEquals(expected, actual);
 
@@ -155,9 +170,15 @@ class CalculatorTest {
 
     @Test
     void calcShedDoorZ() {             // Z til dør på skur
+        int doorWidth = 80;
+        int doorLength = 180;
+        int doorLengthWithoutStandOff = doorLength - (2 * 35);
 
-        int expected = 0;
-        int actual = Calculator.calcShedDoorZ(600);
+        double c = Math.sqrt(Math.pow(doorLengthWithoutStandOff, 2) + Math.pow(doorWidth, 2));
+        double fullLengthZ = c + (2 * doorWidth);
+
+        double expected = fullLengthZ;      // dette er nu en int
+        double actual = Calculator.calcShedDoorZ(420);
 
         assertEquals(expected, actual);
 

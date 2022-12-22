@@ -188,28 +188,56 @@ public class Calculator {
     public static int calcShedPoles(int carportWidth, int materialLength){
         int shedHeight = 210;
         int quantity = 0;
+
+        //        for(carportWidth-70/530){
+//            frameQuantity = frameQuantity + 1;
+//        }
         return quantity;
     }
 
     public static int calcShedFrame(int carportWidth, int materialLength){
         int doorWidth = 80;
         int shedLength = 210;
+        int doorWidthTwice = doorWidth * 2;
         int quantity = 0;
         int carportFrame = 0;
         int frameQuantity = quantity * 3 - carportFrame;
+
         return frameQuantity;
     }
 
-    public static int calcShedCladding(int carportWidth, int materialLength){
+    public static int calcShedCladding(int carportWidth){
+
+        int materialWidth = 20;
+
+        int standoff = 70;
+        int carportInnerWidth = carportWidth - standoff;
+
         int shedLength = 210;
-        int quantity = 0;
+
+        int fullShedCirc = (carportInnerWidth * 2) + (shedLength * 2);
+
+        int quantity = fullShedCirc/materialWidth;
+
         return quantity;
     }
 
     public static int calcShedDoorZ(int materialLength){
-        int doorHeight = 180;
+
         int doorWidth = 80;
-        int quantity = 0;
+        int doorLength = 180;
+        int doorLengthWithoutStandOff = doorLength - (2 * 35);
+
+        double c = Math.sqrt(Math.pow(doorLengthWithoutStandOff, 2) + Math.pow(doorWidth, 2));
+        double fullLengthZ = c + (2 * doorWidth);
+
+        double divider = fullLengthZ/materialLength;
+
+        if (divider % 1 > 0) {
+            divider = (int) divider + 1;
+        }
+
+        int quantity = (int) divider;
         return quantity;
     }
 
