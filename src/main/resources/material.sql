@@ -30,7 +30,7 @@ CREATE TABLE `material` (
   `material_price` float NOT NULL,
   `product_variant` varchar(45) NOT NULL,
   PRIMARY KEY (`material_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,7 +39,7 @@ CREATE TABLE `material` (
 
 LOCK TABLES `material` WRITE;
 /*!40000 ALTER TABLE `material` DISABLE KEYS */;
-INSERT INTO `material` VALUES (1,360,'25x200mm.trykimp.Brædt','cm',205.01,'understern'),(2,540,'25x200mm.trykimp.Brædt','cm',307.53,'understern'),(3,360,'25x125mm.trykimp.Brædt','cm',107.81,'overstern'),(4,540,'25x125mm.trykimp.Brædt','cm',161.73,'overstern'),(5,420,'38x73mm.Lægteubh.','cm',66.99,'*mangler*'),(6,270,'45x95mm.Reglarub.','cm',47.88,'*mangler*'),(7,240,'45x95mm.Reglarub.','cm',53.86,'*mangler*'),(8,600,'45x195mm.spærtræubh.','cm',467.7,'rem - spær'),(9,480,'45x195mm.spærtræubh.','cm',273.35,'rem - spær'),(10,300,'97x97mm.trykimp.Stolpe','cm',149.85,'stolpe'),(11,210,'19x100mm.trykimp.Brædt','cm',18.79,'vandbræt'),(12,540,'19x100mm.trykimp.Brædt','cm',49.56,'vandbræt'),(13,360,'19x100mm.trykimp.Brædt','cm',32.21,'vandbræt'),(14,600,'PlastmoEcoliteblåtonet','cm',339,'trapetz'),(15,360,'PlastmoEcoliteblåtonet','cm',199,'trapetz'),(16,200,'plastmobundskruer200stk.','stk',429,'trapetz'),(17,1000,'hulbånd1x20mm.10mtr.','cm',349,'hulbånd'),(18,1,'universal190mmhøjre','stk',37.1,'spær'),(19,1,'universal190mmvenstre','stk',37.1,'spær'),(20,200,'4,5x60mm.skruer200stk.','stk',389,'*mangler*'),(21,250,'4,0x50mm.beslagskruer250stk.','stk',436,'hulbånd - spær'),(22,25,'bræddebolt10x120mm.25stk','stk',409,'rem'),(23,50,'firkantskiver40x40x11mm50stk','stk',439,'*mangler*'),(24,400,'4,5x70mm.Skruer400stk.','stk',229,'*mangler*'),(25,300,'4,5x50mm.Skruer300stk.','stk',129,'*mangler*'),(26,1,'stalddørsgreb50x75','sæt',269,'*mangler*'),(27,1,'t-hængsel390mm','stk',139,'*mangler*'),(28,1,'vinkelbeslag35','stk',14.95,'*mangler*');
+INSERT INTO `material` VALUES (1,360,'25x200mm.trykimp.Brædt','cm',205.01,'understern - beklædning'),(2,540,'25x200mm.trykimp.Brædt','cm',307.53,'understern - beklædning'),(3,360,'25x125mm.trykimp.Brædt','cm',107.81,'overstern'),(4,540,'25x125mm.trykimp.Brædt','cm',161.73,'overstern'),(5,420,'38x73mm.Lægteubh.','cm',66.99,'skurdør'),(6,270,'45x95mm.Reglarub.','cm',47.88,'skurramme'),(7,240,'45x95mm.Reglarub.','cm',53.86,'skurramme'),(8,600,'45x195mm.spærtræubh.','cm',467.7,'rem - spær'),(9,480,'45x195mm.spærtræubh.','cm',273.35,'rem - spær'),(10,300,'97x97mm.trykimp.Stolpe','cm',149.85,'stolpe'),(11,210,'19x100mm.trykimp.Brædt','cm',18.79,'vandbræt'),(12,540,'19x100mm.trykimp.Brædt','cm',49.56,'vandbræt'),(13,360,'19x100mm.trykimp.Brædt','cm',32.21,'vandbræt'),(14,600,'PlastmoEcoliteblåtonet109cm','cm',339,'trapetz'),(15,360,'PlastmoEcoliteblåtonet109cm','cm',199,'trapetz'),(16,200,'plastmobundskruer200stk.','stk',429,'trapetz'),(17,1000,'hulbånd1x20mm.10mtr.','cm',349,'hulbånd'),(18,1,'universal190mmhøjre','stk',37.1,'spær'),(19,1,'universal190mmvenstre','stk',37.1,'spær'),(20,200,'4,5x60mm.skruer200stk.','stk',389,'stern - vandbræt'),(21,250,'4,0x50mm.beslagskruer250stk.','stk',436,'hulbånd - spær'),(22,25,'bræddebolt10x120mm.25stk','stk',409,'rem'),(23,50,'firkantskiver40x40x11mm50stk','stk',439,'*mangler*'),(24,400,'4,5x70mm.Skruer400stk.','stk',229,'*mangler*'),(25,300,'4,5x50mm.Skruer300stk.','stk',129,'*mangler*'),(26,1,'stalddørsgreb50x75','sæt',269,'skurdør'),(27,1,'t-hængsel390mm','stk',139,'skurdør'),(28,1,'vinkelbeslag35','stk',14.95,'skurramme');
 /*!40000 ALTER TABLE `material` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -52,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-12-06 21:18:38
+-- Dump completed on 2022-12-22 13:32:56
