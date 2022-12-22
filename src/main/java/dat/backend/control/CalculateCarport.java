@@ -56,16 +56,26 @@ public class CalculateCarport extends HttpServlet {
                 viewbox.append(" ");
                 viewbox.append(width+150);
 
+
+                SVG svgShed = CarportSVG.createNewSVG(0,0,100,100, viewbox.toString());
+                svgShed = CarportSVG.addShed(svgShed, length, width);
+
+
+
                 SVG svgCarport = CarportSVG.createNewSVG(120, 50, 100, 100, viewbox.toString());
                 svgCarport = CarportSVG.addFascia(svgCarport, length, width);
                 svgCarport = CarportSVG.addBeams(svgCarport, length, width);
                 svgCarport = CarportSVG.addWallPlate(svgCarport, length, width);
                 svgCarport = CarportSVG.addPerforatedTape(svgCarport, length, width);
+                svgCarport.addInnerSvg(svgShed);
                 svgCarport = CarportSVG.addPoles(svgCarport, length, width);
 
-                SVG svgWithArrows = CarportSVG.createNewSVG( 0, 0, 100, 60, viewbox.toString());
+
+
+                SVG svgWithArrows = CarportSVG.createNewSVG(0, 0, 100, 60, viewbox.toString());
                 svgWithArrows.addInnerSvg(svgCarport);
                 svgWithArrows = CarportSVG.addArrow(svgWithArrows, length, width);
+
 
                 request.setAttribute("svgCarportTopView", svgWithArrows);
 
@@ -78,8 +88,12 @@ public class CalculateCarport extends HttpServlet {
                 sideViewbox.append(" ");
                 sideViewbox.append(380);
 
+                SVG svgShedSideView = CarportSVG.createNewSVG(0,0,100,100, sideViewbox.toString());
+                svgShedSideView = CarportSVG.addShedSide(svgShedSideView, length, width);
+
                 SVG svgCarportSide = CarportSVG.createNewSVG(120,50,100,100, sideViewbox.toString());
                 svgCarportSide = CarportSVG.addPolesSide(svgCarportSide,length);
+                svgCarportSide.addInnerSvg(svgShedSideView);
                 svgCarportSide = CarportSVG.addRoofSide(svgCarportSide,length,width);
 
                 SVG svgCarportSideArrows = CarportSVG.createNewSVG(0,0,100,60, sideViewbox.toString());

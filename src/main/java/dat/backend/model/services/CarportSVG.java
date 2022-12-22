@@ -146,12 +146,60 @@ public class CarportSVG {
         svg.addArrowLine(100, 70, 100, 280);
         svg.addText(90, 165, "rotate(-90)", 210, "cm");
         svg.addArrowLine(length+130, 60, length+130, 280);
-        svg.addText(length+110, 165, "rotate(-90)", 220, "cm");
+        svg.addText(length+150, 165, "rotate(-90)", 220, "cm");
         svg.addLine(55,280,length+130,280);
 
         //vandrette Pile
         svg.addArrowLine(120, 230 + 90, length + 120, 230 + 90);
         svg.addText((length / 2) + 110, 230 + 80, "", length, "cm");
+
+        return svg;
+    }
+
+    public static SVG addShed(SVG svg,int length, int width) {
+        //vandrette
+        svg.addRect(length - 230, 35, width - 70, 10);
+        svg.addRect(length - 20, 35, width - 70, 10);
+        //lodrette
+        svg.addRect(length - 230, 30, 10, length - (length - 220));
+        svg.addRect(length - 230, width - 40, 10, length - (length - 220));
+        //skur stolper
+
+
+
+        //1 skur pæle
+        if (width > 300 && width <= 600) {
+            for (int i = 30; i < width; i +=265) {
+                svg.addRect(length - 230, i, 10, 10);
+                svg.addRect(length - 20, i, 10, 10);
+            }
+        }
+        //3 skur pæle
+        if (width > 600 && width <= 900) {
+            for (int i = 30; i < width; i += 207.5) {
+                svg.addRect(length - 230, i, 10, 10);
+                svg.addRect(length - 20, i, 10, 10);
+            }
+        }
+
+        if (width > 900 && width <= 1200){
+            for (int i = 30; i < width; i += 226) {
+                svg.addRect(length - 230, i, 10, 10);
+                svg.addRect(length - 20, i, 10, 10);
+            }
+            }
+        return svg;
+    }
+
+    public static SVG addShedSide(SVG svg,int length, int width) {
+        svg.addRect(length-230,20,210,length-(length-210));
+
+        for (int i = length-230; i < length-50; i += 24) {
+            svg.addRect(i,20,210, 20);
+            svg.addRect(i+20,20,210,7);
+
+
+        }
 
         return svg;
     }
