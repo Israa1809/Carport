@@ -111,7 +111,7 @@ public class CarportMapper {
 
 
     public static void togglePayment(int carport_id, ConnectionPool connectionPool) {
-        String sql = "UPDATE carport.carport SET payment_status = 1 - payment_status WHERE carport_id = ?";
+        String sql = "UPDATE carport.carport SET payment_status = 1 WHERE carport_id = ?";
 
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
