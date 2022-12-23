@@ -46,9 +46,10 @@ public class CarportBuilder {
         carport.addPartFirstTime(fasciaScrewsPart);
 
         //Perforated Tape
-
-        Part perforatedTapePart = addPerforatedTape(carport.getLength(), carport.getWidth(), materialList);
-        carport.addPartFirstTime(perforatedTapePart);
+        //if(carport.hasShed == false) {
+            Part perforatedTapePart = addPerforatedTape(carport.getLength(), carport.getWidth(), materialList);
+            carport.addPartFirstTime(perforatedTapePart);
+        //}
 
 //        Part perforatedTapePartScrews = addPerforatedTapeScrews(perforatedTapePart.getPartQuantity(), materialList);
 //        carport.addPartFirstTime(perforatedTapePartScrews);
@@ -63,6 +64,30 @@ public class CarportBuilder {
 
 
         // Skur - har ikke calc til t-hængsler og stalddørsgreb - skal bare add'es her
+
+       // if(carport.hasShed == true){
+        Part shedPolesPart = addShedPoles(carport.getWidth(), carport.getHeight(),materialList);
+        carport.addPartFirstTime(shedPolesPart);
+
+        Part shedFramePart = addShedFrame(carport.getWidth(),materialList);
+        carport.addPartFirstTime(shedFramePart);
+
+        Part shedShedCladding = addShedCladding(carport.getWidth(), carport.getHeight(), materialList);
+        carport.addPartFirstTime(shedShedCladding);
+
+        Part shedDoorZ = addShedDoorZ(materialList);
+        carport.addPartFirstTime(shedDoorZ);
+
+        Part shedDoorFitting = addShedDoorFitting(materialList, 2);
+        carport.addPartFirstTime(shedDoorFitting);
+
+        Part shedDoorHandle = addShedDoorHandle(materialList, 1);
+        carport.addPartFirstTime(shedDoorHandle);
+
+        Part perforatedTapePartWShed = addPerforatedTape(carport.getLength() - 210, carport.getWidth(), materialList);
+        carport.addPartFirstTime(perforatedTapePartWShed);
+
+       // }
 
         return carport;
     }
@@ -431,6 +456,176 @@ public class CarportBuilder {
         return trapezRoofScrews;
 
     }
+
+    // Shed
+
+
+        public static Part addShedPoles(int carportWidth, int carportHeight, ArrayList<Material> materialList) {
+
+            Material finalMaterial = null;
+
+            for (Material material : materialList) {
+
+                // der findes kun et materiale der overstiger det ønskede mål
+                if (material.getProductVariant().contains("stolpe") && material.getUnitType().contains("cm") && material.getMaterialQuantity() >= carportHeight) {
+
+                    if (finalMaterial == null) {
+                        finalMaterial = material;
+
+                    } else if (material.getMaterialQuantity() % carportWidth < finalMaterial.getMaterialQuantity() % carportWidth) {    //tjekker hvilket mål der ligger tættest på det ønskede mål, og hvis det "nye" materiale er mere optimalt, erstattes finalMaterial med det "nye" material
+                        finalMaterial = material;
+                    }
+                }
+
+            }
+
+            int partQuantity = Calculator.calcShedPoles(carportWidth);
+            //finalMaterial.setProductVariant("stolper til skur");
+            Part poleShedPart = new Part(finalMaterial, partQuantity);
+            return poleShedPart;
+
+
+        }
+
+
+    public static Part addShedFrame(int carportWidth, ArrayList<Material> materialList) {
+
+        Material finalMaterial = null;
+
+        for (Material material : materialList) {
+
+            // der findes et materiale der overstiger det ønskede mål
+            if (material.getProductVariant().contains("skurramme") && material.getUnitType().contains("cm") && material.getMaterialQuantity() >= carportWidth) {
+
+                if (finalMaterial == null) {
+                    finalMaterial = material;
+
+                } else if (material.getMaterialQuantity() % carportWidth < finalMaterial.getMaterialQuantity() % carportWidth) {    //tjekker hvilket mål der ligger tættest på det ønskede mål, og hvis det "nye" materiale er mere optimalt, erstattes finalMaterial med det "nye" material
+                    finalMaterial = material;
+                }
+
+            }
+
+            // der findes IKKE et materiale der overstiger det ønskede mål OG der findes et materiale der kan dække halvdelen af det ønskede mål
+            if (material.getProductVariant().contains("skurramme") && material.getUnitType().contains("cm") && material.getMaterialQuantity() < carportWidth) {
+
+                if (finalMaterial == null) {
+                    finalMaterial = material;
+
+                } else if (Calculator.calcShedFrame(carportWidth, material.getMaterialQuantity()) < Calculator.calcShedFrame(carportWidth, finalMaterial.getMaterialQuantity())) {
+                    finalMaterial = material;
+                }
+            }
+
+        }
+
+        int partQuantity = Calculator.calcShedFrame(carportWidth, finalMaterial.getMaterialQuantity());
+        Part shedFramePart = new Part(finalMaterial, partQuantity);
+        return shedFramePart;
+
+    }
+
+
+    public static Part addShedCladding(int carportWidth, int carportHeight, ArrayList<Material> materialList) {
+
+        Material finalMaterial = null;
+
+        for (Material material : materialList) {
+
+            // der findes kun et materiale der overstiger det ønskede mål
+            if (material.getProductVariant().contains("beklædning") && material.getUnitType().contains("cm") && material.getMaterialQuantity() >= carportHeight) {
+
+                if (finalMaterial == null) {
+                    finalMaterial = material;
+
+                } else if (material.getMaterialQuantity() % carportWidth < finalMaterial.getMaterialQuantity() % carportWidth) {    //tjekker hvilket mål der ligger tættest på det ønskede mål, og hvis det "nye" materiale er mere optimalt, erstattes finalMaterial med det "nye" material
+                    finalMaterial = material;
+                }
+            }
+
+        }
+
+        int partQuantity = Calculator.calcShedCladding(carportWidth);
+        //finalMaterial.setProductVariant("stolper til skur");
+        Part shedCladdingPart = new Part(finalMaterial, partQuantity);
+        return shedCladdingPart;
+
+
+    }
+
+    public static Part addShedDoorZ(ArrayList<Material> materialList) {
+
+        Material finalMaterial = null;
+
+        for (Material material : materialList) {
+
+            // der findes kun et materiale der overstiger det ønskede mål
+            if (material.getProductVariant().contains("stolpe") && material.getUnitType().contains("cm")) {
+
+                if (finalMaterial == null) {
+                    finalMaterial = material;
+
+                }
+            }
+
+        }
+
+        int partQuantity = Calculator.calcShedPoles(finalMaterial.getMaterialQuantity());
+        //finalMaterial.setProductVariant("stolper til skur");
+        Part shedDoorZ = new Part(finalMaterial, partQuantity);
+        return shedDoorZ;
+
+
+    }
+
+    public static Part addShedDoorFitting(ArrayList<Material> materialList, int partQuantity) {
+
+        Material finalMaterial = null;
+
+        for (Material material : materialList) {
+
+            // der findes kun et materiale der overstiger det ønskede mål
+            if (material.getProductVariant().contains("skurdør") && material.getUnitType().contains("stk")) {
+
+                if (finalMaterial == null) {
+                    finalMaterial = material;
+
+                }
+            }
+
+        }
+
+        Part shedDoorFitting = new Part(finalMaterial, partQuantity);
+        return shedDoorFitting;
+
+
+    }
+
+    public static Part addShedDoorHandle(ArrayList<Material> materialList, int partQuantity) {
+
+        Material finalMaterial = null;
+
+        for (Material material : materialList) {
+
+            // der findes kun et materiale der overstiger det ønskede mål
+            if (material.getProductVariant().contains("skurdør") && material.getUnitType().contains("sæt")) {
+
+                if (finalMaterial == null) {
+                    finalMaterial = material;
+
+                }
+            }
+
+        }
+
+        Part shedDoorHandle = new Part(finalMaterial, partQuantity);
+        return shedDoorHandle;
+
+
+    }
+
+
+
 
 }
 

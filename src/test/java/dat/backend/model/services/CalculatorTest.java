@@ -175,7 +175,7 @@ class CalculatorTest {
     void calcShedFrame() {             // ramme til skur
         // der skal være 1 øverst, 1 i midten og 1 nederst, men 2 af de øverste erstattes af rem
         int expected = 16;       // 530 cm = 2 * 270 cm og det er * 6 = 12 og 210 cm = 4 dvs i alt har vi brug for 16
-        int actual = Calculator.calcShedFrame(780, 270);
+        int actual = Calculator.calcShedFrame(1200, 270);
 
         assertEquals(expected, actual);
 

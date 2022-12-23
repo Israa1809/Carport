@@ -234,7 +234,7 @@ public class Calculator {
 
         int dividerBack = shedBack / materialLength;
         if (dividerBack % 1 > 0) {
-            dividerBack = dividerRight + 1;
+            dividerBack = dividerBack + 1;
         }
 
         int dividerFront = shedFront / materialLength;
