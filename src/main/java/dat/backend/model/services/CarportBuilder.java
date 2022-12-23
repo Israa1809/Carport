@@ -46,10 +46,10 @@ public class CarportBuilder {
         carport.addPartFirstTime(fasciaScrewsPart);
 
         //Perforated Tape
-        //if(carport.hasShed == false) {
+        if(carport.getHasShed()== false) {
             Part perforatedTapePart = addPerforatedTape(carport.getLength(), carport.getWidth(), materialList);
             carport.addPartFirstTime(perforatedTapePart);
-        //}
+        }
 
 //        Part perforatedTapePartScrews = addPerforatedTapeScrews(perforatedTapePart.getPartQuantity(), materialList);
 //        carport.addPartFirstTime(perforatedTapePartScrews);
@@ -65,7 +65,7 @@ public class CarportBuilder {
 
         // Skur - har ikke calc til t-hængsler og stalddørsgreb - skal bare add'es her
 
-       // if(carport.hasShed == true){
+       if(carport.getHasShed()== true){
         Part shedPolesPart = addShedPoles(carport.getWidth(), carport.getHeight(),materialList);
         carport.addPartFirstTime(shedPolesPart);
 
@@ -87,7 +87,7 @@ public class CarportBuilder {
         Part perforatedTapePartWShed = addPerforatedTape(carport.getLength() - 210, carport.getWidth(), materialList);
         carport.addPartFirstTime(perforatedTapePartWShed);
 
-       // }
+       }
 
         return carport;
     }
