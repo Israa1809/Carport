@@ -187,37 +187,27 @@ public class Calculator {
 
     public static int calcShedPoles(int carportWidth) {
 
-        int carportWidthWithoutStandOff = carportWidth - 70;
-        int poleForDoor = 1;
-        int interval265 = 265; // hver gang dette "rammes" skal der sættes 2 ekstra
-        int interval530 = 530; // hver gang dette "rammes" skal der sættes 1 ekstra
-        int divider265 = 0;
-        int divider530 = 0;
-        int quantity = poleForDoor;
+        int carportWidthWOStand = carportWidth-70;
 
-        if (carportWidthWithoutStandOff < interval265) {        // hvis carporten er UNDER 335 cm (265 - 70)
-            return quantity + 2;
+        int doublePoleStart = 265;
+        int singlePoleStart = 0;
+        int doorPole = 1;
+
+        int doubleCount = 0;
+        int singleCount = 0;
+
+        int totalQuantity = 1;
+
+        for (int i = doublePoleStart; i < carportWidthWOStand; i+=530) {
+            doubleCount++;
         }
 
-
-        if (carportWidthWithoutStandOff > interval265) {         // hvis carporten er OVER 335 cm (265 - 70)
-            divider265 = carportWidthWithoutStandOff / interval265;
-            if (divider265 % 1 > 0) {
-                divider265 = divider265 + 2;
-            }
+        for (int j = singlePoleStart; j < carportWidthWOStand; j+=530) {
+            singleCount++;
         }
+        int finalQuantity = totalQuantity + (doubleCount * 2) + singleCount + doorPole;
 
-
-        if (carportWidthWithoutStandOff > interval530) {         // hvis carporten er OVER 600 cm (265 * 2 - 70)
-            divider530 = carportWidthWithoutStandOff / interval530;
-            if (divider530 % 1 > 0) {
-                divider530 = divider530 + 1;
-            }
-        }
-
-        quantity = quantity + divider265 + divider530;
-
-        return quantity;
+        return finalQuantity;
     }
 
     public static int calcShedFrame(int carportWidth, int materialLength) {
