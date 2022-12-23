@@ -19,7 +19,7 @@ public class CarportSVG {
         for (int i = 100; i < length; i += 310) {
             svg.addRect(i, 35 - 5, 10, 10);
             svg.addRect(i, width - 35 - 5, 10, 10);
-            if (width > 600) {
+            if(width > 600) {
                 svg.addRect(i, (width / 2) - 5, 10, 10);
                 svg.addRect(length - 60, (width / 2) - 5, 10, 10);
             }
@@ -40,7 +40,7 @@ public class CarportSVG {
     public static SVG addWallPlate(SVG svg, int length, int width) {
         svg.addRect(0, 35, 5, length);
         svg.addRect(0, width - 40, 5, length);
-        if (width > 600) {
+        if(width > 600) {
             svg.addRect(0, (width / 2) - (5 / 2), 5, length);
         }
 //        for (int i = 35; i < length; i += 530) {
@@ -67,27 +67,27 @@ public class CarportSVG {
         int y = 20;
         int height = 210;
 
-        if (length == 470) {
+        if(length == 470) {
             for (int i = 100; i < length; i += 310) {
                 svg.addRect(i, y, height, 5);
                 y += 10;
-                height -=10;
+                height -= 10;
             }
         }
         //3 poles sættes
-        if (length > 470 && length <= 780) {
+        if(length > 470 && length <= 780) {
             for (int i = 100; i < length; i += 310) {
                 svg.addRect(i, y, height, 5);
                 y += 5;
-                height -=5;
+                height -= 5;
             }
         }
         //4 poles sættes
-        if (length > 780 && length <= 1090) {
+        if(length > 780 && length <= 1090) {
             for (int i = 100; i < length; i += 310) {
                 svg.addRect(i, y, height, 5);
                 y += 3;
-                height -=3;
+                height -= 3;
             }
         }
 
@@ -119,7 +119,7 @@ public class CarportSVG {
         svg.addText((length / 2) + 110, width + 110, "", length, "cm");
 
 
-        if (length == 470) {
+        if(length == 470) {
             for (int i = 120; i < length + 55; i += 55) {
                 svg.addArrowLine(i, 30, i + 55, 30);
                 for (int j = 147; j < length + 110; j += 55) {
@@ -128,7 +128,7 @@ public class CarportSVG {
             }
         }
 
-        if (length > 470 && length <= 1090) {
+        if(length > 470 && length <= 1090) {
             for (int i = 120; i < length + 110; i += 55) {
                 svg.addArrowLine(i, 30, i + 55, 30);
                 for (int j = 147; j < length + 110; j += 55) {
@@ -145,9 +145,9 @@ public class CarportSVG {
         svg.addText(45, 165, "rotate(-90)", 230, "cm");
         svg.addArrowLine(100, 70, 100, 280);
         svg.addText(90, 165, "rotate(-90)", 210, "cm");
-        svg.addArrowLine(length+130, 60, length+130, 280);
-        svg.addText(length+150, 165, "rotate(-90)", 220, "cm");
-        svg.addLine(55,280,length+130,280);
+        svg.addArrowLine(length + 130, 60, length + 130, 280);
+        svg.addText(length + 150, 165, "rotate(-90)", 220, "cm");
+        svg.addLine(55, 280, length + 130, 280);
 
         //vandrette Pile
         svg.addArrowLine(120, 230 + 90, length + 120, 230 + 90);
@@ -156,7 +156,7 @@ public class CarportSVG {
         return svg;
     }
 
-    public static SVG addShed(SVG svg,int length, int width) {
+    public static SVG addShed(SVG svg, int length, int width) {
         //vandrette
         svg.addRect(length - 230, 35, width - 70, 10);
         svg.addRect(length - 20, 35, width - 70, 10);
@@ -166,42 +166,151 @@ public class CarportSVG {
         //skur stolper
 
 
-
         //1 skur pæle
-        if (width > 300 && width <= 600) {
-            for (int i = 30; i < width; i +=265) {
+        if(width > 300 && width <= 600) {
+            for (int i = 30; i < width; i += 265) {
                 svg.addRect(length - 230, i, 10, 10);
                 svg.addRect(length - 20, i, 10, 10);
             }
         }
         //3 skur pæle
-        if (width > 600 && width <= 900) {
+        if(width > 600 && width <= 900) {
             for (int i = 30; i < width; i += 207.5) {
                 svg.addRect(length - 230, i, 10, 10);
                 svg.addRect(length - 20, i, 10, 10);
             }
         }
 
-        if (width > 900 && width <= 1200){
+        if(width > 900 && width <= 1200) {
             for (int i = 30; i < width; i += 226) {
                 svg.addRect(length - 230, i, 10, 10);
                 svg.addRect(length - 20, i, 10, 10);
             }
-            }
+        }
         return svg;
     }
 
-    public static SVG addShedSide(SVG svg,int length, int width) {
-        svg.addRect(length-230,20,210,length-(length-210));
+    public static SVG addShedSide(SVG svg, int length, int width) {
+        svg.addRect(length - 230, 20, 210, length - (length - 210));
 
-        for (int i = length-230; i < length-50; i += 24) {
-            svg.addRect(i,20,210, 20);
-            svg.addRect(i+20,20,210,7);
-
+        for (int i = length - 230; i < length - 50; i += 24) {
+            svg.addRect(i, 20, 210, 20);
+            svg.addRect(i + 20, 20, 210, 7);
 
         }
+        return svg;
+    }
+
+    //Hulbånd
+    public static SVG addPerforatedTapeShed(SVG svg, int length, int width) {
+        int x = 100;
+        int y = 35;
+
+        svg.addDashedLine(x, y, length-230, width-y);
+        svg.addDashedLine(x, width-y, length-230, y);
 
         return svg;
+    }
+
+    public static SVG drawCarportTopView(int length, int width) {
+        StringBuilder viewbox = new StringBuilder();
+        viewbox.append(0);
+        viewbox.append(" ");
+        viewbox.append(0);
+        viewbox.append(" ");
+        viewbox.append(length + 150);
+        viewbox.append(" ");
+        viewbox.append(width + 150);
+
+        SVG svgCarport = CarportSVG.createNewSVG(120, 50, 100, 100, viewbox.toString());
+        svgCarport = CarportSVG.addFascia(svgCarport, length, width);
+        svgCarport = CarportSVG.addBeams(svgCarport, length, width);
+        svgCarport = CarportSVG.addWallPlate(svgCarport, length, width);
+        svgCarport = CarportSVG.addPerforatedTape(svgCarport, length, width);
+        svgCarport = CarportSVG.addPoles(svgCarport, length, width);
+
+        SVG svgWithArrows = CarportSVG.createNewSVG(0, 0, 100, 60, viewbox.toString());
+        svgWithArrows.addInnerSvg(svgCarport);
+        svgWithArrows = CarportSVG.addArrow(svgWithArrows, length, width);
+
+        return svgWithArrows;
+    }
+
+    public static SVG drawCarportTopViewWithShed(int length, int width) {
+        StringBuilder viewbox = new StringBuilder();
+        viewbox.append(0);
+        viewbox.append(" ");
+        viewbox.append(0);
+        viewbox.append(" ");
+        viewbox.append(length + 150);
+        viewbox.append(" ");
+        viewbox.append(width + 150);
+
+
+        SVG svgShed = CarportSVG.createNewSVG(0, 0, 100, 100, viewbox.toString());
+        svgShed = CarportSVG.addShed(svgShed, length, width);
+
+
+        SVG svgCarport = CarportSVG.createNewSVG(120, 50, 100, 100, viewbox.toString());
+        svgCarport = CarportSVG.addFascia(svgCarport, length, width);
+        svgCarport = CarportSVG.addBeams(svgCarport, length, width);
+        svgCarport = CarportSVG.addWallPlate(svgCarport, length, width);
+        svgCarport = CarportSVG.addPerforatedTapeShed(svgCarport, length, width);
+        svgCarport.addInnerSvg(svgShed);
+        svgCarport = CarportSVG.addPoles(svgCarport, length, width);
+
+        SVG svgWithArrows = CarportSVG.createNewSVG(0, 0, 100, 60, viewbox.toString());
+        svgWithArrows.addInnerSvg(svgCarport);
+        svgWithArrows = CarportSVG.addArrow(svgWithArrows, length, width);
+
+
+        return svgWithArrows;
+    }
+
+    public static SVG drawCarportSideView(int length, int width) {
+        StringBuilder sideViewbox = new StringBuilder();
+        sideViewbox.append(0);
+        sideViewbox.append(" ");
+        sideViewbox.append(0);
+        sideViewbox.append(" ");
+        sideViewbox.append(length + 150);
+        sideViewbox.append(" ");
+        sideViewbox.append(380);
+
+        SVG svgCarportSide = CarportSVG.createNewSVG(120, 50, 100, 100, sideViewbox.toString());
+        svgCarportSide = CarportSVG.addPolesSide(svgCarportSide, length);
+        svgCarportSide = CarportSVG.addRoofSide(svgCarportSide, length, width);
+
+        SVG svgCarportSideArrows = CarportSVG.createNewSVG(0, 0, 100, 60, sideViewbox.toString());
+        svgCarportSideArrows.addInnerSvg(svgCarportSide);
+        svgCarportSideArrows = CarportSVG.addArrowSide(svgCarportSideArrows, length, width);
+
+        return svgCarportSideArrows;
+    }
+
+    public static SVG drawCarportSideViewWithShed(int length, int width) {
+        StringBuilder sideViewbox = new StringBuilder();
+        sideViewbox.append(0);
+        sideViewbox.append(" ");
+        sideViewbox.append(0);
+        sideViewbox.append(" ");
+        sideViewbox.append(length + 150);
+        sideViewbox.append(" ");
+        sideViewbox.append(380);
+
+        SVG svgShedSideView = CarportSVG.createNewSVG(0, 0, 100, 100, sideViewbox.toString());
+        svgShedSideView = CarportSVG.addShedSide(svgShedSideView, length, width);
+
+        SVG svgCarportSide = CarportSVG.createNewSVG(120, 50, 100, 100, sideViewbox.toString());
+        svgCarportSide = CarportSVG.addPolesSide(svgCarportSide, length);
+        svgCarportSide.addInnerSvg(svgShedSideView);
+        svgCarportSide = CarportSVG.addRoofSide(svgCarportSide, length, width);
+
+        SVG svgCarportSideArrows = CarportSVG.createNewSVG(0, 0, 100, 60, sideViewbox.toString());
+        svgCarportSideArrows.addInnerSvg(svgCarportSide);
+        svgCarportSideArrows = CarportSVG.addArrowSide(svgCarportSideArrows, length, width);
+
+        return svgCarportSideArrows;
     }
 }
 
