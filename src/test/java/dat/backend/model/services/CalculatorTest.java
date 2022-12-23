@@ -1,5 +1,7 @@
 package dat.backend.model.services;
+
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class CalculatorTest {
@@ -7,7 +9,7 @@ class CalculatorTest {
     @Test
     void calcPoles() {                  // stolper
         int expected = 6;
-        int actual = Calculator.calcPoles(780,600);
+        int actual = Calculator.calcPoles(780, 600);
         assertEquals(expected, actual);
     }
 
@@ -28,7 +30,7 @@ class CalculatorTest {
     @Test
     void calcBeams() {                   // spær
         int expected = 16;
-        int actual = Calculator.calcBeams(780,600,600);
+        int actual = Calculator.calcBeams(780, 600, 600);
         assertEquals(expected, actual);
     }
 
@@ -39,7 +41,8 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
-    @Test                               // beslag til spær - højrevendt eller venstrevendt
+    @Test
+        // beslag til spær - højrevendt eller venstrevendt
     void calcBeamFittings() {           // *skal i virkeligheden køres én gang på hver
         int expected = 32;
         int actual = Calculator.calcBeamFittings(16);
@@ -71,19 +74,21 @@ class CalculatorTest {
         assertEquals(cV1, cV2);
 
         // a i anden + b i anden = c i anden
-        double expected = Math.sqrt(Math.pow(780-160, 2) + Math.pow(600-70, 2));
-        double actual = Calculator.calcPerforatedTapeInCM(780,600);
+        double expected = Math.sqrt(Math.pow(780 - 160, 2) + Math.pow(600 - 70, 2));
+        double actual = Calculator.calcPerforatedTapeInCM(780, 600);
         assertEquals(expected, actual);
     }
 
-    @Test                               // stern - over eller under
+    @Test
+        // stern - over eller under
     void calcFascia() {                 // *skal i virkeligheden køres én gang på hver
         int expected = 8;
-        int actual = Calculator.calcFascia(780,600,540);
+        int actual = Calculator.calcFascia(780, 600, 540);
         assertEquals(expected, actual);
     }
 
-    @Test                               // skruer til stern - over og under
+    @Test
+        // skruer til stern - over og under
     void calcFasciaScrews() {
         //carport length = 780 cm and carport width = 600 cm);
         int fullFasciaLength1 = (780 * 2 + 600 * 2) * 2;        // 5520 cm
@@ -94,7 +99,7 @@ class CalculatorTest {
         // den fulde længde divideres med intervallet på 55 cm mellem hvert spær
         // der lægges en ekstra til til sidst, da det forrige udregner mellemrum, og der skal være en skrue efter sidste mellemrum
         // der ganges med 2, så der kan sættes 2 skruer hver gang sternen krydser et spær
-        int expected = ((fullFasciaLength1/55)+1)*2;
+        int expected = ((fullFasciaLength1 / 55) + 1) * 2;
         int actual = Calculator.calcFasciaScrews(fullFasciaLength1);
         assertEquals(expected, actual);
     }
@@ -102,7 +107,7 @@ class CalculatorTest {
     @Test
     void calcRoof() {                   // tag
         int expected = 9;
-        int actual = Calculator.calcRoof(780,600,600);
+        int actual = Calculator.calcRoof(780, 600, 600);
         assertEquals(expected, actual);
     }
 
@@ -127,19 +132,48 @@ class CalculatorTest {
     void calcShedPoles() {             // stolper til skur
 
 //       boolean experiment = ((600-70)%265) == 0;
-//
 //       assertEquals(true, experiment);
 
-        int expected = 5;   // 1 til dør + 2 til de manglende hjørner + 2 * carportWidthInterval hvilket er maks 530 cm
-        int actual = Calculator.calcShedPoles(600);
+        // TEST 1
+        int expected1 = 8;                                // 1130 i width = 7 stolper + 1 til dør dvs = 8 stolper
+        int actual1 = Calculator.calcShedPoles(1130);
+        assertEquals(expected1, actual1);
 
-        assertEquals(expected, actual);
+        // TEST 2
+        int expected2 = 5;                                // 600 i width = 4 stolper + 1 til dør dvs = 5 stolper
+        int actual2 = Calculator.calcShedPoles(600);
+        assertEquals(expected2, actual2);
+
+        // TEST 3
+        int expected3 = 3;                                // 335 i width = 2 stolper + 1 til dør dvs = 3 stolper
+        int actual3 = Calculator.calcShedPoles(335);
+        assertEquals(expected3, actual3);
+
+        // TEST 4
+        int expected4 = 8;                                // 870 i width = 7 stolper + 1 til dør dvs = 8 stolper
+        int actual4 = Calculator.calcShedPoles(870);
+        assertEquals(expected4, actual4);
+
+        // TEST 5
+        int expected5 = 5;                                // 470 i width = 4 stolper + 1 til dør dvs = 5 stolper
+        int actual5 = Calculator.calcShedPoles(470);
+        assertEquals(expected5, actual5);
+
+        // TEST 6
+        int expected6 = 8;                                // 1000 i width = 7 stolper + 1 til dør dvs = 8 stolper
+        int actual6 = Calculator.calcShedPoles(1000);
+        assertEquals(expected6, actual6);
+
+        // TEST 7
+        int expected7 = 9;                                // 1200 i width = 8 stolper + 1 til dør dvs = 9 stolper
+        int actual7 = Calculator.calcShedPoles(1200);
+        assertEquals(expected7, actual7);
 
     }
 
     @Test
     void calcShedFrame() {             // ramme til skur
-                                    // der skal være 1 øverst, 1 i midten og 1 nederst, men 2 af de øverste erstattes af rem
+        // der skal være 1 øverst, 1 i midten og 1 nederst, men 2 af de øverste erstattes af rem
         int expected = 16;       // 530 cm = 2 * 270 cm og det er * 6 = 12 og 210 cm = 4 dvs i alt har vi brug for 16
         int actual = Calculator.calcShedFrame(780, 270);
 
@@ -160,7 +194,7 @@ class CalculatorTest {
 
         int fullShedCirc = (carportInnerWidth * 2) + (shedLength * 2);  // 1480 ved carport på 780 * 600
 
-        int shedCladding = fullShedCirc/materialWidth;
+        int shedCladding = fullShedCirc / materialWidth;
 
         int expected = shedCladding;       // 74
 
