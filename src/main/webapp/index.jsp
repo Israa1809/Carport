@@ -44,7 +44,7 @@
                                 </select>
                             </div>
 
-                            <div class="col form-group  mt-5  me-5 ">
+                            <div class="col form-group  mt-5  me-5">
                                 <select class="form-select" name="width">
                                     <option selected>Bredde</option>
                                     <option> 300</option>
@@ -52,6 +52,13 @@
                                     <option> 900</option>
                                     <option> 1200</option>
                                 </select>
+
+                                <div class="form-check mt-3">
+                                    <label class="form-check-label" for="checkbox">
+                                    <input class="form-check-input" type="checkbox" name="checkbox" id="checkbox" >
+                                        Inkl. skur
+                                    </label>
+                                </div>
 
                             </div>
                             <div class="text-end mt-3 mb-3">

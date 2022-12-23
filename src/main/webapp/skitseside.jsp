@@ -38,6 +38,8 @@
             <div class="card mb-5">
                 <div class="card-body">
                         ${requestScope.svgCarportSideView}
+                        ${requestScope.svgCarportSideViewWithShed}
+
                 </div>
             </div>
         </div>
@@ -47,6 +49,7 @@
             <div class="card">
                 <div class="card-body">
                         ${requestScope.svgCarportTopView}
+                        ${requestScope.svgCarportTopViewWithShed}
                 </div>
             </div>
         </div>
