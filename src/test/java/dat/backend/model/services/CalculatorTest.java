@@ -211,16 +211,19 @@ class CalculatorTest {
         int doorWidth = 80;
         int doorLength = 180;
         int doorLengthWithoutStandOff = doorLength - (2 * 35);
+        int materialLength = 420;
 
         double c = Math.sqrt(Math.pow(doorLengthWithoutStandOff, 2) + Math.pow(doorWidth, 2));
         double fullLengthZ = c + (2 * doorWidth);
 
-        if (fullLengthZ % 1 > 0) {
-            fullLengthZ = fullLengthZ + 1;
+        double divider = fullLengthZ / materialLength;
+
+        if (divider % 1 > 0) {
+            divider = (int) divider + 1;
         }
 
-        double expected = fullLengthZ;
-        double actual = Calculator.calcShedDoorZ(420);
+        int expected = (int) divider;
+        double actual = Calculator.calcShedDoorZ(materialLength);
 
         assertEquals(expected, actual);
 
