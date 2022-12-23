@@ -13,7 +13,7 @@ class CarportTest {
 
     @BeforeEach
     void setUp() {
-        carport = new Carport(780, 600);
+        carport = new Carport(780, 600, false);
     }
 
     @Test

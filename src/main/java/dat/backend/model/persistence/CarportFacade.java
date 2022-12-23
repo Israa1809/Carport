@@ -29,4 +29,8 @@ public class CarportFacade {
     public static void updateCarportInfo(Carport carport, ConnectionPool connectionPool){
         CarportMapper.updateCarportInfo(carport, connectionPool);
     }
+
+    public static void toggleShed(int carport_id, ConnectionPool connectionPool){
+        CarportMapper.toggleShed(carport_id, connectionPool);
+    }
 }

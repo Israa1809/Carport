@@ -45,7 +45,7 @@ public class EditCarportMeasurements extends HttpServlet {
                 ArrayList<Material> materialArrayList = MaterialFacade.getMaterials(connectionPool);
                 session.setAttribute("materialArrayList", materialArrayList);
 
-                Carport editedCarport = CarportBuilder.buildCarport(new Carport(length, width), materialArrayList);
+                Carport editedCarport = CarportBuilder.buildCarport(new Carport(length, width, carport.getHasShed()), materialArrayList);
                 editedCarport.setCarportId(carport.getCarportId());
                 PartFacade.deletePartListByCarportID(carport.getCarportId(), connectionPool);
 

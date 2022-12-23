@@ -47,6 +47,7 @@
                 </div>
 
                     ${requestScope.svgCarportTopView}
+                    ${requestScope.svgCarportTopViewWithShed}
             </div>
 
 

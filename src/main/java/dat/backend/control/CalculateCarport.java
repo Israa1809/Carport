@@ -34,32 +34,34 @@ public class CalculateCarport extends HttpServlet {
         try {
             if(request.getParameter("length") != null || request.getParameter("width") != null) {
 
+
+                Boolean hasShed = false;
                 int length = Integer.parseInt(request.getParameter("length"));
                 int width = Integer.parseInt(request.getParameter("width"));
 
                 ArrayList<Material> materialArrayList = MaterialFacade.getMaterials(connectionPool);
 
-                Carport carport = CarportBuilder.buildCarport(new Carport(length, width), materialArrayList);
-                session.setAttribute("carport", carport);
-
                 request.setCharacterEncoding("UTF-8");
                 response.setCharacterEncoding("UTF-8");
                 Locale.setDefault(new Locale("US"));
 
-
                 String checkbox = request.getParameter("checkbox");
-
                 if(checkbox != null) {
                     SVG svgCarportTopViewWithShed = CarportSVG.drawCarportTopViewWithShed(length, width);
                     SVG svgCarportSideViewWithShed = CarportSVG.drawCarportSideViewWithShed(length, width);
                     request.setAttribute("svgCarportTopViewWithShed", svgCarportTopViewWithShed);
                     request.setAttribute("svgCarportSideViewWithShed", svgCarportSideViewWithShed);
+                    hasShed = true;
+
                 } else {
                     SVG svgCarportTopView = CarportSVG.drawCarportTopView(length, width);
                     SVG svgCarportSideView = CarportSVG.drawCarportSideView(length, width);
                     request.setAttribute("svgCarportTopView", svgCarportTopView);
                     request.setAttribute("svgCarportSideView", svgCarportSideView);
                 }
+
+                Carport carport = CarportBuilder.buildCarport(new Carport(length, width, hasShed), materialArrayList);
+                session.setAttribute("carport", carport);
 
                 request.getRequestDispatcher("skitseside.jsp").forward(request, response);
             }

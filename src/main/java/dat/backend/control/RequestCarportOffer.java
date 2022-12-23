@@ -47,6 +47,11 @@ public class RequestCarportOffer extends HttpServlet {
         Carport carport = (Carport) session.getAttribute("carport");
 
         int carportId = CarportFacade.addCarport(carport, customerId, connectionPool);
+
+        if(carport.getHasShed() == true){
+            CarportFacade.toggleShed(carportId, connectionPool);
+        }
+
         carport.setCarportId(carportId);
 
         request.setAttribute("carportId", carportId);

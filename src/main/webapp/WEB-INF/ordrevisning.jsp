@@ -10,8 +10,9 @@
         <div class="display-6 text-center mb-5">Ordrevisning</div>
         <div class="row">
         <div class="col-8">
-            <p class="lead"><strong> Carport set oppefra</strong></p>
+            <p class="lead"><strong> Carport set fra siden</strong></p>
                 ${requestScope.svgCarportSideView}
+                ${requestScope.svgCarportSideViewWithShed}
         </div>
         <div class="col-4">
             <div class="card">
@@ -36,7 +37,9 @@
 
         <div class="row">
             <div class="col-8">
+                <p class="lead"><strong> Carport set fra toppen</strong></p>
                     ${requestScope.svgCarportTopView}
+                    ${requestScope.svgCarportTopViewWithShed}
             </div>
         </div>
     </jsp:body>

@@ -10,17 +10,19 @@
             <h2 class="text-center mb-5"> Stykliste for carport ${sessionScope.carport.width} cm
                 x ${sessionScope.carport.length} cm</h2>
             <div class="row">
-                <div class="col-7">
+                <div class="col-8">
                     <div class="text-center mb-2">
                         <p class="lead"><strong> Carport set fra siden</strong></p>
                             ${requestScope.svgCarportSideView}
+                            ${requestScope.svgCarportSideViewWithShed}
                     </div>
                     <div class="text-center">
                         <p class="lead"><strong> Carport set oppefra</strong></p>
                             ${requestScope.svgCarportTopView}
+                            ${requestScope.svgCarportTopViewWithShed}
                     </div>
                 </div>
-                <div class="col">
+                <div class="col-4">
                     <div class="text-end">
                         <p class="lead">
                             Ordre #${sessionScope.carportId}

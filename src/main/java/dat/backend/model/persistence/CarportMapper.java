@@ -53,8 +53,10 @@ public class CarportMapper {
                     float fee_price = rs.getFloat("fee_price");
                     boolean offerStatus = rs.getBoolean("offer_status");
                     boolean paymentStatus = rs.getBoolean("payment_status");
+                    boolean shed = rs.getBoolean("shed");
 
-                    Carport carport = new Carport(length, width, material_full_price, fee_price, carportId, offerStatus, paymentStatus);
+
+                    Carport carport = new Carport(length, width, material_full_price, fee_price, carportId, offerStatus, paymentStatus, shed);
 
                     return carport;
                 }
@@ -86,8 +88,9 @@ public class CarportMapper {
                     float fee_price = rs.getFloat("fee_price");
                     boolean offerStatus = rs.getBoolean("offer_status");
                     boolean paymentStatus = rs.getBoolean("payment_status");
+                    boolean shed = rs.getBoolean("shed");
 
-                    Carport carport = new Carport(length, width);
+                    Carport carport = new Carport(length, width, shed);
                     carport.setMaterialFullPrice(material_full_price);
                     carport.setFeePrice(fee_price);
                     carport.setCarportId(id);
@@ -162,4 +165,18 @@ public class CarportMapper {
         }
     }
 
+    public static void toggleShed(int carport_id, ConnectionPool connectionPool) {
+            String sql = "UPDATE carport.carport SET shed = 1 - payment_status WHERE carport_id = ?";
+
+            try (Connection connection = connectionPool.getConnection()) {
+                try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                    ps.setInt(1, carport_id);
+                    ps.executeUpdate();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+    }
 }

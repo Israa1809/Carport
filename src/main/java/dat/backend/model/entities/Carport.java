@@ -15,16 +15,18 @@ public class Carport {
     private int carportId;
     Boolean offerStatus;
     Boolean paymentStatus;
+    Boolean hasShed;
 
-    public Carport(int length, int width) {
+    public Carport(int length, int width, Boolean hasShed) {
         this.length = length;
         this.width = width;
         this.materialFullPrice = 0;
         this.feePrice = 5000;
         this.carportFullPrice = materialFullPrice + feePrice;
+        this.hasShed =  hasShed;
     }
 
-    public Carport(int length, int width, float materialFullPrice, float feePrice, int carportId, boolean offerStatus, boolean paymentStatus){
+    public Carport(int length, int width, float materialFullPrice, float feePrice, int carportId, boolean offerStatus, boolean paymentStatus,  Boolean hasShed){
         this.length = length;
         this.width = width;
         this.materialFullPrice = materialFullPrice;
@@ -33,6 +35,7 @@ public class Carport {
         this.carportId = carportId;
         this.offerStatus = offerStatus;
         this.paymentStatus = paymentStatus;
+        this.hasShed =  hasShed;
     }
 
     public int getLength() {
@@ -110,5 +113,13 @@ public class Carport {
 
     public void setPaymentStatus(Boolean paymentStatus) {
         this.paymentStatus = paymentStatus;
+    }
+
+    public Boolean getHasShed() {
+        return hasShed;
+    }
+
+    public void setHasShed(Boolean hasShed) {
+        this.hasShed = hasShed;
     }
 }
