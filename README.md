@@ -1,9 +1,8 @@
-# default-web-applikation med page controller
 
-## Startkode på 2. semester efterår 2022
+## 2. semesterprojekt - FOG carport 2022
 
-Dette repository er lavet i forbindelse med 2. semester på
-Datamatikeruddannelsen i Lyngby og på Bornholm efterår 2022.
+Dette er gruppe F's repository, der er lavet i forbindelse med 2. semester på
+Datamatikeruddannelsen i Lyngby efterår 2022.
 
 ## Java version
 I pom.xml er diverse dependencies valgt, så projektet kan bygges og køres i Java 8. Nyere versioner af 
